@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head lang='en'>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width'>
+  <title>uvalib-accordion</title>
+  <!-- Force polyfills for testing -->
+  <!--
+  <script>
+    window.ShadyDOM = {
+      force: true
+    };
+    if (window.customElements) customElements.forcePolyfill = true;
+  </script>
+  -->
+  <script src='index.js' defer></script>
+</head>
+<body>
+  <uvalib-accordion>
+		<dl>
+			<dt><h1>foo <a href="http://google.com">link</a></h1></dt>
+			<dd>bar 1</dd>
+			<dt><h1>foo 2</h1></dt>
+			<dd>bar 2</dd>
+		</dl>
+	</uvalib-accordion>
+  <script src="webcomponents-loader.js"></script>
+</body>
+</html>
