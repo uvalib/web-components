@@ -1,15 +1,55 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {} from '@polymer/polymer/lib/elements/custom-style.js';
 import "@polymer/iron-collapse/iron-collapse.js";
-import "@polymer/iron-selector/iron-selector.js";
 
 /**
- * `uvalib-accordion-item`
- *
- *
- * @customElement
- * @polymer
- */
+`uvalib-accordion-item` is an accordion item, a child of `uvalib-accordion` that has a header button and
+panel that is collapsable.  The heading is contained in a slotted container named `heading` and the body
+or panel is in a slotted container nameed `body`
+
+
+Example:
+
+  <uvalib-accordion>
+    <uvalib-accordion-item heading-level="2">
+      <div slot="heading">Heading 1</div>
+      <div slot="body">Some Content Here!</div>
+    </uvalib-accordion-item>
+    <uvalib-accordion-item heading-level="2">
+      <div slot="heading">Heading 2</div>
+      <div slot="body">Some Content Here!</div>
+    </uvalib-accordion-item>
+  </uvalib-accordion>
+
+### Styling
+
+Style the accordion with CSS as you would a normal DOM element.
+
+  uvalib-accordion-item {
+    color: blue;
+    background-color: gray;
+  }
+
+The following custom properties and mixins are also available for styling (mixins are polyfilled using @apply syntax waiting on CSS ::part support):
+
+Custom property                        | Description                              | Default
+---------------------------------------|------------------------------------------|----------
+`--uvalib-accordion-item-trigger`      | Mixin applied to the trigger             | `{}`
+`--uvalib-accordion-item-trigger-focus`| Mixin applied to the trigger when focused| `{}`
+`--uvalib-accordion-item-trigger-hover`| Mixin applied to the trigger when hovered| `{}`
+`--uvalib-accordion-item-title`        | Mixin applied to the header title        | `{}`
+`--uvalib-accordion-item-icon`         | Mixin applied to the header icon         | `{}`
+`--uvalib-accordion-item-icon-focus`   | Mixin applied to the header icon focused | `{}`
+`--uvalib-accordion-item-icon-hover`   | Mixin applied to the header icon hovered | `{}`
+`--uvalib-accordion-item-icon-opened`  | Mixin applied to the header icon opened  | `{}`
+`--uvalib-accordion-item-panel`        | Mixin applied to the panel block         | `{}`
+`--uvalib-accordion-item-heading`      | Mixin applied to the heading block       | `{}`
+
+
+@customElement
+@polymer
+@demo demo/index.html
+*/
 class UvalibAccordionItem extends PolymerElement {
   static get template() {
     return html`
@@ -102,12 +142,13 @@ class UvalibAccordionItem extends PolymerElement {
   }
   static get properties() {
     return {
+      /** true if the accordion item is open */
       opened: {
         type: Boolean,
         notify: true,
         value: false
       },
-      /** The heading level assigned to the items heading **/
+      /** The heading level assigned to the items heading */
       headingLevel: {
         type: Number,
         value: 3

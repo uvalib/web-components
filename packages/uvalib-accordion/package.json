@@ -21,6 +21,6 @@
   "scripts": {
     "start": "npx polymer serve",
     "test": "npx polymer test",
-    "build": "npx polymer analyze -i uvalib-accordion.js > analysis.json; npx polymer build"
+    "build": "npx polymer analyze -i uvalib-accordion.js -i uvalib-accordion-item.js > analysis.json; npx polymer build"
   }
 }
