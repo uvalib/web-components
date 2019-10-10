@@ -1,6 +1,7 @@
 {
   "name": "uvalib-accordion",
   "main": "uvalib-accordion.js",
+  "version": "0.0.1",
   "dependencies": {
     "@polymer/iron-a11y-keys-behavior": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.1",
