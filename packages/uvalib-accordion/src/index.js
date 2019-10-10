@@ -1,1 +1,0 @@
-import './uvalib-accordion.js';

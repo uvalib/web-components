@@ -1,11 +1,17 @@
-# uvalib-accordion
+# \<uvalib-accordion\>
 
-An Accordion Web Component for use in UVA Library Web content.
+Accordion Web Component for UVA Library Web
+
+## Viewing Your Element
 
 ```
-git clone https://github.com/uvalib-components/uvalib-accordion.git
-cd uvalib-accordion
-npm install
-npm run build
-npm run start
+$ npm run serve
 ```
+
+## Running Tests
+
+```
+$ npm run test
+```
+
+Your component is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `npm run test` to run your application's test suite locally.
