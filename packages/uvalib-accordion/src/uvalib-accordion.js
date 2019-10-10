@@ -1,10 +1,15 @@
-import {html, property} from 'lit-element';
+import {html} from 'lit-element';
 import {UvaLitElement} from 'uvalib-theme/src/uvalib-lit-element.js';
 import '@patternfly/pfe-accordion/pfe-accordion.js';
 
 class UvaLibAccordion extends UvaLitElement {
-  @property({type: Array}) list = [];
+  static get properties() {
+    return {
+      list: Array
+    };
+  }
   firstUpdated() {
+    this.list = [];
     super.connectedCallback();
     this.observer = new MutationObserver((mutationsList, observer)=>{
       this.__getDefLists();
