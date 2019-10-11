@@ -13,39 +13,50 @@
     <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
 
     <script type="module" src="../uvalib-accordion.js"></script>
+    <script type="module" src="../uvalib-accordion-item.js"></script>
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <uvalib-accordion></uvalib-accordion>
-      </template>
-    </test-fixture>
-
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <uvalib-accordion prop1="new-prop1"></uvalib-accordion>
+        <uvalib-accordion>
+          <uvalib-accordion-item heading-level="2">
+            <div slot="heading">Heading 1</div>
+            <div slot="body">Some Content Here!</div>
+          </uvalib-accordion-item>
+          <uvalib-accordion-item heading-level="2">
+            <div slot="heading">Heading 2</div>
+            <div slot="body">Some More Content Here!</div>
+          </uvalib-accordion-item>
+          <uvalib-accordion-item heading-level="2">
+            <div slot="heading">Heading 3</div>
+            <div slot="body">Some Final Content Here!</div>
+          </uvalib-accordion-item>
+        </uvalib-accordion>
       </template>
     </test-fixture>
 
     <script type="module">
       suite('uvalib-accordion', () => {
 
-        test('instantiating the element with default properties works', () => {
+        test('ensure that item is selected when opened', (done) => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'uvalib-accordion');
+          // multi not enabled
+          assert.equal(element.multi, false);
+          // make sure only one open at a time
           const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello uvalib-accordion!');
-        });
-
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+          const elementSlot = elementShadowRoot.querySelector('slot');
+          const slottedElements = elementSlot.assignedElements();
+          assert.equal(slottedElements[0].opened, false);
+          assert.equal(slottedElements[1].opened, false);
+          element.addEventListener("uvalib-accordion-select",(e)=>{
+            assert.equal(e.detail.selectedItem.querySelector('[slot="heading"]').textContent, "Heading 2");
+            // make sure second item is open and not first
+            assert.equal(slottedElements[1].opened, true);
+            assert.equal(slottedElements[0].opened, false);
+            done();
+          });
+          elementShadowRoot.querySelector('iron-selector').select(1);
         });
 
       });

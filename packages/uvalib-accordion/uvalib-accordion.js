@@ -62,7 +62,7 @@ class UvalibAccordion extends mixinBehaviors([IronA11yKeysBehavior],PolymerEleme
         </style>
       </custom-style>
       <dl id="accordionGroup" role="presentation" class="Accordion">
-        <iron-selector id="selector" activate-event="[[_activateEvent]]" multi="[[multi]]" selected="{{_selectedIndex}}" selected-attribute="opened" selected-item="{{_selectedItem}}" items="{{_items}}">
+        <iron-selector id="selector" activate-event="[[_activateEvent]]" multi="[[multi]]" selected="{{selectedIndex}}" selected-attribute="opened" selected-item="{{selectedItem}}" items="{{_items}}">
           <slot></slot>
         </iron-selector>
       </dl>
@@ -75,9 +75,16 @@ class UvalibAccordion extends mixinBehaviors([IronA11yKeysBehavior],PolymerEleme
         type: Boolean,
         value: false
       },
+      /** the currently selected index */
+      selectedIndex: {
+        type: Number,
+        notify: true,
+        value: null
+      },
       /** the currently selected accordion node */
-      _selectedItem: {
+      selectedItem: {
         type: Object,
+        notify: true,
         observer: '_selectedItemChanged'
       },
       /** The list of items from which a selection can be made. */
@@ -105,7 +112,7 @@ class UvalibAccordion extends mixinBehaviors([IronA11yKeysBehavior],PolymerEleme
       e.stopPropagation();
     });
     this.$.selector.addEventListener('iron-select',function(e){
-      console.log(e);
+//      console.log(e);
       this.dispatchEvent(new CustomEvent('uvalib-accordion-select', {bubbles: true, composed: true, detail: {selectedItem: this.selectedItem} }));
     }.bind(this));
   }
@@ -121,25 +128,25 @@ class UvalibAccordion extends mixinBehaviors([IronA11yKeysBehavior],PolymerEleme
   selectNext(e) {
     e.preventDefault();
     this.$.selector.selectNext();
-    if (this._selectedItem) this._selectedItem.$.accordionId.focus();
+    if (this.selectedItem) this.selectedItem.$.accordionId.focus();
   }
   /** Selects (opens) and focuses the previous item in the accordion. */
   selectPrevious(e) {
     e.preventDefault();
     this.$.selector.selectPrevious();
-    if (this._selectedItem) this._selectedItem.$.accordionId.focus();
+    if (this.selectedItem) this.selectedItem.$.accordionId.focus();
   }
   /** Selects (opens) and focuses the last item in the accordion. */
   selectLast(e) {
     e.preventDefault();
     this.$.selector.selectIndex(this.$.selector.items.length-1);
-    if (this._selectedItem) this._selectedItem.$.accordionId.focus();
+    if (this.selectedItem) this.selectedItem.$.accordionId.focus();
   }
   /** Select and focus the first uvalib-accordion-item. */
   selectFirst(e) {
     e.preventDefault();
     this.$.selector.selectIndex(0);
-    if (this._selectedItem) this._selectedItem.$.accordionId.focus();
+    if (this.selectedItem) this.selectedItem.$.accordionId.focus();
   }
   /** Set disabled state, via aria-disabled, to an expanded / active accordion which is not allowed to be toggled close (when !multi ) */
   _selectedItemChanged(newNode, oldNode){
