@@ -22,5 +22,11 @@
     "start": "npx polymer serve",
     "test": "npx polymer test",
     "build": "npx polymer analyze -i uvalib-accordion.js -i uvalib-accordion-item.js > analysis.json; npx polymer build"
-  }
+  },
+  "description": "Accordion Web Component for UVA Library Web",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
 }
