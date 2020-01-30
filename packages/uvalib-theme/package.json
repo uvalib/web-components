@@ -1,7 +1,8 @@
 {
-  "name": "uvalib-theme",
+  "name": "@uvalib/uvalib-theme",
   "description": "Theme and Style components for the UVA Library Web",
   "main": "uvalib-theme.js",
+  "version": "0.0.1",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "webfontloader": "^1.6.28"
