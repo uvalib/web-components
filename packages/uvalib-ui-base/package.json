@@ -1,5 +1,6 @@
 {
-  "name": "uvalib-ui-base",
+  "name": "@uvalib/uvalib-ui-base",
+  "version": "0.0.1",
   "description": "Common functionality to extend",
   "main": "uvalib-ui-base.js",
   "dependencies": {
