@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-ui-base demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+      import {} from '@polymer/polymer/lib/elements/dom-bind.js';
+      import {} from '@polymer/polymer/lib/elements/dom-if.js';
+    </script>
+
+    <script type="module" src="../uvalib-ui-base.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic uvalib-ui-base demo</h3>
+      <dom-bind>
+        <template>
+          <uvalib-ui-base hash="{{hash}}" small-screen="{{smallScreen}}" medium-screen="{{mediumScreen}}" large-screen="{{largeScreen}}" web-psupport="{{webp}}"></uvalib-ui-base>
+          <div>Hash value: [[hash.path]] (<a href="#foo">hash link</a>)</div>
+          <div>Screen Size:
+            <template is="dom-if" if="[[smallScreen]]">Small</template>
+            <template is="dom-if" if="[[mediumScreen]]">Medium</template>
+            <template is="dom-if" if="[[largeScreen]]">Large</template>
+          </div>
+          <div>WebP Support? [[webp]]</div>
+        </template>
+      </dom-bind>
+    </div>
+
+  </body>
+</html>

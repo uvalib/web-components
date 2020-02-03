@@ -1,0 +1,20 @@
+{
+  "name": "uvalib-ui-base",
+  "description": "Common functionality to extend",
+  "main": "uvalib-ui-base.js",
+  "dependencies": {
+    "@polymer/app-route": "^3.0.2",
+    "@polymer/iron-flex-layout": "^3.0.1",
+    "@polymer/iron-media-query": "^3.0.1",
+    "@polymer/polymer": "^3.0.0",
+    "@uvalib/uvalib-theme": "0.0.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  }
+}
