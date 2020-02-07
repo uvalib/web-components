@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-models demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import {} from '@polymer/polymer/lib/elements/dom-bind.js';
+      import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
+    </script>
+
+    <script type="module" src="../uvalib-models.js"></script>
+    <script type="module" src="../uvalib-model-library.js"></script>
+    <script type="module" src="../uvalib-model-alerts.js"></script>
+
+  </head>
+  <body>
+    <dom-bind>
+      <template>
+        <div class="vertical-section-container centered">
+          <h3>Basic uvalib-model-ajax demo</h3>
+          <uvalib-model-ajax path="library/web/banners" last-response="{{response}}"></uvalib-model-ajax>
+          <template is="dom-if" if="[[response]]">
+            <code>[[response]]</code>
+          </template>
+        </div>
+        <div class="vertical-section-container centered">
+          <h3>Basic uvalib-model-library demo</h3>
+          <uvalib-model-library path="learning" firebase last-response="{{libresponse}}"></uvalib-model-library>
+          <ul>
+            <dom-repeat items="[[libresponse]]">
+              <template>
+                <li>[[item.title]]</li>
+              </template>
+            </dom-repeat>
+          </ul>
+        </div>
+        <div class="vertical-section-container centered">
+          <h3>Basic uvalib-model-alerts demo</h3>
+          <uvalib-model-alerts alerts="{{alerts}}" unseen-count="{{count}}"></uvalib-model-alerts>
+          <h3>Alerts not seen yet: [[count]]</h3>
+          <ul>
+            <dom-repeat items="[[alerts]]">
+              <template>
+                <li>[[item.title]]: [[item.uuid]]</li>
+              </template>
+            </dom-repeat>
+          </ul>
+        </div>
+      </template>
+    </dom-bind>
+  </body>
+</html>
