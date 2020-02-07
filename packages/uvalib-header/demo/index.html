@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-header demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import {} from '@polymer/polymer/lib/elements/dom-bind.js';
+      import '@polymer/paper-toggle-button/paper-toggle-button.js';
+    </script>
+
+    <script type="module" src="../uvalib-header.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="uvalib-theme">
+        body {
+          margin: 0;
+          height: 100vh;
+        }
+        .content {
+          height: 5000px;
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <dom-bind id="app">
+      <template>
+        <uvalib-header simple$="[[simple]]"></uvalib-header>
+        <div class="content" style="margin: 10px">
+          Simple? [[simple]]
+          <paper-toggle-button checked="{{simple}}"></paper-toggle-button>
+          <uvalib-header simple$="[[simple]]" demo></uvalib-header>
+        </div>
+      </template>
+    </dom-bind>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "@uvalib/uvalib-header",
+  "version": "0.0.1",
+  "main": "uvalib-header.js",
+  "dependencies": {
+    "@polymer/app-layout": "^3.1.0",
+    "@polymer/app-storage": "^3.0.3",
+    "@polymer/iron-flex-layout": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-meta": "^3.0.1",
+    "@polymer/paper-badge": "^3.1.0",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-dialog": "^3.0.1",
+    "@polymer/paper-toggle-button": "^3.0.1",
+    "@polymer/polymer": "^3.0.0",
+    "@uvalib/uvalib-alerts": "0.0.1",
+    "@uvalib/uvalib-logos": "0.0.1",
+    "@uvalib/uvalib-search-box": "0.0.1",
+    "@uvalib/uvalib-theme": "^0.0.2",
+    "@uvalib/uvalib-ui-base": "0.0.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  }
+}
