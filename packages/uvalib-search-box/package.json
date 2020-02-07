@@ -1,0 +1,20 @@
+{
+  "name": "@uvalib/uvalib-search-box",
+  "version": "0.0.1",
+  "main": "uvalib-search-box.js",
+  "dependencies": {
+    "@polymer/iron-flex-layout": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/polymer": "^3.0.0",
+    "@uvalib/uvalib-theme": "0.0.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  }
+}

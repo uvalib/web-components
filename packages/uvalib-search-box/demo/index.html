@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-search-box demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import {} from '@polymer/polymer/lib/elements/dom-bind.js';
+    </script>
+
+    <script type="module" src="../uvalib-search-box.js"></script>
+
+    <style is="custom-style">
+        .centered {
+            min-width: 90%;
+        }
+
+        #libra {
+            --uvalib-search-box-border: 5px solid red;
+            --uvalib-background-search: blue;
+        }
+    </style>
+  </head>
+  <body>
+    <dom-bind>
+      <template>
+        <div class="vertical-section-container centered">
+            <h3>Basic uvalib-search-box demo</h3>
+            Value: [[searchValue]]
+            <uvalib-simple-search-box value="{{searchValue}}"></uvalib-simple-search-box>
+            <uvalib-simple-search-box search-again-option value="{{searchValue}}"></uvalib-simple-search-box>
+            <uvalib-search-box></uvalib-search-box>
+            <uvalib-search-box no-links id="libra"
+                placeholder="Search Virgo for Libra Open Access Content"
+                hidden-inputs='[{"name":"catalog_select","value":"none"},{"name":"f[source_facet][]","value":"Libra Repository"},{"name":"sort_key","value":"relevancy"}]'></uvalib-search-box>
+        </div>
+      </template>
+    </dom-bind>
+  </body>
+</html>
