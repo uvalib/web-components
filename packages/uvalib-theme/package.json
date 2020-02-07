@@ -4,6 +4,8 @@
   "main": "uvalib-theme.js",
   "version": "0.0.1",
   "dependencies": {
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
     "webfontloader": "^1.6.28"
   },
