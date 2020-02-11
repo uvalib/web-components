@@ -1,5 +1,4 @@
 import {html} from '@polymer/polymer/polymer-element.js';
-import {} from '@polymer/polymer/lib/elements/dom-if.js';
 import '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import '@uvalib/uvalib-theme/uvalib-icons.js';
 import '@polymer/app-layout/app-header/app-header.js';
@@ -183,7 +182,7 @@ class UvalibHeader extends customElements.get('uvalib-ui-base') {
         </style>
       </custom-style>
       <!--mobile header-->
-      <template is="dom-if" if="[[_dialogMenu]]">
+      <div hidden$="[[!_dialogMenu]]">
         <paper-dialog id="menuDialog" with-backdrop>
           <div id="menuContainer">
             <div id="menuTop" class="layout horizontal justified">
@@ -223,7 +222,7 @@ class UvalibHeader extends customElements.get('uvalib-ui-base') {
             </div>
           </div>
         </paper-dialog>
-      </template>
+      </div>
       <!--default header-->
       <app-header id="header" condenses reveals$="[[!demo]]" fixed$="[[!demo]]" effects="waterfall" role="banner">
         <div id="top">
@@ -283,9 +282,7 @@ class UvalibHeader extends customElements.get('uvalib-ui-base') {
                   <div style="position: relative; display: inline-block">
                     <a href$="[[_alertLink(_alertSeenCount)]]" id="alert" on-click="viewAllAlerts" aria-label="Alerts">
                       <iron-icon icon="bell" alt="Library Alerts"></iron-icon>
-                      <template is="dom-if" if="[[_alertSeenCount]]">
-                        <paper-badge id="alertBadge" for="alert" label="[[_alertSeenCount]]"></paper-badge>
-                      </template>
+                      <paper-badge hidden$="[[!_alertSeenCount]]" id="alertBadge" for="alert" label="[[_alertSeenCount]]"></paper-badge>
                     </a>
                   </div>
                 </li>
