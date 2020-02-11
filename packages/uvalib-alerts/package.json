@@ -1,14 +1,14 @@
 {
   "name": "@uvalib/uvalib-alerts",
   "main": "uvalib-alerts.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-models": "0.0.1",
-    "@uvalib/uvalib-ui-base": "0.0.1"
+    "@uvalib/uvalib-models": "^0.0.2",
+    "@uvalib/uvalib-ui-base": "^0.0.2"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",

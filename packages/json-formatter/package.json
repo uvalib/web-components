@@ -1,11 +1,10 @@
 {
-  "name": "@uvalib/uvalib-logos",
-  "main": "uvalib-logos.js",
-  "version": "0.0.2",
+  "name": "json-formatter",
+  "main": "json-formatter.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-theme": "0.0.1"
+    "@polymer/polymer": "^3.0.0"
   },
+  "private": true,
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
@@ -13,5 +12,6 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "wct-mocha": "^1.0.1"
-  }
+  },
+  "version": "0.0.2"
 }

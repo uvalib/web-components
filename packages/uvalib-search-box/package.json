@@ -1,6 +1,6 @@
 {
   "name": "@uvalib/uvalib-search-box",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "uvalib-search-box.js",
   "dependencies": {
     "@polymer/iron-flex-layout": "^3.0.1",

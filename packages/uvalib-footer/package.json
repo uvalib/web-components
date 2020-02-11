@@ -1,12 +1,12 @@
 {
   "name": "@uvalib/uvalib-footer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "uvalib-footer.js",
   "dependencies": {
     "@polymer/iron-dropdown": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-ui-base": "0.0.1"
+    "@uvalib/uvalib-ui-base": "^0.0.2"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
