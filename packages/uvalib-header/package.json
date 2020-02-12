@@ -26,5 +26,6 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "wct-mocha": "^1.0.1"
-  }
+  },
+  "gitHead": "86e76486e5582ed784ad5aeb8e2e34219eca56cf"
 }
