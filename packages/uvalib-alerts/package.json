@@ -9,7 +9,7 @@
     "@polymer/polymer": "^3.0.0",
     "@uvalib/uvalib-models": "0.0.2",
     "@uvalib/uvalib-theme": "0.0.3",
-    "@uvalib/uvalib-ui-base": "0.0.2"
+    "@uvalib/uvalib-ui-base": "0.0.3"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",

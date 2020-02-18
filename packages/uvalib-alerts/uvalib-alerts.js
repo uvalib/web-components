@@ -1,5 +1,5 @@
 import {html} from '@polymer/polymer/polymer-element.js';
-import '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
+import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import '@uvalib/uvalib-models/uvalib-model-alerts.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import '@polymer/iron-collapse/iron-collapse.js';
@@ -14,7 +14,8 @@ import '@polymer/paper-button/paper-button.js';
  * @polymer
  * @demo demo/index.html
  */
-class UvalibAlerts extends customElements.get('uvalib-ui-base') {
+class UvalibAlerts extends UvalibUiBase {
+  static get is() { return 'uvalib-alerts'; }
   static get template() {
     return html`
       <div>${super.template}</div>
@@ -140,12 +141,17 @@ class UvalibAlerts extends customElements.get('uvalib-ui-base') {
   }
   static get properties() {
     return {
-      prop1: {
-        type: String,
-        value: 'uvalib-alerts',
+      _alerts: {
+        type: Array,
+        observer: '_sizeChanged'
       },
+      _alertsSeen: Array,
+      seenCount: {
+        type: Number,
+        notify: true
+      }
     };
   }
 }
 
-window.customElements.define('uvalib-alerts', UvalibAlerts);
+customElements.define(UvalibAlerts.is, UvalibAlerts);

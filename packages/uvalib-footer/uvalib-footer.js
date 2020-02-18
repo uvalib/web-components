@@ -1,5 +1,5 @@
 import {html} from '@polymer/polymer/polymer-element.js';
-import '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
+import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import '@polymer/paper-button/paper-button.js';
 import '@polymer/iron-dropdown/iron-dropdown.js';
 
@@ -11,7 +11,8 @@ import '@polymer/iron-dropdown/iron-dropdown.js';
  * @polymer
  * @demo demo/index.html
  */
-class UvalibFooter extends customElements.get('uvalib-ui-base') {
+class UvalibFooter extends UvalibUiBase {
+  static get is() { return 'uvalib-footer'; }
   static get template() {
     return html`
       <div>${super.template}</div>
@@ -353,4 +354,4 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
   }
 }
 
-window.customElements.define('uvalib-footer', UvalibFooter);
+window.customElements.define(UvalibFooter.is, UvalibFooter);

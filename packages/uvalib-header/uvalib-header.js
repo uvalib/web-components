@@ -1,5 +1,5 @@
 import {html} from '@polymer/polymer/polymer-element.js';
-import '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
+import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import '@uvalib/uvalib-theme/uvalib-icons.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
@@ -22,7 +22,8 @@ import '@polymer/paper-dialog/paper-dialog';
  * @polymer
  * @demo demo/index.html
  */
-class UvalibHeader extends customElements.get('uvalib-ui-base') {
+class UvalibHeader extends UvalibUiBase {
+  static get is() { return 'uvalib-header'; }
   static get template() {
     return html`
       <div>${super.template}</div>
@@ -414,4 +415,4 @@ class UvalibHeader extends customElements.get('uvalib-ui-base') {
   }
 }
 
-window.customElements.define('uvalib-header', UvalibHeader);
+window.customElements.define(UvalibHeader.is, UvalibHeader);

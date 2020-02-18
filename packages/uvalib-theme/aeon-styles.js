@@ -1,4 +1,4 @@
-import '@polymer/polymer/polymer-legacy.js';
+import {} from '@polymer/polymer/lib/elements/custom-style.js';
 import './color.js';
 
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
