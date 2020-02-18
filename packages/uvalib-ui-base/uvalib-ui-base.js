@@ -13,7 +13,7 @@ import '@polymer/iron-media-query/iron-media-query.js';
  * @polymer
  * @demo demo/index.html
  */
-class UvalibUiBase extends PolymerElement {
+export class UvalibUiBase extends PolymerElement {
   static get template() {
     return html`
       <custom-style>
