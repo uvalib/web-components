@@ -16,7 +16,7 @@
     "@uvalib/uvalib-alerts": "^0.0.2",
     "@uvalib/uvalib-logos": "^0.0.2",
     "@uvalib/uvalib-search-box": "^0.0.2",
-    "@uvalib/uvalib-theme": "^0.0.2",
+    "@uvalib/uvalib-theme": "^0.0.3",
     "@uvalib/uvalib-ui-base": "^0.0.2"
   },
   "devDependencies": {

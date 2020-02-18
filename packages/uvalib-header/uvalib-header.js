@@ -6,13 +6,13 @@ import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
 import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
-import('@polymer/iron-meta/iron-meta.js');
-import('@uvalib/uvalib-logos/uvalib-logos.js');
-import('@polymer/paper-badge/paper-badge.js');
-import('@polymer/paper-button/paper-button.js');
-import('@uvalib/uvalib-alerts/uvalib-alerts.js');
-import('@uvalib/uvalib-search-box/uvalib-search-box');
-import('@polymer/paper-dialog/paper-dialog');
+import '@polymer/iron-meta/iron-meta.js';
+import '@uvalib/uvalib-logos/uvalib-logos.js';
+import '@polymer/paper-badge/paper-badge.js';
+import '@polymer/paper-button/paper-button.js';
+import '@uvalib/uvalib-alerts/uvalib-alerts.js';
+import '@uvalib/uvalib-search-box/uvalib-search-box';
+import '@polymer/paper-dialog/paper-dialog';
 
 /**
  * `uvalib-header`
