@@ -70,9 +70,6 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
         color: var(--color-light-blue);
         margin-bottom: 5px;
       }
-      uvalib-liame {
-        color: var(--color-light-blue);
-      }
       ul {
         list-style: none;
         margin: 0;
@@ -121,7 +118,7 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
         background-color: var(--color-secondary-blue);
         @apply --layout-center-justified;
       }
-      .bottom-bar a, .bottom-bar uvalib-liame, a, uvalib-liame {
+      .bottom-bar a, a {
         text-decoration: none;
       }
       .bottom-bar ::slotted {
@@ -131,7 +128,7 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
         background-color: initial !important;
         height: 100% !important;
       }
-      .bottom-bar uvalib-liame, .bottom-bar a {
+      .bottom-bar a {
         color: var(--color-white);
         padding: 0 10px 0 10px;
         font-size: 1.1em;
@@ -218,7 +215,7 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
             <h3>Contact Us</h3>
             <ul>
               <li>(434) 924-3021</li>
-              <li><uvalib-liame id="liame" rid="yrarbil"></uvalib-liame></li>
+              <li><a href="mailto:library@virginia.edu">library@virginia.edu</a></li>
               <li><a href="[[_domain]]/askalibrarian/">Ask a Librarian</a></li>
             </ul>
             <div class="social-links">
@@ -277,7 +274,7 @@ class UvalibFooter extends customElements.get('uvalib-ui-base') {
         <slot name="bottom-bar">
 
           <div class="links">
-            <uvalib-liame rid="kcabdeef-etis">Feedback</uvalib-liame> |
+            <a href="mailto:site-feedback@virginia.edu">Feedback</a> |
             <iron-dropdown id="copydrop" auto-fit-on-attach="" no-overlap="" vertical-align="bottom" horizontal-align="left">
                 <div slot="dropdown-content">
                   <div id="copyright-info" class="copyright"><span role="img" arial-label="copyright">©</span> {{_currentYear}} by the Rector and Visitors of the University of Virginia</div>
