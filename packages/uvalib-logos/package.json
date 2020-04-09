@@ -1,11 +1,11 @@
 {
   "name": "@uvalib/uvalib-logos",
   "main": "uvalib-logos.js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-theme": "^0.1.2",
-    "@uvalib/uvalib-ui-base": "^0.1.2"
+    "@uvalib/uvalib-theme": "^0.1.3",
+    "@uvalib/uvalib-ui-base": "^0.1.3"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
