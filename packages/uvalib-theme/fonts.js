@@ -1,5 +1,8 @@
-import ('webfontloader').then(()=>{
-  window.WebFont.load({typekit: {id: 'tgy5tlj'} });
+import ('webfontloader').then((ex)=>{
+  var loader = (window.WebFont)? window.WebFont: ex.default;
+  loader.load({
+    typekit: {id: 'tgy5tlj'}
+  });
 });
 //import * as WebFont from 'webfontloader';
 

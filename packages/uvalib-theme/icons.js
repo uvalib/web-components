@@ -1,13 +1,16 @@
 import '@polymer/polymer/polymer-legacy.js';
-import * as WebFont from 'webfontloader';
-
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
-window.WebFont.load({
-  custom: {
-    families: ['uvalib-custom-icons','uvalib-custom-academicons']
-  }
+import ('webfontloader').then((ex)=>{
+  var loader = (window.WebFont)? window.WebFont: ex.default;
+  loader.load({
+    custom: {
+      families: ['uvalib-custom-icons','uvalib-custom-academicons']
+    }
+  });
 });
+
+
 
 const template = html`
 <dom-module id="uvalib-icons">
