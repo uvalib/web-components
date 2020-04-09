@@ -3,7 +3,6 @@ import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import ('@uvalib/uvalib-models/uvalib-model-alerts.js');
 import ('@polymer/iron-collapse/iron-collapse.js');
-import ('@polymer/marked-element/marked-element.js');
 import ('@polymer/paper-button/paper-button.js');
 
 /**
@@ -126,11 +125,7 @@ class UvalibAlerts extends UvalibUiBase {
                 </template>
               </div>
               <iron-collapse class="body-collapse" opened$="[[_isHot(alert.severity)]]" on-opened-changed="_sizeChanged" on-transitioning-changed="_sizeChanged">
-                <div class="alert-body">
-                  <marked-element markdown="[[alert.body]]">
-                    <div slot="markdown-html"></div>
-                  </marked-element>
-                </div>
+                <div class="alert-body" inner-h-t-m-l="[[alert.body]]"></div>
               </iron-collapse>
               </div>
             </div>
