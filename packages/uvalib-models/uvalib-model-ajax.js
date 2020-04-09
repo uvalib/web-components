@@ -133,7 +133,6 @@ class UvalibModelAjax extends PolymerElement {
 //    this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
 //        Polymer.Async.timeOut.after(200),
 //        () => {
-console.log("bounce")
       if (this.csv) {
         // parse the csv
         this._setLastResponse(Papa.parse(this._lastResponse,{header:true,skipEmptyLines:true}).data);
