@@ -5,12 +5,12 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
   input: 'lib/Aeon-components.js',
   output: {
-    file: 'bundle.js',
-    format: 'umd'
+    dir: 'bundle',
+    format: 'esm'
   },
-  name: 'MyModule',
   plugins: [
     resolve({
+      mainFields: ['module'],
       customResolveOptions: {
         moduleDirectory: 'node_modules'
       }

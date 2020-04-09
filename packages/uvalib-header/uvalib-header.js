@@ -1,18 +1,40 @@
+
+/*
 import {html} from '@polymer/polymer/polymer-element.js';
 import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
 import '@uvalib/uvalib-theme/uvalib-icons.js';
-import '@polymer/app-layout/app-header/app-header.js';
-import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
 import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
-import '@polymer/iron-meta/iron-meta.js';
 import '@uvalib/uvalib-logos/uvalib-logos.js';
 import '@polymer/paper-badge/paper-badge.js';
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
+import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
+import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/paper-button/paper-button.js';
-import '@uvalib/uvalib-alerts/uvalib-alerts.js';
 import '@uvalib/uvalib-search-box/uvalib-search-box';
+import '@uvalib/uvalib-alerts/uvalib-alerts.js';
 import '@polymer/paper-dialog/paper-dialog';
+*/
+
+import {html} from '@polymer/polymer/polymer-element.js';
+import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
+import ('@uvalib/uvalib-theme/uvalib-icons.js');
+import ('@polymer/app-storage/app-localstorage/app-localstorage-document.js');
+import ('@uvalib/uvalib-logos/uvalib-logos.js');
+import ('@polymer/paper-badge/paper-badge.js');
+var step1 = [];
+step1.push(import ('@polymer/iron-flex-layout/iron-flex-layout.js'));
+step1.push(import ('@polymer/iron-flex-layout/iron-flex-layout-classes.js'));
+step1.push(import ('@polymer/app-layout/app-scroll-effects/effects/waterfall.js').then(()=>{import ('@polymer/app-layout/app-header/app-header.js');}));
+Promise.all(step1).then(()=>{
+  var step2 = [];
+  step2.push(import ('@polymer/paper-button/paper-button.js'));
+  Promise.all(step2).then(()=>{
+    import ('@uvalib/uvalib-search-box/uvalib-search-box');
+    import ('@uvalib/uvalib-alerts/uvalib-alerts.js');
+    import ('@polymer/paper-dialog/paper-dialog');
+  });
+});
 
 /**
  * `uvalib-header`
@@ -227,7 +249,7 @@ class UvalibHeader extends UvalibUiBase {
       <!--default header-->
       <app-header id="header" condenses reveals$="[[!demo]]" fixed$="[[!demo]]" effects="waterfall" role="banner">
         <div id="top">
-          <div id="logo" class="flex-2">
+          <div id="logo" class="flex-2 layout horizontal">
             <a href="[[libraryHomeLink]]"><uvalib-logos tabindex="-1" stacked$="[[_and(largeScreen,full)]]" simple$="[[simple]]"></uvalib-logos></a>
           </div>
           <div hidden$="[[_or(simple, largeScreen)]]" id="menuButton" class="menuLarge">
@@ -293,7 +315,6 @@ class UvalibHeader extends UvalibUiBase {
         </div>
         <uvalib-alerts tabindex="-1" id="alerts" seen-count="{{_alertSeenCount}}" on-size-changed="_delayedAdjustHeight"></uvalib-alerts>
       </app-header>
-      <iron-meta key="uvalib-header-height" value="{{_height}}"></iron-meta>
       <app-localstorage-document key="uvalib-header-height" data="{{_height}}" session-only></app-localstorage-document>
     </template>
     `;
@@ -367,7 +388,7 @@ class UvalibHeader extends UvalibUiBase {
   }
   _adjustHeight() {
     this._height=this.style.height=this.$.header.clientHeight+"px";
-    this.shadowRoot.querySelector('app-header').notifyResize();
+//    this.shadowRoot.querySelector('app-header').notifyResize();
   }
   /** Opens the menu dialog (only do this in a smaller screen context) **/
   openMenu(){

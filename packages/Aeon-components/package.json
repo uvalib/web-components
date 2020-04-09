@@ -18,6 +18,8 @@
     "url": "git+https://github.com/uvalib/web-components.git"
   },
   "scripts": {
+    "build": "npx rollup -c rollup.config.js ",
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -27,7 +29,9 @@
   "dependencies": {
     "@uvalib/uvalib-footer": "^0.0.2",
     "@uvalib/uvalib-header": "0.0.3",
-    "@uvalib/uvalib-theme": "0.0.3"
+    "@uvalib/uvalib-theme": "^0.0.4",
+    "@uvalib/uvalib-ui-base": "^0.0.3",
+    "local-web-server": "^4.0.0"
   },
   "devDependencies": {
     "rollup": "^1.31.1",

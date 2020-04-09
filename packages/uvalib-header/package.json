@@ -16,8 +16,8 @@
     "@uvalib/uvalib-alerts": "0.0.2",
     "@uvalib/uvalib-logos": "0.0.2",
     "@uvalib/uvalib-search-box": "0.0.2",
-    "@uvalib/uvalib-theme": "0.0.3",
-    "@uvalib/uvalib-ui-base": "0.0.2"
+    "@uvalib/uvalib-theme": "^0.0.4",
+    "@uvalib/uvalib-ui-base": "^0.0.3"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
@@ -26,6 +26,9 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "wct-mocha": "^1.0.1"
+  },
+  "scripts": {
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf"
   },
   "gitHead": "86e76486e5582ed784ad5aeb8e2e34219eca56cf"
 }

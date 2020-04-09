@@ -20,6 +20,7 @@
   "scripts": {
     "start": "npx polymer serve",
     "test": "npx polymer test",
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "build": "npx polymer analyze -i uvalib-accordion.js -i uvalib-accordion-item.js > analysis.json; npx polymer build"
   },
   "directories": {

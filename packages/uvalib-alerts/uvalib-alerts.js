@@ -1,10 +1,10 @@
 import {html} from '@polymer/polymer/polymer-element.js';
 import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
-import '@uvalib/uvalib-models/uvalib-model-alerts.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
-import '@polymer/iron-collapse/iron-collapse.js';
-import '@polymer/marked-element/marked-element.js';
-import '@polymer/paper-button/paper-button.js';
+import ('@uvalib/uvalib-models/uvalib-model-alerts.js');
+import ('@polymer/iron-collapse/iron-collapse.js');
+import ('@polymer/marked-element/marked-element.js');
+import ('@polymer/paper-button/paper-button.js');
 
 /**
  * `uvalib-alerts`
@@ -151,6 +151,26 @@ class UvalibAlerts extends UvalibUiBase {
         notify: true
       }
     };
+  }
+  _sizeChanged(){
+    this.dispatchEvent(new CustomEvent('size-changed', {detail: {height: this.clientHeight}}));
+  }
+  _isHot(severity){
+    return (severity==="alert1");
+  }
+  _toggleIt(e){
+    e.currentTarget.parentElement.parentElement.querySelector('.body-collapse').toggle();
+    e.currentTarget.parentElement.querySelectorAll('.toggle').forEach(function(el) {
+      el.classList.toggle("hidden");
+      if (!el.classList.contains("hidden")) el.focus();
+    });
+  }
+  _dismissIt(e){
+    var uuid = e.currentTarget.parentElement.parentElement.parentElement.uuid;
+    this.$.alertsModel.setSeen(uuid);
+  }
+  unseeAll(){
+    this.set('_alertsSeen',[]);
   }
 }
 
