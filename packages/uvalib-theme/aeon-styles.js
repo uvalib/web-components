@@ -8,6 +8,9 @@ const template = html`
     uvalib-footer {
       margin-top: 100px;
     }
+    .head {
+      padding: 0 #important;
+    }
   </style>
 </custom-style>`;
 template.setAttribute('style', 'display: none;');
