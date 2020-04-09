@@ -3,8 +3,8 @@
   "main": "json-formatter.js",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-theme": "^0.1.0",
-    "@uvalib/uvalib-ui-base": "^0.1.0"
+    "@uvalib/uvalib-theme": "^0.1.2",
+    "@uvalib/uvalib-ui-base": "^0.1.2"
   },
   "private": true,
   "devDependencies": {
@@ -15,5 +15,5 @@
     "mocha": "^6.1.4",
     "wct-mocha": "^1.0.1"
   },
-  "version": "0.1.0"
+  "version": "0.1.2"
 }
