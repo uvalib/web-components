@@ -137,11 +137,20 @@ class UvalibAlerts extends UvalibUiBase {
   }
   static get properties() {
     return {
+      /**
+      * listing of alerts.
+      */
       _alerts: {
         type: Array,
         observer: '_sizeChanged'
       },
+      /**
+      * listing of alerts that have been seen/dismissed.
+      */
       _alertsSeen: Array,
+      /**
+      * The count of alerts that have been seen/dismissed.
+      */
       seenCount: {
         type: Number,
         notify: true
@@ -165,6 +174,9 @@ class UvalibAlerts extends UvalibUiBase {
     var uuid = e.currentTarget.parentElement.parentElement.parentElement.uuid;
     this.$.alertsModel.setSeen(uuid);
   }
+  /**
+   * Calling this will set all alerts to an unseen status.
+  */
   unseeAll(){
     this.set('_alertsSeen',[]);
   }
