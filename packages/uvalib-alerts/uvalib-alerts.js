@@ -2,8 +2,6 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@uvalib/uvalib-theme';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import ('@uvalib/uvalib-models/uvalib-model-alerts.js');
-import ('@polymer/iron-collapse/iron-collapse.js');
-import ('@polymer/paper-button/paper-button.js');
 
 /**
  * `uvalib-alerts`
@@ -23,6 +21,7 @@ class UvalibAlerts extends PolymerElement {
           :host {
             display: block;
             text-align: left;
+            visibility: hidden;
           }
           .alert-item {
             min-height: 41px;
@@ -158,6 +157,15 @@ class UvalibAlerts extends PolymerElement {
     };
   }
   _sizeChanged(){
+    // only bother loading components if we have something to show
+    if (this._alerts.length>0) {
+      var imports = [];
+      imports.push( import ('@polymer/iron-collapse/iron-collapse.js') );
+      imports.push( import ('@polymer/paper-button/paper-button.js') );
+      Promise.all(imports).then(()=>{
+        this.style.visibility = "visible";
+      });
+    }
     this.dispatchEvent(new CustomEvent('size-changed', {detail: {height: this.clientHeight}}));
   }
   _isHot(severity){
