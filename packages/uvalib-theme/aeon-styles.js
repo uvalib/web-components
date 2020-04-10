@@ -9,7 +9,7 @@ const template = html`
       margin-top: 100px;
     }
     .head {
-      padding: 0 #important;
+      padding: 0 !important;
     }
   </style>
 </custom-style>`;

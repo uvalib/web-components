@@ -22,6 +22,7 @@ class UvalibAlerts extends UvalibUiBase {
         <style include="uvalib-theme">
           :host {
             display: block;
+            text-align: left;
           }
           .alert-item {
             min-height: 41px;
