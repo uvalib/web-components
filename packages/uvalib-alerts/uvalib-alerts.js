@@ -1,5 +1,5 @@
-import {html} from '@polymer/polymer/polymer-element.js';
-import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
+import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@uvalib/uvalib-theme';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import ('@uvalib/uvalib-models/uvalib-model-alerts.js');
 import ('@polymer/iron-collapse/iron-collapse.js');
@@ -13,11 +13,11 @@ import ('@polymer/paper-button/paper-button.js');
  * @polymer
  * @demo demo/index.html
  */
-class UvalibAlerts extends UvalibUiBase {
+class UvalibAlerts extends PolymerElement {
   static get is() { return 'uvalib-alerts'; }
   static get template() {
     return html`
-      <div>${super.template}</div>
+
       <custom-style>
         <style include="uvalib-theme">
           :host {
