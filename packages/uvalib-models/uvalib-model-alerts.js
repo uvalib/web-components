@@ -84,7 +84,9 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
     return this._apidomain+apiVersion+"/library/alerts";
   }
   _getSeenCount(alerts){
-    return alerts.filter(a => a.seen).length;
+    var cnt = alerts.filter(a => a.seen).length;
+    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, detail: {seenCount: cnt}}));
+    return cnt;
   }
 }
 
