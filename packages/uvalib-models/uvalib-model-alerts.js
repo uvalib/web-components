@@ -85,9 +85,19 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
   }
   _getSeenCount(alerts){
     var cnt = alerts.filter(a => a.seen).length;
-    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, detail: {seenCount: cnt}}));
+    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: cnt}}));
     return cnt;
   }
+
+/**
+Fired when the seenCount property changes.
+This is useful if you want to display
+the count on some sort of notification badge
+showing the user a count of notifications dismissed.
+
+@event seen-count-changed
+Event param: {{seenCount: Number}} detail Contains the count of unseen alerts.
+*/
 }
 
 window.customElements.define('uvalib-model-alerts', UvalibModelAlerts);
