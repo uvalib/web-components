@@ -1,38 +1,22 @@
-
-/*
 import {html} from '@polymer/polymer/polymer-element.js';
 import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
-import '@uvalib/uvalib-theme/uvalib-icons.js';
-import '@polymer/app-storage/app-localstorage/app-localstorage-document.js';
-import '@uvalib/uvalib-logos/uvalib-logos.js';
-import '@polymer/paper-badge/paper-badge.js';
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
-import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
-import '@polymer/app-layout/app-header/app-header.js';
-import '@polymer/paper-button/paper-button.js';
-import '@uvalib/uvalib-search-box/uvalib-search-box';
-import '@uvalib/uvalib-alerts/uvalib-alerts.js';
-import '@polymer/paper-dialog/paper-dialog';
-*/
 
-import {html} from '@polymer/polymer/polymer-element.js';
-import {UvalibUiBase} from '@uvalib/uvalib-ui-base/uvalib-ui-base.js';
-import ('@uvalib/uvalib-theme/uvalib-icons.js');
-import ('@polymer/app-storage/app-localstorage/app-localstorage-document.js');
-import ('@uvalib/uvalib-logos/uvalib-logos.js');
-import ('@polymer/paper-badge/paper-badge.js');
 var step1 = [];
 step1.push(import ('@polymer/iron-flex-layout/iron-flex-layout.js'));
 step1.push(import ('@polymer/iron-flex-layout/iron-flex-layout-classes.js'));
-step1.push(import ('@polymer/app-layout/app-scroll-effects/effects/waterfall.js').then(()=>{import ('@polymer/app-layout/app-header/app-header.js');}));
+step1.push(import ('@polymer/app-layout/app-scroll-effects/effects/waterfall.js')
+     .then(()=>{import ('@polymer/app-layout/app-header/app-header.js');}));
 Promise.all(step1).then(()=>{
   var step2 = [];
   step2.push(import ('@polymer/paper-button/paper-button.js'));
+  step2.push(import ('@uvalib/uvalib-logos/uvalib-logos.js'));
   Promise.all(step2).then(()=>{
+    import ('@uvalib/uvalib-theme/uvalib-icons.js');
     import ('@uvalib/uvalib-search-box/uvalib-search-box');
     import ('@uvalib/uvalib-alerts/uvalib-alerts.js');
     import ('@polymer/paper-dialog/paper-dialog');
+    import ('@polymer/paper-badge/paper-badge.js');
+    import ('@polymer/app-storage/app-localstorage/app-localstorage-document.js');
   });
 });
 
