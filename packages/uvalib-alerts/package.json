@@ -9,7 +9,8 @@
     "@polymer/polymer": "^3.0.0",
     "@uvalib/uvalib-models": "^0.1.4",
     "@uvalib/uvalib-theme": "^0.1.4",
-    "@uvalib/uvalib-ui-base": "^0.1.4"
+    "@uvalib/uvalib-ui-base": "^0.1.4",
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^3.0.0-pre.20",
