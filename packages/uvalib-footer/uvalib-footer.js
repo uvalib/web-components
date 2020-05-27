@@ -21,7 +21,7 @@ class UvalibFooter extends UvalibUiBase {
         box-sizing: border-box;
         display: block;
         width: 100%;
-        --uvalib-footer-background-color: var(--color-primary-blue);
+        --uvalib-footer-background-color: var(--uvalib-brand-blue);
         --uvalib-footer-color: var(--color-light-blue);
         background-color: var(--uvalib-footer-background-color);
         color: var(--uvalib-footer-color);
