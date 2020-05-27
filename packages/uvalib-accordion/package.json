@@ -1,14 +1,14 @@
 {
   "name": "@uvalib/uvalib-accordion",
   "main": "uvalib-accordion.js",
-  "version": "0.1.4",
+  "version": "0.1.12",
   "dependencies": {
     "@polymer/iron-a11y-keys-behavior": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/iron-selector": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
-    "@uvalib/uvalib-theme": "^0.1.4",
-    "@uvalib/uvalib-ui-base": "^0.1.4"
+    "@uvalib/uvalib-theme": "^0.1.12",
+    "@uvalib/uvalib-ui-base": "^0.1.12"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^3.0.0-pre.20",
