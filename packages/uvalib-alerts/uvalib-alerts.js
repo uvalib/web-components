@@ -189,7 +189,7 @@ class UvalibAlerts extends PolymerElement {
     this.set('_alertsSeen',[]);
   }
   /**
-   * Calling this will set all alerts to an seen status.
+   * Calling this will set all alerts to a seen status.
   */
   seeAll(){
     this.$.alertsModel.setAllSeen();
