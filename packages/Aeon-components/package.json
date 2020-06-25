@@ -1,6 +1,6 @@
 {
   "name": "aeon-components",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "> TODO: description",
   "author": "Doug Chestnut <dougchestnut@gmail.com>",
   "homepage": "https://github.com/uvalib/web-components#readme",
@@ -28,9 +28,9 @@
   "private": true,
   "dependencies": {
     "@uvalib/uvalib-footer": "^0.0.2",
-    "@uvalib/uvalib-header": "^0.1.14",
-    "@uvalib/uvalib-theme": "^0.1.14",
-    "@uvalib/uvalib-ui-base": "^0.1.14",
+    "@uvalib/uvalib-header": "^0.1.15",
+    "@uvalib/uvalib-theme": "^0.1.15",
+    "@uvalib/uvalib-ui-base": "^0.1.15",
     "local-web-server": "^4.0.0"
   },
   "devDependencies": {
