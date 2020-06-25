@@ -1,13 +1,13 @@
 {
   "name": "@uvalib/uvalib-models",
   "main": "uvalib-models.js",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "dependencies": {
     "@polymer/app-storage": "^3.0.3",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-theme": "^0.1.15",
-    "@uvalib/uvalib-ui-base": "^0.1.15",
+    "@uvalib/uvalib-theme": "^0.1.16",
+    "@uvalib/uvalib-ui-base": "^0.1.16",
     "lit-element": "^2.3.1",
     "lodash-es": "^4.17.15"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@uvalib/uvalib-fill-hold",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A distinct application for library staff to scan barcodes and results in a printed slip with checkout information.",
   "main": "uvalib-fill-hold.js",
   "dependencies": {

@@ -2,7 +2,7 @@
   "name": "@uvalib/uvalib-theme",
   "description": "Theme and Style components for the UVA Library Web",
   "main": "uvalib-theme.js",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "dependencies": {
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
