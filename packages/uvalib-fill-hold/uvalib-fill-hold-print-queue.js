@@ -59,9 +59,40 @@ class UVALibHoldPrintQueue extends HTMLElement {
       const key = barcodeLocalStorage.key(i);
       const raw = barcodeLocalStorage.getItem(key);
       const value = raw? JSON.parse(barcodeLocalStorage.getItem(key)): {};
-      pages.push(value.hold.title);
+      var heading = `Barcode: ${key}\n`;
+      if (value.hold) {
+        if (value.hold.title) heading += `${value.hold.title}\n`;
+        value.hold.error_messages.forEach(m=>{heading+="* "+m+'\n'});
+        if (value.user) {
+          heading += `
+  Author: ${value.hold.author}
+  Item ID: ${value.hold.item_id}
+
+  Name: ${value.hold.user_full_name}
+  Department: ${value.user.Department}
+  Fax: ${value.user.Fax}
+  Organization: ${value.user.Organization}
+  Country: ${value.user.Country}
+  Pickup Location: ${value.hold.pickup_location}
+  Status: ${value.user.Status}
+  Email: ${value.user.EMailAddress}
+  Phone: ${value.user.Phone}
+  Mobile Phone: ${value.user.MobilePhone}
+  Department: ${value.user.Department}
+  Notification Method: ${value.user.NotificationMethod}
+  Delivery Method: ${value.user.DeliveryMethod}
+  Loan Delivery Method: ${value.user.LoanDeliveryMethod}
+  Last Changed: ${value.user.LastChangedDate}
+          `;
+        }
+        var pageText = "";
+        pages.push({heading:heading,body:pageText});
+      }
     }
     this.pdf.setAttribute( 'pages',JSON.stringify(pages) );
+    // Only provide a pdf if we have hold items to make it from
+    if (pages.length) this.pdf.removeAttribute('disabled');
+    else this.pdf.setAttribute('disabled','');
   }
 
   // The hold for the item w/ this barcode has changed in this window/tab or another, update ui
@@ -89,8 +120,10 @@ class UVALibHoldPrintQueue extends HTMLElement {
 
   fetchHold(barcode) {
     // random test till I get the backend worked out
-    const url = (Math.random() >= 0.5)? '../test.json':'../error-test.json';
-    return fetch(url)
+    //const url = (Math.random() >= 0.5)? '../test.json':'../error-test.json';
+    //return fetch(url)
+    const url = "https://qmo3jwybkg.execute-api.us-east-1.amazonaws.com/production/library/fillholdreader/"+barcode;
+    return fetch(url,{method: 'POST'})
       .then(res=>res.json())
       .then(function(data){
         console.log('got data');

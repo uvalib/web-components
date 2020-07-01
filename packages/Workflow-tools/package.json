@@ -17,10 +17,23 @@
     "url": "git+https://github.com/uvalib/web-components.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "npm run dedupe; npx rollup -c rollup.config.js ",
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "serve": "npx serve dist"
   },
   "bugs": {
     "url": "https://github.com/uvalib/web-components/issues"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@uvalib/uvalib-fill-hold": "^0.1.16",
+    "serve": "^11.3.2"
+  },
+  "devDependencies": {
+    "rollup": "^2.18.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^6.1.0"
+  }
 }

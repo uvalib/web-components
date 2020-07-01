@@ -30,5 +30,5 @@
   "scripts": {
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf"
   },
-  "gitHead": "b5f695ccf5af0caf1325da78adc4bd148c7533c3"
+  "gitHead": "3714ea41990d092dbfb90fd940cee6ae565cf98e"
 }

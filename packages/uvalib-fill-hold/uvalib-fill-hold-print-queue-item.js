@@ -64,10 +64,10 @@ class UVALibHoldPrintQueueItem extends HTMLElement {
     switch(name){
       case "loading":
         if (newValue||newValue=='') {
-          console.log("it's loading");
+//          console.log("it's loading");
           this.loadingEl.removeAttribute('hidden');
         } else {
-          console.log("it's not loading");
+//          console.log("it's not loading");
           this.loadingEl.setAttribute('hidden','');
         }
         break;
@@ -82,9 +82,9 @@ class UVALibHoldPrintQueueItem extends HTMLElement {
     // Are we loading?
     if (data.loading) this.setAttribute("loading",'');
     else this.removeAttribute("loading");
-    this._titleText.nodeValue = data.hold.title;
+    this._titleText.nodeValue = (data.hold && data.hold.title)? data.hold.title:"";
     this._barcodeText.nodeValue = this.id;
-    if (data.hold.error_messages.length > 0) {
+    if (data.hold && data.hold.error_messages && data.hold.error_messages.length > 0) {
       this._errorText.nodeValue = "";
       for (var i=0; i<data.hold.error_messages.length; i++) {
         this._errorText.nodeValue += data.hold.error_messages[i] + "; ";

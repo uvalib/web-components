@@ -1,42 +1,65 @@
 import 'jspdf/dist/jspdf.min.js';
 
+
 // Create a class for the element
 class UVALibHoldPrintPDF extends HTMLElement {
 
   static get observedAttributes() {
-//    return ['c', 'l'];
-    return ['pages'];
+    return ['pages','disabled'];
   }
 
   constructor() {
+
     // Always call super first in constructor
     super();
 
     this.pages = [];
+    this.disabled = false;
 
     const shadow = this.attachShadow({mode: 'open'});
-    const button = document.createElement('button');
-    button.appendChild(document.createTextNode("Create PDF"));
 
-    shadow.appendChild(button);
+    var style = document.createElement('style');
+    style.textContent = `
+      :host {
+        display:block;
+        margin-top:10px;
+        margin-bottom:10px;
+      }
+
+    `;
+    shadow.appendChild(style);
+
+    this._button = document.createElement('button');
+    this._button.appendChild(document.createTextNode("Create PDF"));
+
+    shadow.appendChild(this._button);
 
     this.addEventListener("click", this._makePDF);
   }
+
 
   attributeChangedCallback(name, oldValue, newValue) {
     console.log('Custom element attributes changed.');
     if (name=="pages") {
       this.pages = JSON.parse(newValue);
+    } else if (name="disabled") {
+      if (newValue == null) this._button.removeAttribute('disabled');
+      else this._button.setAttribute('disabled',newValue);
     }
   }
 
   _makePDF(e) {
     var doc = new jsPDF();
-//    doc.text(20, 20, 'Hello world.');
     for (var i=0;  i<this.pages.length; i++) {
-      doc.text(this.pages[i],5,15);
+
+      var split = doc.splitTextToSize(this.pages[i].heading, 180);
+      doc.text(15, 20, split);
+//      var split = doc.splitTextToSize(this.pages[i].body, 180);
+//      doc.text(15, 120, split);
+
       if (i+1 != this.pages.length ) doc.addPage();
     }
+    doc.autoPrint({variant: 'non-conform'});
     doc.save('Holds.pdf');
   }
 }
