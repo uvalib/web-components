@@ -386,6 +386,8 @@ class UvalibHeader extends UvalibUiBase {
 
   viewAllAlerts(e){
     e.preventDefault();
+    // alert analytics that we have a view dismissed alerts event
+    this.dispatchEvent(new CustomEvent('uvalib-analytics-event', {bubbles: true, composed: true, detail: {track:['header','alerts-opened',this._alertSeenCount]}}));
     this.$.alerts.unseeAll();
   }
 
