@@ -4,9 +4,11 @@
   "main": "uvalib-theme.js",
   "version": "0.1.17",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
+    "@uvalib/web-styles": "^0.0.1",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
