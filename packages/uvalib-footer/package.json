@@ -1,6 +1,7 @@
 {
-  "name": "uvalib-footer",
+  "name": "@uvalib/uvalib-footer",
   "main": "uvalib-footer.js",
+  "version": "0.2.17",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@uvalib/web-styles": "^0.1.4",
