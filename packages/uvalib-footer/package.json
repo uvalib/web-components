@@ -1,14 +1,12 @@
 {
-  "name": "@uvalib/uvalib-footer",
-  "version": "0.1.17",
+  "name": "uvalib-footer",
   "main": "uvalib-footer.js",
   "dependencies": {
-    "@polymer/iron-dropdown": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-theme": "^0.1.17",
-    "@uvalib/uvalib-ui-base": "^0.1.17",
-    "lit-element": "^2.2.1"
+    "@uvalib/web-styles": "^0.1.4",
+    "rollup-plugin-livereload": "^1.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^3.1.5"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
@@ -16,7 +14,8 @@
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
+    "node-sass": "^4.14.1",
+    "rollup-plugin-commonjs": "^10.1.0",
     "wct-mocha": "^1.0.1"
-  },
-  "gitHead": "3714ea41990d092dbfb90fd940cee6ae565cf98e"
+  }
 }
