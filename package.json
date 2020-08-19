@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.19.0"
+  },
+  "scripts":{
+    "deploy-components":"rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' packages/uvalib-footer/dist/ static01.lib.virginia.edu:/lib_content47/static/components;"
   }
 }
