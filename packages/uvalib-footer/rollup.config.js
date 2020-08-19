@@ -22,8 +22,8 @@ export default {
       use: ['sass']
     }),
     resolve(),
-    commonjs(),
-    livereload()
+    commonjs()//,
+//    livereload()
   ]
 
 };

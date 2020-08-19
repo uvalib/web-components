@@ -1,5 +1,3 @@
-
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var css_248z = "/*old not ADA compliant #C15943;*/\n/* OFFICIAL 2019-2020 BRAND COLORS */\n/*Secondary Brand Colors*/\n/*ADA compliant*/\n/*ADA compliant*/\n/*ADA compliant for hover over shaded table rows*/\n/*ADA compliant*/\n/*ADA compliant*/\n/* PHASE OUT THE CODE BELOW */\n/* Brand Color Palate*/\n/* link colors for body links */\n/* Other color palette */\n/* color variables */\n/*var(--uvalib-blue-700);*/\n/* paper components reference this */\n/* testing out colors for focus states */\n/* Color Remapping */\n/*old not ADA compliant #C15943;*/\n/* OFFICIAL 2019-2020 BRAND COLORS */\n/*Secondary Brand Colors*/\n/*ADA compliant*/\n/*ADA compliant*/\n/*ADA compliant for hover over shaded table rows*/\n/*ADA compliant*/\n/*ADA compliant*/\n/* PHASE OUT THE CODE BELOW */\n/* Brand Color Palate*/\n/* link colors for body links */\n/* Other color palette */\n/* color variables */\n/*var(--uvalib-blue-700);*/\n/* paper components reference this */\n/* testing out colors for focus states */\n/* Color Remapping */\n/* common scsss variables for V4 client */\n/* small media width */\n/* spacing unit of measure */\n@import url(\"https://use.typekit.net/pfr1cbw.css\");\n/* font variables */\n/*Pulling in fonts via Typekit, weights will pull in font variants*/\n/*try to refrain from using this one, difficult to read on small screens*/\n/*not used?*/\n/* Main sizing unit - changing this will update most of the font size/spacing variables on the site */\n/* typography variables */\n/* used for headers in card body */\n/* main body font */\n/* common scsss variables for V4 client */\n/* small media width */\n/* spacing unit of measure */\n:host {\n  box-sizing: border-box;\n  display: block;\n  width: 100%;\n  /* use --uvalib-footer-background-color to override background color */\n  background-color: var(--uvalib-footer-background-color, #232D4B);\n  /* use --uvalib-footer-color to override footer font color */\n  color: var(--uvalib-footer-color, #87B9D9);\n  font-family: \"franklin-gothic-urw\", arial, sans-serif;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: left; }\n\n#top {\n  flex: 1;\n  flex-basis: 0.000000001px;\n  width: 95%;\n  max-width: 1200px;\n  flex-basis: auto; }\n\n.copyright {\n  text-align: center;\n  font-size: 14px;\n  padding-top: 20px;\n  background-color: #FFF;\n  color: #616161;\n  padding: 10px !important;\n  border-radius: 3px; }\n\na {\n  color: #87B9D9;\n  margin-bottom: 5px; }\n\nuvalib-liame {\n  color: #87B9D9; }\n\nul {\n  list-style: none;\n  margin: 0;\n  padding: 0; }\n\nul li {\n  padding: 0;\n  padding-bottom: 8px;\n  color: #87B9D9; }\n\nul li a:hover {\n  text-decoration: underline; }\n\nh3 {\n  font-family: \"franklin-gothic-urw\", arial, sans-serif;\n  font-weight: 400;\n  text-transform: none;\n  color: #FFF;\n  margin-bottom: 25px;\n  font-style: normal;\n  font-size: 18px;\n  margin-top: 0; }\n\n#give-button {\n  margin-top: .5em;\n  margin-bottom: 1em;\n  margin-left: 0;\n  border: none;\n  font-weight: bold;\n  font-size: calc($uvalib-main-font-size-unit*1.125); }\n\n/*\npaper-button {\n  color: $color-white;\n  background: var(--uvalib-brand-orange);\n}\n*/\n.social-links {\n  display: flex;\n  flex-direction: row; }\n\naddress {\n  color: #FFF;\n  font-style: normal;\n  line-height: 1.4; }\n\n.bottom-bar {\n  width: 100%;\n  height: 80px;\n  color: #FFF;\n  background-color: #141E3C;\n  justify-content: center; }\n\n.bottom-bar a, .bottom-bar uvalib-liame, a, uvalib-liame {\n  text-decoration: none; }\n\n.bottom-bar ::slotted {\n  display: flex;\n  flex-direction: row; }\n\n.bottom-bar ::slotted(.footer-extended) {\n  background-color: initial !important;\n  height: 100% !important; }\n\n.bottom-bar uvalib-liame, .bottom-bar a {\n  color: #FFF;\n  padding: 0 10px 0 10px;\n  font-size: 1.1em; }\n\n.bottom-bar div.links {\n  float: left;\n  padding: 30px 0 0 28px; }\n\n.bottom-bar div.fdl {\n  float: left;\n  height: 80px; }\n\n.columns {\n  position: relative;\n  top: -23px; }\n\ndiv.fdl svg {\n  height: 50%;\n  padding-top: 20px; }\n\n#top .section paper-icon-button:focus {\n  outline: #BDBDBD dotted 3px;\n  padding: .15em; }\n\n/* Small Screen */\n@media screen and (max-width: 768px) {\n  :host {\n    padding: 30px 0 0 0; }\n  .social-links {\n    justify-content: center; }\n  .column {\n    padding-bottom: 10px; }\n  .section > div {\n    flex: 1;\n    flex-basis: 0.000000001px;\n    padding-bottom: 20px;\n    align-items: center;\n    text-align: center; }\n  #top {\n    display: flex;\n    flex-direction: column;\n    padding-bottom: 10px; }\n  #top > .section {\n    flex: 2;\n    display: flex;\n    flex-direction: column; } }\n\n/* Medium Screen */\n@media screen and (max-width: 925px) and (min-width: 768px) {\n  :host {\n    padding: 20px 0 0 0; }\n  .column {\n    padding-bottom: 10px; }\n  .section > div {\n    padding-bottom: 20px; }\n  #top {\n    display: flex;\n    flex-direction: row;\n    padding-left: 90px;\n    padding-bottom: 10px; }\n  #top > .section {\n    flex: 2;\n    display: flex;\n    flex-direction: column; } }\n\n/* Large  Screen */\n@media screen and (min-width: 925px) {\n  :host {\n    padding: 50px 0 0 0; }\n  #top {\n    display: flex;\n    flex-direction: row;\n    padding-left: 90px;\n    padding-bottom: 10px; }\n  #top > .section {\n    flex: 2;\n    display: flex;\n    flex-direction: row; }\n  .section > div {\n    flex: 1;\n    flex-basis: 0.000000001px; } }\n";
 
 class UvalibFooter extends HTMLElement {
@@ -26,12 +24,14 @@ class UvalibFooter extends HTMLElement {
             <ul>
               <li>(434) 924-3021</li>
               <li><a href="mailto:library@virginia.edu">library@virginia.edu</a></li>
-              <li><a href="[[_domain]]/askalibrarian/">Ask a Librarian</a></li>
+              <li><a href="https://library.virginia.edu/askalibrarian/">Ask a Librarian</a></li>
             </ul>
             <div class="social-links">
+<!--
               <uvalib-instagram-link style="color:white; height:40px; width:40px" alt="Library Instagram Account"></uvalib-instagram-link>
               <uvalib-facebook-link style="color:white; height:40px; width:40px" alt="Library Facebook Account"></uvalib-facebook-link>
               <uvalib-twitter-link style="color:white; height:40px; width:40px" alt="Library Twitter Account"></uvalib-twitter-link>
+-->
             </div>
             <address>
               UVA Library<br />
@@ -43,13 +43,13 @@ class UvalibFooter extends HTMLElement {
           <div class="column-2 column">
             <h3>About the Library</h3>
             <ul>
-              <li><a href="[[_domain]]/hours/">Hours</a></li>
-              <li><a href="[[_domain]]/staff/">Staff Directory</a></li>
-              <li><a href="[[_domain]]/jobs/">Jobs</a></li>
-              <li><a href="[[_domain]]/press/">Press</a></li>
-              <li><a href="[[_domain]]/renovation/">Renovation</a></li>
-              <li><a href="[[_domain]]/jobs/fellowships/">Fellowship Opportunities</a></li>
-              <li><a href="[[_domain]]/support-library/"><paper-button id="give-button">Give to the Library</paper-button></a></li>
+              <li><a href="https://library.virginia.edu/hours/">Hours</a></li>
+              <li><a href="https://library.virginia.edu/staff/">Staff Directory</a></li>
+              <li><a href="https://library.virginia.edu/jobs/">Jobs</a></li>
+              <li><a href="https://library.virginia.edu/press/">Press</a></li>
+              <li><a href="https://library.virginia.edu/renovation/">Renovation</a></li>
+              <li><a href="https://library.virginia.edu/jobs/fellowships/">Fellowship Opportunities</a></li>
+              <li><a href="https://library.virginia.edu/support-library/"><paper-button id="give-button">Give to the Library</paper-button></a></li>
             </ul>
           </div>
         </div>
@@ -58,11 +58,11 @@ class UvalibFooter extends HTMLElement {
             <h3>Help &amp; Assistance</h3>
             <ul>
               <li><a href="https://answers.lib.virginia.edu/" aria-label="F A Qs">FAQs</a></li>
-              <li><a href="[[_domain]]/services/off-grounds-access/">Off-Grounds Access</a></li>
+              <li><a href="https://library.virginia.edu/services/off-grounds-access/">Off-Grounds Access</a></li>
               <li><a href="https://virginia.service-now.com/its?id=kb_article&sys_id=1cbb89a4db471b045bce5478dc9619ad" aria-label="I T S Computing Accounts">ITS Computing Accounts</a></li>
-              <li><a href="[[_domain]]/services/accessibility-services/">Accessibility</a></li>
-              <li><a href="[[_domain]]/emergency/">Emergency Information</a></li>
-              <li><a href="[[_domain]]/policies/">Library Policies</a></li>
+              <li><a href="https://library.virginia.edu/services/accessibility-services/">Accessibility</a></li>
+              <li><a href="https://library.virginia.edu/emergency/">Emergency Information</a></li>
+              <li><a href="https://library.virginia.edu/policies/">Library Policies</a></li>
             </ul>
           </div>
           <div class="column-4 column">
@@ -85,6 +85,7 @@ class UvalibFooter extends HTMLElement {
 
           <div class="links">
             <a href="mailto:site-feedback@virginia.edu">Feedback</a> |
+<!--
             <iron-dropdown id="copydrop"
               auto-fit-on-attach no-overlap
               vertical-align="bottom"
@@ -92,11 +93,11 @@ class UvalibFooter extends HTMLElement {
                 <div slot="dropdown-content">
                   <div id="copyright-info" class="copyright">Copyright {{_currentYear}} by the Rector and Visitors of the University of Virginia</div>
                 </div>
-            </iron-dropdown>
+            </iron-dropdown> -->
             <a href="" on-tap="_copyrightDropup" aria-labelledby="copyright-info">Copyright</a>
           </div>
           <div class="fdl">
-            <iron-dropdown id="fdlpdrop"
+<!--            <iron-dropdown id="fdlpdrop"
               auto-fit-on-attach no-overlap always-on-top
               vertical-align="bottom"
               horizontal-align="left">
@@ -104,7 +105,7 @@ class UvalibFooter extends HTMLElement {
                   <div class="copyright">This library is a congressionally designated depository for U.S. Government documents. Public access to the government documents collection is guaranteed by public law. (Title 44 United States Code)</div>
                 </div>
             </iron-dropdown>
-
+-->
             <a href="https://guides.lib.virginia.edu/findinggovinfo" id="fdl" >
               <svg alt="Federal Depository Library Program logo" on-mouseover="_fdlpDropup" on-mouseout="_fdlpDropdown" width="50px" viewBox="0 0 76 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>Federal Depository Library Program</title>

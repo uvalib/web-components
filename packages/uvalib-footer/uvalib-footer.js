@@ -24,12 +24,14 @@ class UvalibFooter extends HTMLElement {
             <ul>
               <li>(434) 924-3021</li>
               <li><a href="mailto:library@virginia.edu">library@virginia.edu</a></li>
-              <li><a href="[[_domain]]/askalibrarian/">Ask a Librarian</a></li>
+              <li><a href="https://library.virginia.edu/askalibrarian/">Ask a Librarian</a></li>
             </ul>
             <div class="social-links">
+<!--
               <uvalib-instagram-link style="color:white; height:40px; width:40px" alt="Library Instagram Account"></uvalib-instagram-link>
               <uvalib-facebook-link style="color:white; height:40px; width:40px" alt="Library Facebook Account"></uvalib-facebook-link>
               <uvalib-twitter-link style="color:white; height:40px; width:40px" alt="Library Twitter Account"></uvalib-twitter-link>
+-->
             </div>
             <address>
               UVA Library<br />
@@ -41,13 +43,13 @@ class UvalibFooter extends HTMLElement {
           <div class="column-2 column">
             <h3>About the Library</h3>
             <ul>
-              <li><a href="[[_domain]]/hours/">Hours</a></li>
-              <li><a href="[[_domain]]/staff/">Staff Directory</a></li>
-              <li><a href="[[_domain]]/jobs/">Jobs</a></li>
-              <li><a href="[[_domain]]/press/">Press</a></li>
-              <li><a href="[[_domain]]/renovation/">Renovation</a></li>
-              <li><a href="[[_domain]]/jobs/fellowships/">Fellowship Opportunities</a></li>
-              <li><a href="[[_domain]]/support-library/"><paper-button id="give-button">Give to the Library</paper-button></a></li>
+              <li><a href="https://library.virginia.edu/hours/">Hours</a></li>
+              <li><a href="https://library.virginia.edu/staff/">Staff Directory</a></li>
+              <li><a href="https://library.virginia.edu/jobs/">Jobs</a></li>
+              <li><a href="https://library.virginia.edu/press/">Press</a></li>
+              <li><a href="https://library.virginia.edu/renovation/">Renovation</a></li>
+              <li><a href="https://library.virginia.edu/jobs/fellowships/">Fellowship Opportunities</a></li>
+              <li><a href="https://library.virginia.edu/support-library/"><paper-button id="give-button">Give to the Library</paper-button></a></li>
             </ul>
           </div>
         </div>
@@ -56,11 +58,11 @@ class UvalibFooter extends HTMLElement {
             <h3>Help &amp; Assistance</h3>
             <ul>
               <li><a href="https://answers.lib.virginia.edu/" aria-label="F A Qs">FAQs</a></li>
-              <li><a href="[[_domain]]/services/off-grounds-access/">Off-Grounds Access</a></li>
+              <li><a href="https://library.virginia.edu/services/off-grounds-access/">Off-Grounds Access</a></li>
               <li><a href="https://virginia.service-now.com/its?id=kb_article&sys_id=1cbb89a4db471b045bce5478dc9619ad" aria-label="I T S Computing Accounts">ITS Computing Accounts</a></li>
-              <li><a href="[[_domain]]/services/accessibility-services/">Accessibility</a></li>
-              <li><a href="[[_domain]]/emergency/">Emergency Information</a></li>
-              <li><a href="[[_domain]]/policies/">Library Policies</a></li>
+              <li><a href="https://library.virginia.edu/services/accessibility-services/">Accessibility</a></li>
+              <li><a href="https://library.virginia.edu/emergency/">Emergency Information</a></li>
+              <li><a href="https://library.virginia.edu/policies/">Library Policies</a></li>
             </ul>
           </div>
           <div class="column-4 column">
@@ -83,6 +85,7 @@ class UvalibFooter extends HTMLElement {
 
           <div class="links">
             <a href="mailto:site-feedback@virginia.edu">Feedback</a> |
+<!--
             <iron-dropdown id="copydrop"
               auto-fit-on-attach no-overlap
               vertical-align="bottom"
@@ -90,11 +93,11 @@ class UvalibFooter extends HTMLElement {
                 <div slot="dropdown-content">
                   <div id="copyright-info" class="copyright">Copyright {{_currentYear}} by the Rector and Visitors of the University of Virginia</div>
                 </div>
-            </iron-dropdown>
+            </iron-dropdown> -->
             <a href="" on-tap="_copyrightDropup" aria-labelledby="copyright-info">Copyright</a>
           </div>
           <div class="fdl">
-            <iron-dropdown id="fdlpdrop"
+<!--            <iron-dropdown id="fdlpdrop"
               auto-fit-on-attach no-overlap always-on-top
               vertical-align="bottom"
               horizontal-align="left">
@@ -102,7 +105,7 @@ class UvalibFooter extends HTMLElement {
                   <div class="copyright">This library is a congressionally designated depository for U.S. Government documents. Public access to the government documents collection is guaranteed by public law. (Title 44 United States Code)</div>
                 </div>
             </iron-dropdown>
-
+-->
             <a href="https://guides.lib.virginia.edu/findinggovinfo" id="fdl" >
               <svg alt="Federal Depository Library Program logo" on-mouseover="_fdlpDropup" on-mouseout="_fdlpDropdown" width="50px" viewBox="0 0 76 69" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>Federal Depository Library Program</title>
