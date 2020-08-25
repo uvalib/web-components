@@ -3,6 +3,8 @@ import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import {} from '@polymer/polymer/lib/elements/dom-if.js';
 import '@uvalib/uvalib-accordion/uvalib-accordion.js';
 import '@uvalib/uvalib-accordion/uvalib-accordion-item.js';
+import '@vaadin/vaadin-text-field/vaadin-number-field.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
 
 import * as firebase from 'firebase/app';
 import 'firebase/database';
@@ -44,8 +46,8 @@ class UvalibCounts extends PolymerElement {
                 <div style="float: left; padding: 20px;">
                   <div style="font-size: 55px; font-weight: bolder;">[[_calcPercent(library.maximumAttendeeCapacity, library.occupancy.value)]]%</div>
                   <div style="font-size: 20px; font-weight: bolder;">Percent Occupied</div>
-                  <div style="font-size: 55px; font-weight: bolder;">[[_calcPercent(library.occupancy.value, library.noMaskCount.value)]]%</div>
-                  <div style="font-size: 20px; font-weight: bolder;">not wearing masks</div>
+                  <div style="font-size: 55px; font-weight: bolder;">[[_calcInversePercent(library.occupancy.value,library.noMaskCount.value)]]%</div>
+                  <div style="font-size: 20px; font-weight: bolder;">Mask Compliance</div>
                 </div>
                 <div style="float: right; padding: 20px;">
                   <h2>Capacity: [[library.maximumAttendeeCapacity]]</h2>
@@ -58,8 +60,16 @@ class UvalibCounts extends PolymerElement {
                   <template is="dom-repeat" items="[[_values(library.containedInPlace)]]" as="place">
                     <template is="dom-if" if="[[place.occupancy]]">
                       <h3>[[place.name]]</h3>
-                      <div>Occupancy: [[place.occupancy.value]] ([[place.occupancy.timestamp]])</div>
-                      <div>Mask Violations: [[place.noMaskCount.value]] ([[place.noMaskCount.timestamp]])</div>
+                      <div style="display:flex; flex-direction:row">
+                        <div style="flex:1">
+                          <div>Occupancy: <vaadin-number-field library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="[[place.occupancy.value]]" min="0" has-controls></vaadin-number-field></div>
+                          <div>Mask Violations: <vaadin-number-field library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="[[place.noMaskCount.value]]" min="0" has-controls></vaadin-number-field></div>
+                        </div>
+                        <div>
+                          <div><vaadin-button theme="error primary" library-id="[[library.key]]" place-id="[[place.key]]" on-click="_clearCount">Clear</vaadin-button></div>
+                          <div><vaadin-button theme="success primary" library-id="[[library.key]]" place-id="[[place.key]]" on-click="_updateCount">Submit</vaadin-button></div>
+                        </div>
+                      </div>
                     </template>
                   </template>
                 </div>
@@ -72,7 +82,15 @@ class UvalibCounts extends PolymerElement {
   }
   static get properties() {
     return {
-      libraries: Array
+      libraries: Array,
+      _occupancy: {
+        type: String,
+        value: "occupancy"
+      },
+      _noMaskCount: {
+        type: String,
+        value: "noMaskCount"
+      }
     };
   }
   ready() {
@@ -80,14 +98,76 @@ class UvalibCounts extends PolymerElement {
     this.database = firebase.default.database();
     var countRef = this.database.ref('locations-schemaorg/location');
     countRef.on('value', function(snapshot){
-      this.libraries = this._values(snapshot.val());
+      this._libraries = snapshot.val();
+      this.libraries = this._values(this._libraries);
+      console.log("updated hours");
     }.bind(this));
   }
   _calcPercent(capacity, occupancy){
     return Math.round( ((occupancy/capacity) * 100).toFixed(3) );
   }
+  _calcInversePercent(capacity, occupancy){
+    var v = 100 - this._calcPercent(capacity, occupancy);
+    return isNaN(v)? 100:v;
+  }
   _values(obj){
-    return Object.values(obj);
+    var items = [];
+    Object.keys(obj).forEach(function(key){
+      obj[key].key = key;
+      items.push(obj[key]);
+    });
+    return items;
+  }
+  _clearCount(e){
+    const libId = e.target.libraryId;
+    const placeId = e.target.placeId;
+    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"][place-id="'+placeId+'"]')
+    fields.forEach(f=>{f.value=0;});
+    console.log(fields)
+  }
+  _updateCount(e){
+    const libId = e.target.libraryId;
+    const placeId = e.target.placeId;
+    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"][place-id="'+placeId+'"]')
+    var promises = [];
+    fields.forEach(f=>{
+        const actionId = f.actionId;
+        const value = f.value;
+        console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
+        const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
+        promises.push(dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value}));
+    });
+/*
+    this.database.ref('locations-schemaorg/location/'+e.target.libraryId+'/containedInPlace/'+e.target.placeId+'/'+e.target.actionId)
+      .update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:e.target.value})
+*/
+    Promise.all(promises)
+      .then(function(){
+        const places = this._values(this._libraries[libId]["containedInPlace"]);
+        var noMask = {"timestamp_start":null, "timestamp_end":null, value:0};
+        var headCount = {"timestamp_start":null, "timestamp_end":null, value:0};
+        places.forEach(place=>{
+          if (place.noMaskCount) {
+            if (place.noMaskCount.timestamp < noMask['timestamp_start'] || !noMask['timestamp_start'] )
+              noMask['timestamp_start']=place.noMaskCount.timestamp;
+            if (place.noMaskCount.timestamp > noMask['timestamp_end'] || !noMask['timestamp_end'] )
+              noMask['timestamp_end']=place.noMaskCount.timestamp;
+            noMask.value = Number(noMask.value) + Number(place.noMaskCount.value);
+          }
+          if (place.occupancy) {
+            if (place.occupancy.timestamp < headCount['timestamp_start'] || !headCount['timestamp_start'] )
+                headCount['timestamp_start']=place.occupancy.timestamp;
+            if (place.occupancy.timestamp > headCount['timestamp_end'] || !headCount['timestamp_end'] )
+                headCount['timestamp_end']=place.occupancy.timestamp;
+            headCount.value = Number(headCount.value) + Number(place.occupancy.value);
+          }
+        });
+        console.log("nomask value: "+noMask.value)
+        this.database.ref('locations-schemaorg/location/'+libId+'/noMaskCount').update(noMask);
+        this.database.ref('locations-schemaorg/location/'+libId+'/occupancy').update(headCount);
+
+      }.bind(this));
+
   }
 }
 

@@ -5,6 +5,8 @@
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@uvalib/uvalib-accordion": "^0.1.17",
+    "@vaadin/vaadin-button": "^2.4.0",
+    "@vaadin/vaadin-text-field": "^2.7.0",
     "firebase": "^7.17.1"
   },
   "devDependencies": {
@@ -17,5 +19,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^6.1.0"
+  },
+  "scripts": {
+    "build": "npm run dedupe; npx rollup -c rollup.config.js; rm -rf build.tar.gz; tar -cvzf build.tar.gz build",
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf"
   }
 }
