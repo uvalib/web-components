@@ -5,6 +5,9 @@ import '@uvalib/uvalib-accordion/uvalib-accordion.js';
 import '@uvalib/uvalib-accordion/uvalib-accordion-item.js';
 import '@vaadin/vaadin-text-field/vaadin-number-field.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
+//import '@vaadin/vaadin-tabs/vaadin-tabs.js';
+//import '@vaadin/vaadin-tabs/vaadin-tab.js';
+import moment from 'moment';
 
 import * as firebase from 'firebase/app';
 import 'firebase/database';
@@ -31,14 +34,22 @@ class UvalibCounts extends PolymerElement {
         :host {
           display: block;
         }
-        [slot="heading"] {
-
+        .time {
+          font-style: italic;
+          font-size: smaller;
+          font-weight: lighter;
         }
       </style>
+      <!--
+      <vaadin-tabs selected="[[_state]]">
+        <vaadin-tab>Edit</vaadin-tab>
+        <vaadin-tab>Watch</vaadin-tab>
+      </vaadin-tabs>
+      -->
       <uvalib-accordion multi>
         <template is="dom-repeat" items="[[libraries]]" as="library">
           <template is="dom-if" if="[[library.occupancy]]">
-            <uvalib-accordion-item opened heading-level="1">
+            <uvalib-accordion-item opened$="[[editMode]]" heading-level="1">
               <div slot="heading">
                 <div style="padding: 20px">
                   <h1 inner-h-t-m-l="[[library.name]]"></h1>
@@ -51,27 +62,34 @@ class UvalibCounts extends PolymerElement {
                 </div>
                 <div style="float: right; padding: 20px;">
                   <h2>Capacity: [[library.maximumAttendeeCapacity]]</h2>
-                  <h2>Occupancy: [[library.occupancy.value]]</h2>
-                  <h2>Mask Non-Compliance: [[library.noMaskCount.value]]</h2>
+                  <h2>Occupancy: [[library.occupancy.value]]<br/><span class="time">[[_timeformat(library.occupancy.timestamp_end)]]</span></h2>
+                  <h2>Mask Non-Compliance: [[library.noMaskCount.value]]<br/><span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
                 </div>
               </div>
               <div slot="body">
                 <div style="background-color: lightgrey; padding: 20px;">
+                  <div hidden$="[[!editMode]]">
+                    <!--<vaadin-button theme="contrast" library-id="[[library.key]]" on-click="_refreshCount">Refresh</vaadin-button>-->
+                    <vaadin-button theme="error primary" library-id="[[library.key]]" on-click="_clearCount">Clear</vaadin-button>
+                  </div>
                   <template is="dom-repeat" items="[[_values(library.containedInPlace)]]" as="place">
                     <template is="dom-if" if="[[place.occupancy]]">
                       <h3>[[place.name]]</h3>
                       <div style="display:flex; flex-direction:row">
                         <div style="flex:1">
-                          <div>Occupancy: <vaadin-number-field library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="[[place.occupancy.value]]" min="0" has-controls></vaadin-number-field></div>
-                          <div>Mask Violations: <vaadin-number-field library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="[[place.noMaskCount.value]]" min="0" has-controls></vaadin-number-field></div>
-                        </div>
-                        <div>
-                          <div><vaadin-button theme="error primary" library-id="[[library.key]]" place-id="[[place.key]]" on-click="_clearCount">Clear</vaadin-button></div>
-                          <div><vaadin-button theme="success primary" library-id="[[library.key]]" place-id="[[place.key]]" on-click="_updateCount">Submit</vaadin-button></div>
+                          <div>Occupancy:
+                            <span hidden$="[[editMode]]">[[place.occupancy.value]]</span>
+                            <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="[[place.occupancy.value]]" min="0" has-controls></vaadin-number-field>
+                          </div>
+                          <div>Mask Violations:
+                            <span hidden$="[[editMode]]">[[place.noMaskCount.value]]</span>
+                            <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="[[place.noMaskCount.value]]" min="0" has-controls></vaadin-number-field>
+                          </div>
                         </div>
                       </div>
                     </template>
                   </template>
+                  <div><vaadin-button hidden$="[[!editMode]]" theme="success primary" library-id="[[library.key]]" on-click="_updateCount">Submit</vaadin-button></div>
                 </div>
               </div>
             </uvalib-accordion-item>
@@ -90,6 +108,16 @@ class UvalibCounts extends PolymerElement {
       _noMaskCount: {
         type: String,
         value: "noMaskCount"
+      },
+      editMode: {
+        type: Boolean,
+        value: false,
+        observer: "_setState"
+      },
+      _state: {
+        type: Number,
+        value: 1,
+        observer: "_setMode"
       }
     };
   }
@@ -110,6 +138,9 @@ class UvalibCounts extends PolymerElement {
     var v = 100 - this._calcPercent(capacity, occupancy);
     return isNaN(v)? 100:v;
   }
+  _timeformat(t){
+    return moment(t).format('MMMM Do, h:mm:ss a');
+  }
   _values(obj){
     var items = [];
     Object.keys(obj).forEach(function(key){
@@ -120,17 +151,15 @@ class UvalibCounts extends PolymerElement {
   }
   _clearCount(e){
     const libId = e.target.libraryId;
-    const placeId = e.target.placeId;
-    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"][place-id="'+placeId+'"]')
+    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"]')
     fields.forEach(f=>{f.value=0;});
-    console.log(fields)
   }
   _updateCount(e){
     const libId = e.target.libraryId;
-    const placeId = e.target.placeId;
-    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"][place-id="'+placeId+'"]')
+    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"]');
     var promises = [];
     fields.forEach(f=>{
+        const placeId = f.getAttribute('place-id');
         const actionId = f.actionId;
         const value = f.value;
         console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
