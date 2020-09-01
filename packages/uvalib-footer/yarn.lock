@@ -88,10 +88,10 @@
   dependencies:
     "@types/node" "*"
 
-"@uvalib/web-styles@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.4.tgz#7fae59ca8ee06dc2a7829ec5e9e9b59ae97151aa"
-  integrity sha512-RdeavK/GgehEtVCaR04Cv2J35dYZmk6xZJ+yjVXBccGVQ/Jku3Mt7jMjj8vw9H1/haeflOhoOiDWFKwl8vQUaA==
+"@uvalib/web-styles@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.2.0.tgz#fa8b1a2840d0f48ac35cc11517dac0c280afaa02"
+  integrity sha512-HIZFq7sxtILFdApUIbEmc0Rx3/xfxdXBtxrFjn6+twZQ7StQ2Go65r4duBOuRkcL8EcMUFSSLHUjB3EXrIuL3A==
 
 "@webcomponents/shadycss@^1.9.1":
   version "1.10.1"

@@ -1,3 +1,4 @@
+import '@uvalib/web-styles/fonts.js';
 import style from './uvalib-footer.scss';
 
 class UvalibFooter extends HTMLElement {
