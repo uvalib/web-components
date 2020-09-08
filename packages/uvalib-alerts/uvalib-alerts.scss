@@ -1,0 +1,103 @@
+@import "~@uvalib/web-styles/scss/_colors.scss";
+@import "~@uvalib/web-styles/scss/_fonts.scss";
+@import "~@uvalib/web-styles/scss/_icons.scss";
+@import "~@uvalib/web-styles/scss/_variables.scss";
+
+:host {
+  display: block;
+  text-align: left;
+  visibility: hidden;
+  @include font-body1
+}
+.alert-item {
+  min-height: 41px;
+  background-color: $uvalib-yellow;
+  border-width: 2px 0 0 0;
+  border-color: $color-white;
+  border-style: solid;
+  color: $uvalib-text-dark;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.alert-item div {
+  width: 100%;
+  max-width: $max-width;
+  padding: .15em;
+}
+.alert-item.alert1 {
+  background-color: $color-emergency-red;
+  color: $uvalib-white;
+}
+.alert-item.alert2 {
+  background-color: $uvalib-yellow;
+}
+.alert-item.alert3 {
+  background-color: $uvalib-yellow-lightest;
+  color: $uvalib-black;
+}
+.alert-item.alert1 p a {
+  text-decoration: underline;
+  color: $color-white;
+}
+.alert-item.alert2 paper-button:hover {
+  background-color: $uvalib-yellow-dark;
+  color: $uvalib-black;
+}
+.alert-item.alert3 p a {
+  text-decoration: underline;
+}
+.alert-item.alert1 p a:hover, .alert-item.alert2 p a:hover, .alert-item.alert3 p a:hover {
+  font-style: italic;
+}
+.alert-item.alert1 p a:focus, .alert-item.alert2 p a:focus, .alert-item.alert3 p a:focus {
+  outline: $color-accessibility-outline-dark-bg dotted 3px;
+  padding: .15em;
+}
+.alert-item.alert3 paper-button {
+  color: $uvalib-black;
+  border-color: $uvalib-yellow-dark;
+}
+.alert-item.alert3 paper-button:hover {
+  background-color: $uvalib-yellow;
+}
+.alert-item.alert1 .alert-head:before, .alert-item.alert2 .alert-head:before {
+  font-family: "Font Awesome 5 Free";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  text-transform: none;
+  line-height: 1;
+  font-weight: 900;
+  speak: none;
+  content: "\f06a";
+  font-size: 2em;
+  padding-right: .25em;
+}
+
+.alert-head {
+  display: flex;
+  flex-direction: row;
+}
+.alert-title {
+  flex: 1;
+  flex-basis: 0.000000001px;
+}
+[slot="markdown-html"] p {
+  margin:0;
+  padding:0;
+}
+paper-button {
+  color: $uvalib-text-dark;
+  position: static;
+  z-index: auto;
+}
+paper-button:visited, paper-button:focus, paper-button:hover, paper-button:active {
+  font-weight: normal;
+}
+.hidden {
+  display: none;
+}
