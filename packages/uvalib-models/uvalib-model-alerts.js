@@ -59,6 +59,10 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
       }.bind(this)).sort(function(x,y){return x.severity>y.severity}) );
     }
   }
+  setAllUnSeen(){
+    this.set('seen',[]);
+    console.log('set all unseen');
+  }
   setAllSeen(){
     this.alerts.forEach((a)=>{
       this.setSeen(a.uuid);
