@@ -1,7 +1,7 @@
 {
   "name": "@uvalib/uvalib-alerts",
   "main": "uvalib-alerts.js",
-  "version": "0.1.17",
+  "version": "0.2.1",
   "dependencies": {
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
