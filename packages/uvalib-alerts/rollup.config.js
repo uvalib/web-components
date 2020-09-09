@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from "rollup-plugin-terser";
 import postcss from 'rollup-plugin-postcss';
+import babel from '@rollup/plugin-babel';
 
 export default {
   input: 'uvalib-alerts.js',
@@ -23,6 +24,7 @@ export default {
       }
     }),
     commonjs(),
-    terser()
+    terser(),
+    babel({ babelHelpers: 'bundled' })
   ]
 };

@@ -15,9 +15,11 @@
     "rollup-plugin-resolve": "0.0.1-predev.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
     "@polymer/iron-component-page": "^3.0.0-pre.20",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
+    "@rollup/plugin-babel": "^5.2.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
