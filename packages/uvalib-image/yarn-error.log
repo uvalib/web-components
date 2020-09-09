@@ -1,0 +1,61 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add rollup.js
+
+PATH: 
+  /usr/local/google-cloud-sdk/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/dhc4z/development/flutter/bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  10.15.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/rollup.js: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65894:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129018:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:129990:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:129912:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1125:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "uvalib-image",
+    "version": "0.1.17",
+    "description": "Image helper",
+    "author": "Doug Chestnut <dougchestnut@gmail.com>",
+    "homepage": "https://github.com/uvalib/web-components#readme",
+    "license": "ISC",
+    "main": "uvalib-image.js",
+    "directories": {
+      "lib": "lib",
+      "test": "__tests__"
+    },
+    "files": [
+      "lib"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/uvalib/web-components.git"
+    },
+    "scripts": {
+      "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+      "url": "https://github.com/uvalib/web-components/issues"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
