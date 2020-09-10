@@ -26,7 +26,8 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
       alerts: {
         type: Array,
         notify: true,
-        value: function(){return [];}
+        value: function(){return [];},
+        observer: '_alertsChanged'
       },
       seen: {
         type: Array,
@@ -45,7 +46,8 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
       },
       _force: {
         type: Boolean,
-        value: true
+        value: true,
+        observer: '_alertsChanged'
       }
     };
   }
@@ -96,6 +98,9 @@ class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
     var cnt = alerts.filter(a => a.seen).length;
     this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: cnt}}));
     return cnt;
+  }
+  _alertsChanged(){
+    this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
   }
 
 /**
