@@ -1,7 +1,7 @@
 {
   "name": "@uvalib/uvalib-models",
   "main": "uvalib-models.js",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "dependencies": {
     "@polymer/app-storage": "^3.0.3",
     "@polymer/iron-ajax": "^3.0.1",
