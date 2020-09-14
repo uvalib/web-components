@@ -20,7 +20,7 @@ class UvalibImage extends HTMLElement {
       <style>
         ${style}
       </style>
-      <button hidden><i class="fas fa-search-plus"></i></button>
+      <button hidden><i class="fas fa-search-plus"></i><span class="sr-only">enlarge image</span></button>
       <span id="image"></span>
     `;
     this._button = this.shadow.querySelector('button');
