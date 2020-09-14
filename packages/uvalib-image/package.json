@@ -37,6 +37,7 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
+    "@uvalib/web-styles": "^0.1.9",
     "bigpicture": "^2.5.3"
   }
 }

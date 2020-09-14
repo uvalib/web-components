@@ -1,4 +1,6 @@
+import'@uvalib/web-styles/src/icons.js';
 import style from './uvalib-image.scss';
+
 import BigPicture from 'bigpicture';
 
 class UvalibImage extends HTMLElement {
@@ -18,6 +20,7 @@ class UvalibImage extends HTMLElement {
       <style>
         ${style}
       </style>
+      <button><i class="fas fa-search-plus"></i></button>
       <span id="image"></span>
     `;
     this._imgContainer = this.shadow.getElementById('image');
