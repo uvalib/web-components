@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-alerts demo</title>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+
+    <script type="module" src="./uvalib-button.js"></script>
+  </head>
+  <body>
+    <h1>Button (uvalib-button) Demo</h1>
+
+    <h2>Default Button</h2>
+    <div><uvalib-button>Demo Button</uvalib-button></div>
+
+    <h2>Link Button</h2>
+    <div><uvalib-button href="http://library.virginia.edu">Link Button</uvalib-button></div>
+    <div><a href="http://library.virginia.edu" tabindex="-1"><uvalib-button mode="link">External Link</uvalib-button></a></div>
+
+    <h2>Icon Button</h2>
+    <div><uvalib-button icon="fa-bars">/f053</uvalib-button></div>
+    <div><uvalib-button icon="fa-battery-full">Full Battery</uvalib-button></div>
+  </body>
+</html>
