@@ -1,6 +1,6 @@
 {
   "name": "@uvalib/uvalib-image",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "image helper",
   "author": "Doug Chestnut <dougchestnut@gmail.com>",
   "homepage": "https://github.com/uvalib/web-components#readme",
@@ -37,7 +37,7 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "@uvalib/web-styles": "^0.1.9",
+    "@uvalib/web-styles": "^0.1.10",
     "bigpicture": "^2.5.3"
   }
 }

@@ -55,10 +55,10 @@
   dependencies:
     "@types/node" "*"
 
-"@uvalib/web-styles@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.9.tgz#b8b5bf778513d759af3c181ecd37f55547c2ae2b"
-  integrity sha512-oLv8jGp/EpIKRPtSAqQjvTvMsoLx3Lu/+Zki9lGBnZIDVfCimDstsxh2opnxcr2WTe4anRFLeTZmzAYRh8h6hw==
+"@uvalib/web-styles@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.10.tgz#02b787b45cb2cea82ca6fb766ab35679f524d1cb"
+  integrity sha512-nGsnZ1h8uTex5sgg+TbV22Vo5hCxaUogbV3pRbl+Nz8xDMLjzaKF+gHp21Nnmq+Na58qK4Rmzib35K6g/8LxQg==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     purecss "^2.0.3"
