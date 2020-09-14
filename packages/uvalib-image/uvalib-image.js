@@ -20,9 +20,10 @@ class UvalibImage extends HTMLElement {
       <style>
         ${style}
       </style>
-      <button><i class="fas fa-search-plus"></i></button>
+      <button hidden><i class="fas fa-search-plus"></i></button>
       <span id="image"></span>
     `;
+    this._button = this.shadow.querySelector('button');
     this._imgContainer = this.shadow.getElementById('image');
   }
   attributeChangedCallback(name, oldValue, newValue) {
@@ -56,6 +57,10 @@ class UvalibImage extends HTMLElement {
       if (this.enlargable) {
         this.img.addEventListener('click', function(e){
           BigPicture({el: e.target});
+        }.bind(this));
+        this._button.removeAttribute('hidden');
+        this._button.addEventListener('click', function(e){
+          BigPicture({el: this.img});
         }.bind(this));
       }
       else {
