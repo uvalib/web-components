@@ -1,6 +1,6 @@
 {
-  "name": "uvalib-button",
-  "version": "0.1.17",
+  "name": "@uvalib/uvalib-button",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Doug Chestnut <dougchestnut@gmail.com>",
   "homepage": "https://github.com/uvalib/web-components#readme",
@@ -25,11 +25,15 @@
     "url": "https://github.com/uvalib/web-components/issues"
   },
   "dependencies": {
-    "@uvalib/web-styles": "^0.1.9",
+    "@uvalib/web-styles": "^0.1.11",
     "node-sass": "^4.14.1",
+    "postcss-strip-inline-comments": "^0.1.5",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "rollup-plugin-postcss": "^3.1.8"
   }
 }

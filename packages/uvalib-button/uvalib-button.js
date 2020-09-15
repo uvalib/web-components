@@ -1,5 +1,6 @@
+import '@uvalib/web-styles/src/icons.js';
 import style from './uvalib-button.scss';
-import('@uvalib/web-styles/src/icons.js');
+
 class UvalibButton extends HTMLElement {
   static get observedAttributes() {
     return ['mode','href','icon'];
@@ -20,8 +21,10 @@ class UvalibButton extends HTMLElement {
       <style>
         :host {
           display: inline-block;
+/*          visibility: hidden; */
         }
         ${style}
+        .fa-bars:before{content:'\f0c9'}
       </style>
       <button class="${this._makeClass()}"><i hidden></i><slot><slot></button>
     `;
@@ -61,7 +64,7 @@ class UvalibButton extends HTMLElement {
   }
   _updateButton(){
     if (this.mode === "icon" && this.icon && this.iconNode) {
-      this.iconNode.className = "fas "+this.icon;
+      this.iconNode.className = this.icon;
       this.iconNode.removeAttribute('hidden');
     }
     if (this.button) this.button.className = this._makeClass();
@@ -77,7 +80,6 @@ class UvalibButton extends HTMLElement {
       return "icon-button"
     else "";
   }
-
 }
 
 window.customElements.define('uvalib-button', UvalibButton);
