@@ -1,6 +1,6 @@
 {
   "name": "@uvalib/uvalib-image",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "image helper",
   "author": "Doug Chestnut <dougchestnut@gmail.com>",
   "homepage": "https://github.com/uvalib/web-components#readme",
@@ -10,9 +10,6 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uvalib/web-components.git"
