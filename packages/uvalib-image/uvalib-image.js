@@ -5,7 +5,7 @@ import BigPicture from 'bigpicture';
 
 class UvalibImage extends HTMLElement {
   static get observedAttributes() {
-    return ['src','alt','enlargable']; //'loading','data'];
+    return ['src','alt','enlargable','title'];
   }
   constructor() {
     // Always call super first in constructor
@@ -36,6 +36,9 @@ class UvalibImage extends HTMLElement {
         this.alt = newValue;
         this._updateImg();
         break;
+      case "title":
+        this.title = newValue;
+        this._updateImg();
       case "enlargable":
         console.log('enl: '+newValue);
         this.enlargable = (newValue==='');
@@ -46,6 +49,7 @@ class UvalibImage extends HTMLElement {
   }
   _updateImg(){
     // min needed for an image is src and alt attributes!
+    if (!this.alt) this.alt = "click to enlarge";
     if (this.src && this.alt) {
       if (!this.img) {
         this.img = document.createElement('img');
@@ -54,6 +58,7 @@ class UvalibImage extends HTMLElement {
       }
       this.img.setAttribute('src',this.src);
       this.img.setAttribute('alt',this.alt);
+      if (!this.title) this.image.setAttribute('title',this.alt);
       if (this.enlargable) {
         this.img.addEventListener('click', function(e){
           BigPicture({el: e.target});
