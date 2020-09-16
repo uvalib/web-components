@@ -34,21 +34,12 @@ class UvalibButton extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
       case "mode":
-//        if (oldValue != newValue) {
-//          this.opened = (newValue===null)? false:true;
-//          this._eval().then(function(){
-//            this.dispatchEvent(new CustomEvent('transitioning-changed', {detail: {opened: this.opened}}));
-//          }.bind(this));
-//          this.dispatchEvent(new CustomEvent('opened-changed', {detail: {opened: this.opened}}));
-//        }
         this.mode = newValue;
-        console.log("mode changed to "+this.mode)
         break;
       case "href":
         if (newValue) {
           this.href = newValue;
           this.mode = "link";
-          console.log("href changed to "+this.href);
         }
         break;
       case "icon":
@@ -70,15 +61,16 @@ class UvalibButton extends HTMLElement {
     if (this.button) this.button.className = this._makeClass();
   }
   _makeClass(){
-    console.log(this.mode);
-    console.log(this.href);
-    if (this.mode !== "text" && this.mode !== "icon" && this.mode !== "link")
-      return "uvalib-button";
-    else if (this.mode === "link" || this.href)
+    if (this.mode !== "text" && this.mode !== "icon" && this.mode !== "link") {
+      var cls = "uvalib-button";
+      if (this.mode === "tertiary") cls += " uvalib-button-tertiary";
+      return cls;
+    } else if (this.mode === "link" || this.href)
       return "link-button";
     else if (this.mode === 'icon')
-      return "icon-button"
-    else "";
+      return "icon-button";
+    else if (this.mode === 'text')
+      return "text-button";
   }
 }
 

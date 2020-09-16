@@ -63,10 +63,19 @@
     "@uvalib/web-styles" "^0.1.10"
     bigpicture "^2.5.3"
 
-"@uvalib/web-styles@^0.1.10", "@uvalib/web-styles@^0.1.11":
+"@uvalib/web-styles@^0.1.10":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.11.tgz#0640a89db6b970133352be47755932a6996c94a8"
   integrity sha512-8XC4Eg+q8QsEsG11ZCxL2C1qOEpVMtJOsSfyIclGOUy0vwl6rKNwduAwIS0e5umRdS7o/2RGkPvlhJZRY1onKw==
+  dependencies:
+    "@fortawesome/fontawesome-free" "^5.14.0"
+    "@uvalib/uvalib-image" "^0.1.23"
+    purecss "^2.0.3"
+
+"@uvalib/web-styles@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.13.tgz#60ab99a976a2d6edd1bbfef434995e1ad5aa5c0b"
+  integrity sha512-xnkWQEZg37qjHqO6woWUBy2wy5RbR5gurt3GipHSJ/wTfVQJiKmSzfrjHujgqAa5m2K1/4yP2G1IvbwffxGtBw==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     "@uvalib/uvalib-image" "^0.1.23"

@@ -22,7 +22,7 @@
     "url": "https://github.com/uvalib/web-components/issues"
   },
   "dependencies": {
-    "@uvalib/web-styles": "^0.1.11",
+    "@uvalib/web-styles": "^0.1.13",
     "node-sass": "^4.14.1",
     "postcss-strip-inline-comments": "^0.1.5",
     "rollup-plugin-commonjs": "^10.1.0",
