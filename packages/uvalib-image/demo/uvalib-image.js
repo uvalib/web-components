@@ -817,7 +817,7 @@ class UvalibImage extends HTMLElement {
       }
       this.img.setAttribute('src',this.src);
       this.img.setAttribute('alt',this.alt);
-      if (!this.title) this.image.setAttribute('title',this.alt);
+      if (!this.title) this.img.setAttribute('title',this.alt);
       if (this.enlargable) {
         this.img.addEventListener('click', function(e){
           bigpicture({el: e.target});
