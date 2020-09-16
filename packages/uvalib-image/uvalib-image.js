@@ -48,17 +48,17 @@ class UvalibImage extends HTMLElement {
     }
   }
   _updateImg(){
-    // min needed for an image is src and alt attributes!
-    if (!this.alt) this.alt = "click to enlarge";
-    if (this.src && this.alt) {
+    // min needed for an image is src attributes!
+    if (this.src) {
       if (!this.img) {
         this.img = document.createElement('img');
         this._imgContainer.innerHTML = '';
         this._imgContainer.appendChild(this.img);
       }
       this.img.setAttribute('src',this.src);
+      if (!this.title && this.alt) this.img.setAttribute('title',this.alt);
+      if (!this.alt) this.alt = "";
       this.img.setAttribute('alt',this.alt);
-      if (!this.title) this.img.setAttribute('title',this.alt);
       if (this.enlargable) {
         this.img.addEventListener('click', function(e){
           BigPicture({el: e.target});
@@ -69,8 +69,10 @@ class UvalibImage extends HTMLElement {
         }.bind(this));
       }
       else {
-        console.log('not enlargable')
+        // not enlargable
       }
+    } else {
+      console.warn("No src attribute given for uvalib-image!")
     }
   }
 }
