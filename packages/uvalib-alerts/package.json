@@ -3,36 +3,39 @@
   "main": "uvalib-alerts.js",
   "version": "0.2.1",
   "dependencies": {
-    "@polymer/iron-collapse": "^3.0.1",
-    "@polymer/marked-element": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
-    "@polymer/polymer": "^3.0.0",
-    "@uvalib/uvalib-models": "^0.2.17",
+    "@uvalib/uvalib-button": "^0.0.3",
+    "@uvalib/uvalib-collapse": "^0.1.17",
+    "@uvalib/uvalib-models": "^0.3.18",
     "@uvalib/uvalib-theme": "^0.1.17",
-    "@uvalib/uvalib-ui-base": "^0.1.17",
-    "@uvalib/web-styles": "^0.1.7",
-    "node-sass": "^4.14.1",
-    "rollup-plugin-resolve": "0.0.1-predev.1"
+    "@uvalib/web-styles": "^0.1.13",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@polymer/iron-component-page": "^3.0.0-pre.20",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
     "@rollup/plugin-babel": "^5.2.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
+    "add": "^2.0.6",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
+    "node-sass": "^4.14.1",
     "rollup": "^1.31.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-resolve": "0.0.1-predev.1",
     "rollup-plugin-terser": "^5.3.0",
-    "wct-mocha": "^1.0.1"
+    "serve": "^11.3.2",
+    "wct-mocha": "^1.0.1",
+    "yarn": "^1.22.5"
   },
   "scripts": {
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
-    "build": "rm -rf dist/*; rollup -c"
+    "build": "rm -rf dist/*; rm -rf demo/*.js; npx rollup -c; cp dist/* demo",
+    "demo": "npx serve demo"
   },
   "gitHead": "3714ea41990d092dbfb90fd940cee6ae565cf98e"
 }

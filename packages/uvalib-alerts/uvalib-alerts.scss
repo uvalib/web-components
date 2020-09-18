@@ -6,7 +6,7 @@
 :host {
   display: block;
   text-align: left;
-  visibility: hidden;
+  visibility: visible;
   @include font-body1
 }
 .alert-item {
@@ -97,7 +97,4 @@ paper-button {
 }
 paper-button:visited, paper-button:focus, paper-button:hover, paper-button:active {
   font-weight: normal;
-}
-.hidden {
-  display: none;
 }
