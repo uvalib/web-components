@@ -1,0 +1,55 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add lodash
+
+PATH: 
+  /usr/local/google-cloud-sdk/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/dhc4z/development/flutter/bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  10.15.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/dhc4z/Documents/workspace/uvalib/web-components/packages/uvalib-models/package.json: Unexpected token } in JSON at position 329
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1631:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "@uvalib/uvalib-models",
+    "main": "uvalib-models.js",
+    "version": "0.2.18",
+    "dependencies": {
+      "@polymer/app-storage": "^3.0.3",
+      "@polymer/iron-ajax": "^3.0.1",
+      "@polymer/polymer": "^3.0.0",
+      "@uvalib/uvalib-theme": "^0.1.17",
+      "@uvalib/uvalib-ui-base": "^0.1.17",
+      "lit-element": "^2.3.1",
+    },
+    "devDependencies": {
+      "@polymer/iron-demo-helpers": "^3.1.0",
+      "@polymer/test-fixture": "^4.0.2",
+      "@webcomponents/webcomponentsjs": "^2.0.0",
+      "chai": "^4.2.0",
+      "mocha": "^6.1.4",
+      "wct-mocha": "^1.0.1"
+    },
+    "scripts": {
+      "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf"
+    },
+    "gitHead": "3714ea41990d092dbfb90fd940cee6ae565cf98e"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

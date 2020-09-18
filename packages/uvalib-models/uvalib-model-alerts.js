@@ -1,117 +1,54 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import "@polymer/app-storage/app-localstorage/app-localstorage-document.js";
-import "./uvalib-model-library.js";
+import UvalibModelLibrary from "./uvalib-model-library.js";
 
 /**
  * `uvalib-model-library`
- *
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
  */
-class UvalibModelAlerts extends customElements.get('uvalib-model-library') {
-  static get template() {
-    return html`
-      <div>${super.template}</div>
-      <app-localstorage-document key="uvalib-alerts-seen" data="{{seen}}"></app-localstorage-document>
-    `;
+export default class UvalibModelAlerts extends UvalibModelLibrary {
+  static get observedAttributes() {
+    return super.observedAttributes.concat([]);
   }
-  static get properties() {
-    return {
-      lastResponse: {
-        type: Array,
-        observer: '_copyAlerts'
-      },
-      alerts: {
-        type: Array,
-        notify: true,
-        value: function(){return [];},
-        observer: '_alertsChanged'
-      },
-      seen: {
-        type: Array,
-        notify: true,
-        observer: '_evalAlerts',
-        value: []
-      },
-      poll: {
-        type: Number,
-        value: 300000
-      },
-      seenCount: {
-        type: Number,
-        notify: true,
-        computed: '_getSeenCount(alerts,_force)'
-      },
-      _force: {
-        type: Boolean,
-        value: true,
-        observer: '_alertsChanged'
-      }
-    };
+  get alerts(){}
+  get seen(){ 
+    const seen = JSON.parse(localStorage.getItem('uvalib-alerts-seen'));
+    return (Array.isArray(seen))? seen:[]; 
   }
-  _copyAlerts(){
+  set seen(seenItems){ 
+    localStorage.setItem('uvalib-alerts-seen',JSON.stringify(seenItems));
+    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: seenItems.length}}));
+  }
+  get seenCount(){ return this.seen.length }
+  get alerts(){
     if (Array.isArray(this.lastResponse) && this.lastResponse.length>0) {
-      this.set('alerts', this.lastResponse.map(function(alert) {
+      return this.lastResponse.map(function(alert) {
         if (alert.severity==="alert3") {this.setSeen(alert.uuid)}
-        if (this.seen.indexOf(alert.uuid)>-1) {alert.seen = true;}
+        if (this.seen && this.seen.indexOf(alert.uuid)>-1) {alert.seen = true;}
         else {alert.seen = false;}
         return alert;
-      }.bind(this)).sort(function(x,y){return x.severity>y.severity}) );
-    }
+      }.bind(this)).sort(function(x,y){return x.severity>y.severity});
+    } else 
+      return [];
   }
-  setAllUnSeen(){
-    this.set('seen',[]);
-    console.log('set all unseen');
+  constructor() {
+    super();
+    this.path = "library/alerts";
+    this.poll = 300000; // poll every 5 minutes
   }
-  setAllSeen(){
-    this.alerts.forEach((a)=>{
-      this.setSeen(a.uuid);
-    })
+  connectedCallback() {
+    this.addEventListener('last-response-changed',function(e){
+      this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
+    }.bind(this));
   }
   setSeen(uuid){
-    var seen = this.seen;
-    if (seen.indexOf(uuid)===-1) {
-      seen.push(uuid);
-    }
-    this.set('seen',[]);
-    this.set('seen',seen);
+    var seen = new Set(this.seen);
+    seen.add(uuid);
+    this.seen = [... seen];
   }
-  _evalAlerts(){
-    if(Array.isArray(this.alerts) && this.alerts.length>0) {
-      this.alerts.forEach(function(alert,i){
-        if (this.seen.indexOf(alert.uuid)>-1 && !this.alerts[i].seen) {
-          this.set('alerts.'+i+'.seen', true);
-          this.set('_force', !this._force);
-        } else if (this.alerts[i].seen) {
-          this.set('alerts.'+i+'.seen', false);
-          this.set('_force', !this._force);
-        }
-      }.bind(this));
-    }
+  setAllUnSeen(){
+    this.seen = [];
   }
-  _makeURL(path,apiVersion) {
-    return this._apidomain+apiVersion+"/library/alerts";
+  setAllSeen(){
+    this.seen = this.alerts.map(a=>a.uuid);
   }
-  _getSeenCount(alerts){
-    var cnt = alerts.filter(a => a.seen).length;
-    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: cnt}}));
-    return cnt;
-  }
-  _alertsChanged(){
-    this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
-  }
-
-/**
-Fired when the seenCount property changes.
-This is useful if you want to display
-the count on some sort of notification badge
-showing the user a count of notifications dismissed.
-
-@event seen-count-changed
-Event param: {{seenCount: Number}} detail Contains the count of unseen alerts.
-*/
 }
 
 window.customElements.define('uvalib-model-alerts', UvalibModelAlerts);

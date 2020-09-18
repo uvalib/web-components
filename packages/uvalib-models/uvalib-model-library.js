@@ -1,55 +1,27 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import "./uvalib-model-ajax.js";
+import UvalibModelAjax from "./uvalib-model-ajax.js";
 
 /**
  * `uvalib-model-library`
- *
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
  */
-class UvalibModelLibrary extends customElements.get('uvalib-model-ajax') {
-  static get properties() {
-    return {
-      /**
-        If `uuid` is set will return an item from the result set that matches or null.
-        When `uuid` is not set, will simply return the first item from the list of results
-      */
-      item: {
-        type: Object,
-        computed: '_makeItem(lastResponse,uuid,items)',
-        notify: true
-      },
-      /** The uuid to filter by */
-      uuid: {
-        type: String
-      },
-      /** If true will return the first item from the list of items given no uuid */
-      returnFirst: {
-        type: Boolean,
-        value: true
-      },
-      firebase: {
-        type: Boolean,
-        value: false
-      }
-    };
+export default class UvalibModelLibrary extends UvalibModelAjax {
+  static get observedAttributes() {
+    return super.observedAttributes.concat(['firebase']);
   }
-  _makeURL(path,apiVersion) {
-    return this.firebase?
-      "https://uvalib-api.firebaseio.com/"+path+".json":
-      this._apidomain+apiVersion+"/library/"+path;
+  constructor() {
+    super();
+    this._firebase = false;
+    this._firebaseDomain = "https://uvalib-api.firebaseio.com/";
   }
-  _makeItem(lastResponse, uuid) {
-    if (this.lastResponse && this.lastResponse.length>0) {
-      if (uuid) {
-        return this.lastResponse.find((e)=>{return (e.uuid==uuid)});
-      } else if (this.returnFirst) {
-        return this.lastResponse[0];
-      } else {
-        return null;
-      }
+  connectedCallback() {}
+  get firebase() {return !!(this._firebase);}
+  set firebase(newFirebase) {this._firebase = !!(newFirebase); this._eval();}
+  _makeURL() {
+    return (this._firebase)? this._firebaseDomain+this._path+'.json': super._makeURL();
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    super.attributeChangedCallback(name, oldValue, newValue);
+    switch(name){
+      case "firebase": this.firebase = newValue===""? true:false; break;
     }
   }
 }
