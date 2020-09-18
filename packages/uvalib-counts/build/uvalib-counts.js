@@ -2281,6 +2281,7 @@ var Au,Ou=function(){function e(e,t){var n=this;this.app_=e,this.authProvider_=t
                 <div style="float: right; padding: 20px;">
                   <h2>Capacity: [[library.maximumAttendeeCapacity]]</h2>
                   <h2>Occupancy: [[library.occupancy.value]]<br/><span class="time">[[_timeformat(library.occupancy.timestamp_end)]]</span></h2>
+                  <h2 hidden$="[[!library.estimatedOccupancy.value]]">Estimated Occupancy: [[library.estimatedOccupancy.value]]<br/><span class="time">[[_timeformat(library.estimatedOccupancy.timestamp)]]</span></h2>
                   <h2>Mask Non-Compliance: [[library.noMaskCount.value]]<br/><span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
                 </div>
               </div>
