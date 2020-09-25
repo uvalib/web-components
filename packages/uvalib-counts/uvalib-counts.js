@@ -145,12 +145,13 @@ class UvalibCounts extends PolymerElement {
                       url.searchParams.get("token"): 
                       localStorage.getItem('fbtoken')? 
                           localStorage.getItem('fbtoken'):
-                          null;
+                          null;  
+                      
     if (!this.fbtoken) {
       window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
     } else {
       firebase.auth().signInWithCustomToken(this.fbtoken)
-        .then(()=>{
+        .then(function(){
           this.database = firebase.default.database();
           var countRef = this.database.ref('locations-schemaorg/location');
           countRef.on('value', function(snapshot){
@@ -158,9 +159,15 @@ class UvalibCounts extends PolymerElement {
             this.libraries = this._values(this._libraries);
             console.log("updated hours");
           }.bind(this));
-        })
+          localStorage.setItem('fbtoken',this.fbtoken);
+          url.searchParams.delete("token"); 
+          window.history.replaceState({}, document.title, url.pathname+url.search); 
+        }.bind(this))
         .catch(function(error){
           console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
+          url.searchParams.delete("token"); 
+          window.history.replaceState({}, document.title, url.pathname+url.search);
+          window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
         })
     }
 
