@@ -9,8 +9,9 @@ import '@vaadin/vaadin-button/vaadin-button.js';
 //import '@vaadin/vaadin-tabs/vaadin-tab.js';
 import moment from 'moment';
 
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 var app = firebase.default.initializeApp({
   apiKey: "AIzaSyDsTrjUL9kRug7fw_sNU31cy7JYzJAUvmQ",
@@ -47,53 +48,59 @@ class UvalibCounts extends PolymerElement {
       </vaadin-tabs>
       -->
       <uvalib-accordion multi>
-        <template is="dom-repeat" items="[[libraries]]" as="library">
+        <template is="dom-repeat" items="[[_filter(libraries,type)]]" as="library">
           <template is="dom-if" if="[[library.occupancy]]">
-            <uvalib-accordion-item opened$="[[editMode]]" heading-level="1">
-              <div slot="heading">
-                <div style="padding: 20px">
-                  <h1 inner-h-t-m-l="[[library.name]]"></h1>
-                </div>
-                <div style="float: left; padding: 20px;">
-                  <div style="font-size: 55px; font-weight: bolder;">[[_calcPercent(library.maximumAttendeeCapacity, library.occupancy.value)]]%</div>
-                  <div style="font-size: 20px; font-weight: bolder;">Percent Occupied</div>
-                  <div style="font-size: 55px; font-weight: bolder;">[[_calcInversePercent(library.occupancy.value,library.noMaskCount.value)]]%</div>
-                  <div style="font-size: 20px; font-weight: bolder;">Mask Compliance</div>
-                </div>
-                <div style="float: right; padding: 20px;">
-                  <h2>Capacity: [[library.maximumAttendeeCapacity]]</h2>
-                  <h2>Occupancy: [[library.occupancy.value]]<br/><span class="time">[[_timeformat(library.occupancy.timestamp_end)]]</span></h2>
-                  <h2 hidden$="[[!library.estimatedOccupancy.value]]">Estimated Occupancy: [[library.estimatedOccupancy.value]]<br/><span class="time">[[_timeformat(library.estimatedOccupancy.timestamp)]]</span></h2>
-                  <h2>Mask Non-Compliance: [[library.noMaskCount.value]]<br/><span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
-                </div>
-              </div>
-              <div slot="body">
-                <div style="background-color: lightgrey; padding: 20px;">
-                  <div hidden$="[[!editMode]]">
-                    <!--<vaadin-button theme="contrast" library-id="[[library.key]]" on-click="_refreshCount">Refresh</vaadin-button>-->
-                    <vaadin-button theme="error primary" library-id="[[library.key]]" on-click="_clearCount">Clear</vaadin-button>
+              <uvalib-accordion-item opened$="[[editMode]]" heading-level="1">
+                <div slot="heading">
+                  <div style="padding: 20px">
+                    <h1 inner-h-t-m-l="[[library.name]]"></h1>
                   </div>
-                  <template is="dom-repeat" items="[[_values(library.containedInPlace)]]" as="place">
-                    <template is="dom-if" if="[[place.occupancy]]">
-                      <h3>[[place.name]]</h3>
-                      <div style="display:flex; flex-direction:row">
-                        <div style="flex:1">
-                          <div>Occupancy:
-                            <span hidden$="[[editMode]]">[[place.occupancy.value]]</span>
-                            <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="[[place.occupancy.value]]" min="0" has-controls></vaadin-number-field>
-                          </div>
-                          <div>Mask Violations:
-                            <span hidden$="[[editMode]]">[[place.noMaskCount.value]]</span>
-                            <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="[[place.noMaskCount.value]]" min="0" has-controls></vaadin-number-field>
+                  <div style="float: left; padding: 20px;">
+                    <div hidden$="[[!library.maximumAttendeeCapacity]]" style="font-size: 55px; font-weight: bolder;">[[_calcPercent(library.maximumAttendeeCapacity, library.occupancy.value)]]%</div>
+                    <div hidden$="[[!library.maximumAttendeeCapacity]]" style="font-size: 20px; font-weight: bolder;">Percent Occupied</div>
+                    <div hidden$="[[noMaskTrack]]" style="font-size: 55px; font-weight: bolder;">[[_calcInversePercent(library.occupancy.value,library.noMaskCount.value)]]%</div>
+                    <div hidden$="[[noMaskTrack]]" style="font-size: 20px; font-weight: bolder;">Mask Compliance</div>
+                  </div>
+                  <div style="float: right; padding: 20px;">
+                    <h2 hidden$="[[!library.maximumAttendeeCapacity]]">Capacity: [[library.maximumAttendeeCapacity]]</h2>
+                    <h2>Occupancy: 
+                      <span>[[library.occupancy.value]]</span>
+                      <br/><span class="time">[[_timeformat(library.occupancy.timestamp_end)]]</span></h2>
+                    <h2 hidden$="[[_isNull(library.estimatedOccupancy.value)]]">Estimated Occupancy: [[library.estimatedOccupancy.value]]<br/><span class="time">[[_timeformat(library.estimatedOccupancy.timestamp)]]</span></h2>
+                    <h2 hidden$="[[noMaskTrack]]">Mask Non-Compliance: [[library.noMaskCount.value]]<br/><span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
+                  </div>
+                </div>
+                <div slot="body">
+                  <div style="background-color: lightgrey; padding: 20px;">
+                  <template is="dom-if" if="[[!library.containedInPlace]]">
+                    <vaadin-number-field hidden$="[[!editMode]]" on-change="_updateMainCount" library-id="[[library.key]]" action-id="[[_occupancy]]" value="[[library.occupancy.value]]" min="0" has-controls></vaadin-number-field>
+                  </template>
+                  <template is="dom-if" if="[[library.containedInPlace]]">
+                    <div hidden$="[[!editMode]]">
+                      <vaadin-button theme="error primary" library-id="[[library.key]]" on-click="_clearCount">Clear</vaadin-button>
+                    </div>
+                    <template is="dom-repeat" items="[[_values(library.containedInPlace)]]" as="place">
+                      <template is="dom-if" if="[[place.occupancy]]">
+                        <h3>[[place.name]]</h3>
+                        <div style="display:flex; flex-direction:row">
+                          <div style="flex:1">
+                            <div>Occupancy:
+                              <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="0" min="0" has-controls></vaadin-number-field>
+                              <span>([[place.occupancy.value]])</span>
+                            </div>
+                            <div>Mask Violations:
+                              <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="0" min="0" has-controls></vaadin-number-field>
+                              <span>([[place.noMaskCount.value]])</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </template>
                     </template>
-                  </template>
-                  <div><vaadin-button hidden$="[[!editMode]]" theme="success primary" library-id="[[library.key]]" on-click="_updateCount">Submit</vaadin-button></div>
+                    <div><vaadin-button hidden$="[[!editMode]]" theme="success primary" library-id="[[library.key]]" on-click="_updateCount">Submit</vaadin-button></div>
+                  </template>  
+                  </div>
                 </div>
-              </div>
-            </uvalib-accordion-item>
+              </uvalib-accordion-item>
           </template>
         </template>
       </uvalib-accordion>
@@ -119,18 +126,48 @@ class UvalibCounts extends PolymerElement {
         type: Number,
         value: 1,
         observer: "_setMode"
+      },
+      type: {
+        type: String,
+        value: null
+      },
+      noMaskTrack: {
+        type: Boolean,
+        value: false
       }
     };
   }
   ready() {
     super.ready();
-    this.database = firebase.default.database();
-    var countRef = this.database.ref('locations-schemaorg/location');
-    countRef.on('value', function(snapshot){
-      this._libraries = snapshot.val();
-      this.libraries = this._values(this._libraries);
-      console.log("updated hours");
-    }.bind(this));
+
+    var url = new URL(window.location.href);
+    this.fbtoken = url.searchParams.get("token")? 
+                      url.searchParams.get("token"): 
+                      localStorage.getItem('fbtoken')? 
+                          localStorage.getItem('fbtoken'):
+                          null;
+    if (!this.fbtoken) {
+      window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
+    } else {
+      firebase.auth().signInWithCustomToken(this.fbtoken)
+        .then(()=>{
+          this.database = firebase.default.database();
+          var countRef = this.database.ref('locations-schemaorg/location');
+          countRef.on('value', function(snapshot){
+            this._libraries = snapshot.val();
+            this.libraries = this._values(this._libraries);
+            console.log("updated hours");
+          }.bind(this));
+        })
+        .catch(function(error){
+          console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
+        })
+    }
+
+  }
+  
+  _isNull(val) {
+    return val==null;
   }
   _calcPercent(capacity, occupancy){
     return Math.round( ((occupancy/capacity) * 100).toFixed(3) );
@@ -142,18 +179,35 @@ class UvalibCounts extends PolymerElement {
   _timeformat(t){
     return moment(t).format('MMMM Do, h:mm:ss a');
   }
+  _filter(libraries,type) {
+    if (type && Array.isArray(libraries)) {
+      return libraries.filter(lib=>{return lib['@type']===type});
+    } else 
+      return libraries;
+  }
   _values(obj){
-    var items = [];
-    Object.keys(obj).forEach(function(key){
-      obj[key].key = key;
-      items.push(obj[key]);
-    });
-    return items;
+    if (obj) {  
+      var items = [];
+      Object.keys(obj).forEach(function(key){
+        obj[key].key = key;
+        items.push(obj[key]);
+      });
+      return items;
+    } else 
+      return obj;
   }
   _clearCount(e){
     const libId = e.target.libraryId;
     const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"]')
     fields.forEach(f=>{f.value=0;});
+  }
+  _updateMainCount(e){
+    const libId = e.target.libraryId;
+    const actionId = e.target.actionId;
+    const value = e.target.value;
+    console.log('locations-schemaorg/location/'+libId+'/'+actionId);
+    const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/'+actionId);
+    dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value});
   }
   _updateCount(e){
     const libId = e.target.libraryId;
@@ -163,9 +217,15 @@ class UvalibCounts extends PolymerElement {
         const placeId = f.getAttribute('place-id');
         const actionId = f.actionId;
         const value = f.value;
-        console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
-        const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
-        promises.push(dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value}));
+//        if (placeId) {
+          console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
+          const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
+          promises.push(dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value}));
+//        } else {
+//          console.log('locations-schemaorg/location/'+libId+'/'+actionId);
+//          const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/'+actionId);
+//          promises.push(dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value}));
+//        }
     });
 /*
     this.database.ref('locations-schemaorg/location/'+e.target.libraryId+'/containedInPlace/'+e.target.placeId+'/'+e.target.actionId)
