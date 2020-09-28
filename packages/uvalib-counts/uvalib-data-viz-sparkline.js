@@ -1,4 +1,5 @@
-import 'highcharts';
+import Highcharts from 'highcharts';
+import Exporting from 'highcharts/modules/exporting';
 import 'highcharts/modules/accessibility';
 
 class UvalibSparkline extends HTMLElement {
