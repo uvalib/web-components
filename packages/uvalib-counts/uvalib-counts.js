@@ -1,24 +1,21 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import {} from '@polymer/polymer/lib/elements/dom-if.js';
-import '@uvalib/uvalib-accordion/uvalib-accordion.js';
-import '@uvalib/uvalib-accordion/uvalib-accordion-item.js';
-import '@vaadin/vaadin-text-field/vaadin-number-field.js';
-import '@vaadin/vaadin-button/vaadin-button.js';
-//import '@vaadin/vaadin-tabs/vaadin-tabs.js';
-//import '@vaadin/vaadin-tabs/vaadin-tab.js';
+import './uvalib-model-auth.js';
+import('@uvalib/uvalib-accordion/uvalib-accordion.js');
+import('@uvalib/uvalib-accordion/uvalib-accordion-item.js');
+import('@vaadin/vaadin-text-field/vaadin-number-field.js');
+import('@vaadin/vaadin-button/vaadin-button.js');
+
+import './uvalib-model-fb-init.js';
+import('./uvalib-model-realtime-database.js');
+import('./uvalib-data-viz-sparkline.js');
+
 import moment from 'moment';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
-
-var app = firebase.default.initializeApp({
-  apiKey: "AIzaSyDsTrjUL9kRug7fw_sNU31cy7JYzJAUvmQ",
-  databaseURL: "https://uvalib-api-occupancy.firebaseio.com",
-  projectId: "uvalib-api",
-  appId: "1:602799472461:web:d56a8ec950c9c85edc8104"
-});
 
 /**
  * `uvalib-counts`
@@ -40,13 +37,14 @@ class UvalibCounts extends PolymerElement {
           font-size: smaller;
           font-weight: lighter;
         }
+        uvalib-data-viz-sparkline {
+          display: inline-block;
+          padding-left: 20px;
+        }
       </style>
-      <!--
-      <vaadin-tabs selected="[[_state]]">
-        <vaadin-tab>Edit</vaadin-tab>
-        <vaadin-tab>Watch</vaadin-tab>
-      </vaadin-tabs>
-      -->
+
+      <uvalib-model-auth id="auth" auto></uvalib-model-auth>
+      
       <uvalib-accordion multi>
         <template is="dom-repeat" items="[[_filter(libraries,type)]]" as="library">
           <template is="dom-if" if="[[library.occupancy]]">
@@ -73,7 +71,14 @@ class UvalibCounts extends PolymerElement {
                 <div slot="body">
                   <div style="background-color: lightgrey; padding: 20px;">
                   <template is="dom-if" if="[[!library.containedInPlace]]">
-                    <vaadin-number-field hidden$="[[!editMode]]" on-change="_updateMainCount" library-id="[[library.key]]" action-id="[[_occupancy]]" value="[[library.occupancy.value]]" min="0" has-controls></vaadin-number-field>
+                    <vaadin-button theme="error primary" library-id="[[library.key]]" on-click="_clearCount">Clear</vaadin-button><br />
+                    <div>Occupancy:
+                      <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" action-id="[[_occupancy]]" value="0" min="0" has-controls></vaadin-number-field> ([[library.occupancy.value]])
+                    </div>
+                    <div>Mask Violations:
+                      <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" action-id="[[_noMaskCount]]" value="0" min="0" has-controls></vaadin-number-field> ([[library.noMaskCount.value]])
+                    </div>
+                    <vaadin-button hidden$="[[!editMode]]" theme="success primary" library-id="[[library.key]]" on-click="_updateMainCount">Submit</vaadin-button>
                   </template>
                   <template is="dom-if" if="[[library.containedInPlace]]">
                     <div hidden$="[[!editMode]]">
@@ -87,10 +92,16 @@ class UvalibCounts extends PolymerElement {
                             <div>Occupancy:
                               <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_occupancy]]" value="0" min="0" has-controls></vaadin-number-field>
                               <span>([[place.occupancy.value]])</span>
+                              <uvalib-data-viz-sparkline series-name="occupancy" series-data-event="uvalib-model-data-value">
+                                <uvalib-model-realtime-database start-key="[[_todayStart()]]" path="/locationsLogs/[[library.key]]/[[place.key]]/occupancylogs"></uvalib-model-realtime-database>
+                              </uvalib-data-viz-sparkline>
                             </div>
                             <div>Mask Violations:
                               <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="0" min="0" has-controls></vaadin-number-field>
                               <span>([[place.noMaskCount.value]])</span>
+                              <uvalib-data-viz-sparkline series-name="no masks" series-data-event="uvalib-model-data-value">
+                                <uvalib-model-realtime-database start-key="[[_todayStart()]]" path="/locationsLogs/[[library.key]]/[[place.key]]/noMaskCountlogs"></uvalib-model-realtime-database>
+                              </uvalib-data-viz-sparkline>
                             </div>
                           </div>
                         </div>
@@ -134,45 +145,35 @@ class UvalibCounts extends PolymerElement {
       noMaskTrack: {
         type: Boolean,
         value: false
+      },
+      _data: {
+        type: Object,
+        value: function(){
+          return {"1600266267649":0,"1600266798670":0,"1600270356460":7,"1600274033392":9};
+        }
       }
     };
   }
   ready() {
     super.ready();
-
-    var url = new URL(window.location.href);
-    this.fbtoken = url.searchParams.get("token")? 
-                      url.searchParams.get("token"): 
-                      localStorage.getItem('fbtoken')? 
-                          localStorage.getItem('fbtoken'):
-                          null;  
-                      
-    if (!this.fbtoken) {
-      window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
-    } else {
-      firebase.auth().signInWithCustomToken(this.fbtoken)
-        .then(function(){
-          this.database = firebase.default.database();
-          var countRef = this.database.ref('locations-schemaorg/location');
-          countRef.on('value', function(snapshot){
-            this._libraries = snapshot.val();
-            this.libraries = this._values(this._libraries);
-            console.log("updated hours");
-          }.bind(this));
-          localStorage.setItem('fbtoken',this.fbtoken);
-          url.searchParams.delete("token"); 
-          window.history.replaceState({}, document.title, url.pathname+url.search); 
-        }.bind(this))
-        .catch(function(error){
-          console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
-          url.searchParams.delete("token"); 
-          window.history.replaceState({}, document.title, url.pathname+url.search);
-          window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
-        })
-    }
+       
+    this.shadowRoot.getElementById('auth').addEventListener('uvalib-model-authenticated',function(){
+      this.database = firebase.default.database();
+      var countRef = this.database.ref('locations-schemaorg/location');
+      countRef.on('value', function(snapshot){
+        this._libraries = snapshot.val();
+        this.libraries = this._values(this._libraries);
+      }.bind(this));
+    }.bind(this));
 
   }
-  
+
+  _todayStart() {
+    var now = new Date();
+    var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+//    console.log("start of the day "+startOfDay*1);
+    return startOfDay*1;
+  }
   _isNull(val) {
     return val==null;
   }
@@ -211,10 +212,14 @@ class UvalibCounts extends PolymerElement {
   _updateMainCount(e){
     const libId = e.target.libraryId;
     const actionId = e.target.actionId;
-    const value = e.target.value;
-    console.log('locations-schemaorg/location/'+libId+'/'+actionId);
-    const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/'+actionId);
-    dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value});
+    const fields = this.shadowRoot.querySelectorAll('vaadin-number-field[library-id="'+libId+'"]');
+    fields.forEach(f=>{
+      const actionId = f.actionId;
+      const value = f.value;
+//      console.log('locations-schemaorg/location/'+libId+'/'+actionId);
+      const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/'+actionId);
+      dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value});
+    });
   }
   _updateCount(e){
     const libId = e.target.libraryId;
@@ -225,7 +230,7 @@ class UvalibCounts extends PolymerElement {
         const actionId = f.actionId;
         const value = f.value;
 //        if (placeId) {
-          console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
+//          console.log('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
           const dbRef = this.database.ref('locations-schemaorg/location/'+libId+'/containedInPlace/'+placeId+'/'+actionId);
           promises.push(dbRef.update({timestamp:firebase.default.database.ServerValue.TIMESTAMP, value:value}));
 //        } else {
@@ -259,7 +264,7 @@ class UvalibCounts extends PolymerElement {
             headCount.value = Number(headCount.value) + Number(place.occupancy.value);
           }
         });
-        console.log("nomask value: "+noMask.value)
+//        console.log("nomask value: "+noMask.value)
         this.database.ref('locations-schemaorg/location/'+libId+'/noMaskCount').update(noMask);
         this.database.ref('locations-schemaorg/location/'+libId+'/occupancy').update(headCount);
 
