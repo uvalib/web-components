@@ -2,6 +2,7 @@ import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 import 'highcharts/modules/accessibility';
 
+
 class UvalibSparkline extends HTMLElement {
     static get observedAttributes() {
       return ['series-name','series-data','series','series-data-event'];
@@ -41,90 +42,13 @@ class UvalibSparkline extends HTMLElement {
       this._setupDom();
       
       
-  this.chart = Highcharts.chart(this.container, {
-    chart: {
-      type: 'area',
-      backgroundColor: null,
-      borderWidth: 0,
-      margin: [2, 0, 2, 0],
-      width: 120,
-      height: 20,
-      style: {
-        overflow: 'visible'
-      },
-      // small optimalization, saves 1-2 ms each sparkline
-      skipClone: true
-    },
-    title: {
-          text: ''
-        },
-        credits: {
-          enabled: false
-        },
-        xAxis: {
-          type: 'datetime',
-          labels: {
-            enabled: false
-          },
-          title: {
-            text: null
-          },
-          startOnTick: false,
-          endOnTick: false,
-          tickPositions: []
-        },
-        yAxis: {
-          endOnTick: false,
-          startOnTick: false,
-          labels: {
-            enabled: false
-          },
-          title: {
-            text: null
-          },
-          tickPositions: [0]
-        },
-        legend: {
-          enabled: false
-        },
-        tooltip: {
-          xDateFormat: '%H:%M:%S',
-          hideDelay: 0,
-          outside: true,
-          shared: true
-        },
-        plotOptions: {
-          series: {
-            animation: false,
-            lineWidth: 1,
-            shadow: false,
-            states: {
-              hover: {
-                lineWidth: 1
-              }
-            },
-            marker: {
-              radius: 1,
-              states: {
-                hover: {
-                  radius: 2
-                }
-              }
-            },
-            fillOpacity: 0.25
-          },
-          column: {
-            negativeColor: '#910000',
-            borderColor: 'silver'
-          }
-        }   
-  });
   this._addSeries();
   this.addEventListener(this.seriesDataEvent, function(e){
     const series = e.target.series;
     var sd = {};
     var d = new Date();
     var tzOffset = d.getTimezoneOffset() * 60000;
+    console.log(tzOffset);
     if (series) {
       for (const [key, value] of Object.entries(series)) {
         sd[parseInt(key)-tzOffset]=parseInt(value.value);
@@ -138,17 +62,124 @@ class UvalibSparkline extends HTMLElement {
       if (this._seriesName && this._seriesData) this.series = {name:this._seriesName, data: this._seriesData};
     }
     _addSeries(){
-      if (this._series && this.chart) {
+      if (this._series) {
 //console.log(this._series);        
-        const series = this.chart.get(this._seriesId);
-        if (series) series.remove();
-        while (this.chart.series.length > 0) {
-          this.chart.series[0].remove(true);
+//        const series = this.chart.get(this._seriesId);
+//        if (series) series.remove();
+
+//        this.chart.addSeries({
+//          name: this._seriesName,
+//          data: this._series
+//        });
+
+console.log("setting up chart");
+console.log("");
+this.container.innerHTML = "";
+this.chart = Highcharts.chart(this.container, {
+  chart: {
+    type: 'area',
+    backgroundColor: null,
+    borderWidth: 0,
+    margin: [2, 0, 2, 0],
+    width: 120,
+    height: 20,
+    style: {
+      overflow: 'visible'
+    },
+    // small optimalization, saves 1-2 ms each sparkline
+    skipClone: true
+  },
+  title: {
+        text: ''
+      },
+      credits: {
+        enabled: false
+      },
+      xAxis: {
+        type: 'datetime',
+        labels: {
+          enabled: false
+        },
+        title: {
+          text: null
+        },
+        startOnTick: false,
+        endOnTick: false,
+        tickPositions: []
+      },
+      yAxis: {
+        endOnTick: false,
+        startOnTick: false,
+        labels: {
+          enabled: false
+        },
+        title: {
+          text: null
+        },
+        tickPositions: [0]
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        xDateFormat: '%H:%M:%S',
+        hideDelay: 0,
+        outside: true,
+        shared: true
+      },
+/*      
+      plotOptions: {
+        series: {
+          animation: false,
+          lineWidth: 1,
+          shadow: false,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          marker: {
+            radius: 2,
+            states: {
+              hover: {
+                radius: 2.5
+              }
+            }
+          },
+          fillOpacity: 0.25
+        },
+        column: {
+          negativeColor: '#910000',
+          borderColor: 'silver'
         }
-        this.chart.addSeries({
-          name: this._seriesName,
-          data: this._series
-        });
+      },
+*/  
+  series: [{
+      name: this._seriesName,
+      data: this._series
+//    name: "Occupancy",
+  }] /*,
+
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        plotOptions: {
+          series: {
+            marker: {
+              radius: 2.5
+            }
+          }
+        }
+      }
+    }]
+  }
+*/   
+});
+
+
       }
     }
     _setupDom(){

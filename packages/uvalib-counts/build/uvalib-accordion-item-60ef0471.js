@@ -1,4 +1,4 @@
-import{f as o,i as e}from"./uvalib-counts-11f57532.js";import"./custom-style-68a97b7b.js";import"./iron-collapse-ccb0788f.js";import"./gesture-event-listeners-ab504385.js";window.customElements.define("uvalib-accordion-item",class extends o{static get template(){return e`
+import{f as o,i as e}from"./uvalib-counts-25d5b5db.js";import"./custom-style-e4d7a9c9.js";import"./iron-collapse-8b7184ca.js";import"./gesture-event-listeners-6382b240.js";window.customElements.define("uvalib-accordion-item",class extends o{static get template(){return e`
       <custom-style>
         <style>
           :host {

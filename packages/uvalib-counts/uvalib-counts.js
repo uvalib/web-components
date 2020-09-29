@@ -1,13 +1,13 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import {} from '@polymer/polymer/lib/elements/dom-if.js';
-import './uvalib-model-auth.js';
+import '@uvalib/uvalib-account/uvalib-account-auth.js';
 import('@uvalib/uvalib-accordion/uvalib-accordion.js');
 import('@uvalib/uvalib-accordion/uvalib-accordion-item.js');
 import('@vaadin/vaadin-text-field/vaadin-number-field.js');
 import('@vaadin/vaadin-button/vaadin-button.js');
 
-import './uvalib-model-fb-init.js';
+import '@uvalib/uvalib-account/uvalib-account-fb-init.js';
 import('./uvalib-model-realtime-database.js');
 import('./uvalib-data-viz-sparkline.js');
 
@@ -43,7 +43,7 @@ class UvalibCounts extends PolymerElement {
         }
       </style>
 
-      <uvalib-model-auth id="auth" auto></uvalib-model-auth>
+      <uvalib-account-auth id="auth" auto></uvalib-account-auth>
       
       <uvalib-accordion multi>
         <template is="dom-repeat" items="[[_filter(libraries,type)]]" as="library">
@@ -64,8 +64,19 @@ class UvalibCounts extends PolymerElement {
                     <h2>Occupancy: 
                       <span>[[library.occupancy.value]]</span>
                       <br/><span class="time">[[_timeformat(library.occupancy.timestamp_end)]]</span></h2>
+                      <div>
+                        <uvalib-data-viz-sparkline series-name="occupancy" series-data-event="uvalib-model-data-value">
+                          <uvalib-model-realtime-database start-key="[[_todayStart()]]" path="/locationsLogs/[[library.key]]/occupancylogs"></uvalib-model-realtime-database>
+                        </uvalib-data-viz-sparkline>
+                      </div>
                     <h2 hidden$="[[_isNull(library.estimatedOccupancy.value)]]">Estimated Occupancy: [[library.estimatedOccupancy.value]]<br/><span class="time">[[_timeformat(library.estimatedOccupancy.timestamp)]]</span></h2>
-                    <h2 hidden$="[[noMaskTrack]]">Mask Non-Compliance: [[library.noMaskCount.value]]<br/><span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
+                    <h2 hidden$="[[noMaskTrack]]">Mask Non-Compliance: [[library.noMaskCount.value]]<br/>
+                    <span class="time">[[_timeformat(library.noMaskCount.timestamp_end)]]</span></h2>
+                    <div>
+                    <uvalib-data-viz-sparkline series-name="no mask" series-data-event="uvalib-model-data-value">
+                      <uvalib-model-realtime-database start-key="[[_todayStart()]]" path="/locationsLogs/[[library.key]]/noMaskCountlogs"></uvalib-model-realtime-database>
+                    </uvalib-data-viz-sparkline>
+                  </div>
                   </div>
                 </div>
                 <div slot="body">

@@ -1,4 +1,4 @@
-import './uvalib-model-fb-init.js';
+import '@uvalib/uvalib-account/uvalib-account-fb-init.js';
 import firebase from 'firebase/app';
 import 'firebase/database';
 

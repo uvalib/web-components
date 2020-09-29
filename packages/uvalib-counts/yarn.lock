@@ -505,6 +505,13 @@
     "@uvalib/uvalib-theme" "^0.1.17"
     "@uvalib/uvalib-ui-base" "^0.1.17"
 
+"@uvalib/uvalib-account@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-account/-/uvalib-account-0.1.18.tgz#dbe54c0c3c9081f6f179a7a8868d700d63c75c4e"
+  integrity sha512-derM7XPz7inx02cHZBMcx/snd5YGeGEcnuFM9diM9bZGechHIySae+arEByGk23alG+iZV0oX1uKZO+uiaxUeQ==
+  dependencies:
+    firebase "^7.21.1"
+
 "@uvalib/uvalib-theme@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-theme/-/uvalib-theme-0.1.17.tgz#85e12339facf3664bd7ba56b1aaac9ccc8dc0210"
