@@ -1,6 +1,6 @@
 {
   "name": "@uvalib/uvalib-button",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "Doug Chestnut <dougchestnut@gmail.com>",
   "homepage": "https://github.com/uvalib/web-components#readme",
@@ -26,7 +26,7 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/runtime": "^7.11.2",
-    "@uvalib/web-styles": "^0.1.13",
+    "@uvalib/web-styles": "^0.1.14",
     "@webcomponents/custom-elements": "^1.4.2",
     "@webcomponents/webcomponentsjs": "^2.4.4",
     "construct-style-sheets-polyfill": "^2.4.2",

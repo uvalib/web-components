@@ -11,15 +11,16 @@
         padding: 0;
         margin: 0;
       }
+      button:focus {
     </style>
 
     <script type="module" src="./uvalib-button.js"></script>
   </head>
   <body>
     <h1>Button (uvalib-button) Demo</h1>
-
+<button onclick="demo.focus()">foobar</button>
     <h2>Default Button</h2>
-    <div><uvalib-button>Demo Button</uvalib-button></div>
+    <div><uvalib-button id="demo">Demo Button</uvalib-button></div>
 
     <h2>Text Button</h2>
     <div><uvalib-button mode="text">Text Button</uvalib-button></div>
@@ -35,5 +36,19 @@
     <h2>Tertiary Button</h2>
     <div><uvalib-button mode="tertiary">Tertiary Button</uvalib-button></div>
     <div><uvalib-button mode="tertiary" style="--uvalib-button-background-color:blue">Tertiary Button</uvalib-button></div>
+
+    <h2>Custom prop usage</h2>
+    <style>
+      .alert {
+        background-color: #ECC602;
+      }
+      .alert uvalib-button::part(button) {
+        text-transform: uppercase;
+        border: 1px solid #DADADA; /* uvalib-secondary-md-grey */
+        color: #595959; /* uvalib-text-dark */
+        background-color: inherit;
+      }
+    </style>
+    <div class="alert">Alert banner button: <uvalib-button mode="tertiary">Tertiary Button</uvalib-button></div>
   </body>
 </html>

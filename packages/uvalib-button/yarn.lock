@@ -909,10 +909,10 @@
     "@uvalib/uvalib-image" "^0.1.23"
     purecss "^2.0.3"
 
-"@uvalib/web-styles@^0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.13.tgz#60ab99a976a2d6edd1bbfef434995e1ad5aa5c0b"
-  integrity sha512-xnkWQEZg37qjHqO6woWUBy2wy5RbR5gurt3GipHSJ/wTfVQJiKmSzfrjHujgqAa5m2K1/4yP2G1IvbwffxGtBw==
+"@uvalib/web-styles@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.14.tgz#966fbf8ecd9d7142185e24337f5fc6a3b118ca51"
+  integrity sha512-KQQdjtswuQM62TLBW7Pzfuq5HOuegC+pGQc29+06eQzGXow0aeYuy34tOcIu5DdYFlCJnRYqKfYojQyHqvbMtA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     "@uvalib/uvalib-image" "^0.1.23"

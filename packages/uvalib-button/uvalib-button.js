@@ -35,6 +35,13 @@ class UvalibButton extends HTMLElement {
     this._updateButton();
   }
 
+  focus() {
+    this.button.focus();
+  }
+  blur() {
+    this.button.blur();
+  }
+
   // attribute values being set and changed
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
@@ -55,7 +62,7 @@ class UvalibButton extends HTMLElement {
     this.shadow = this.attachShadow({mode: 'open'});
     this.shadow.adoptedStyleSheets = [uvalibButtonStyles];
     this.shadow.innerHTML = `
-      <button class="${this._makeClass()}"><i hidden></i><slot><slot></button>
+      <button part="button" class="${this._makeClass()}"><i hidden></i><slot><slot></button>
     `;
     this.button = this.shadow.querySelector('button');
     this.iconNode = this.shadow.querySelector('i');
