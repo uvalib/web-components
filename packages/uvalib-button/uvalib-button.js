@@ -4,8 +4,8 @@ import 'construct-style-sheets-polyfill';
 
 // setup constructed style sheet
 const uvalibButtonStyles = new CSSStyleSheet();
-uvalibButtonStyles.replace(style);
-document.adoptedStyleSheets = [uvalibButtonStyles];
+uvalibButtonStyles.replaceSync(style);
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, uvalibButtonStyles];
 
 class UvalibButton extends HTMLElement {
   // set which attributes to listen for changes to

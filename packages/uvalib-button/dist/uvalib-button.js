@@ -329,7 +329,7 @@ var css_248z = ".fa,.fab,.facebook-square,.fad,.fal,.far,.fas,.instagram,.twitte
 // setup constructed style sheet
 const uvalibButtonStyles = new CSSStyleSheet();
 uvalibButtonStyles.replace(css_248z);
-document.adoptedStyleSheets = [uvalibButtonStyles];
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, uvalibButtonStyles];
 
 class UvalibButton extends HTMLElement {
   // set which attributes to listen for changes to
