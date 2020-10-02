@@ -21,13 +21,13 @@ class UvalibCollapse extends HTMLElement {
   constructor() {
     // Always call super first in constructor
     super();
-    this.opened = false;
+    this.opened = false;    
+  }
 
+  connectedCallback() {
     this._eval(false);
     this._setupDom();
   }
-
-  connectedCallback() {}
 
   _setupDom(){
     // setup a shadowDOM
