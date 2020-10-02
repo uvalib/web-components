@@ -4,10 +4,13 @@
 @import "~@uvalib/web-styles/scss/_variables.scss";
 
 :host {
-  display: block;
+  display: none; /*block;*/
   text-align: left;
   visibility: visible;
   @include font-body1
+}
+[hidden] {
+  display: none;
 }
 .alert-item {
   min-height: 41px;
@@ -40,10 +43,6 @@
   text-decoration: underline;
   color: $color-white;
 }
-.alert-item.alert2 paper-button:hover {
-  background-color: $uvalib-yellow-dark;
-  color: $uvalib-black;
-}
 .alert-item.alert3 p a {
   text-decoration: underline;
 }
@@ -54,11 +53,11 @@
   outline: $color-accessibility-outline-dark-bg dotted 3px;
   padding: .15em;
 }
-.alert-item.alert3 paper-button {
+.alert-item.alert3 uvalib-button {
   color: $uvalib-black;
   border-color: $uvalib-yellow-dark;
 }
-.alert-item.alert3 paper-button:hover {
+.alert-item.alert3 uvalib-button:hover {
   background-color: $uvalib-yellow;
 }
 .alert-item.alert1 .alert-head:before, .alert-item.alert2 .alert-head:before {
@@ -90,11 +89,23 @@
   margin:0;
   padding:0;
 }
-paper-button {
+uvalib-button {
   color: $uvalib-text-dark;
   position: static;
   z-index: auto;
 }
-paper-button:visited, paper-button:focus, paper-button:hover, paper-button:active {
+uvalib-button:visited, uvalib-button:focus, uvalib-button:hover, uvalib-button:active {
   font-weight: normal;
+}
+
+uvalib-button::part(button) {
+  text-transform: uppercase;
+  border: 1px solid $uvalib-secondary-md-grey;
+  color: $uvalib-text-dark;
+  background-color: inherit;
+}
+
+.alert-item.alert2 uvalib-button:hover::part(button) {
+  background-color: $uvalib-yellow-dark;
+  color: $uvalib-black;
 }
