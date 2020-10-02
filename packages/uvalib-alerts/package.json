@@ -1,11 +1,11 @@
 {
   "name": "@uvalib/uvalib-alerts",
   "main": "uvalib-alerts.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "@uvalib/uvalib-button": "^0.0.7",
-    "@uvalib/uvalib-collapse": "^0.1.17",
-    "@uvalib/uvalib-models": "^0.3.18",
+    "@uvalib/uvalib-collapse": "^0.1.19",
+    "@uvalib/uvalib-models": "^0.3.21",
     "@uvalib/uvalib-theme": "^0.1.17",
     "@uvalib/web-styles": "^0.1.13",
     "construct-style-sheets-polyfill": "^2.4.2",

@@ -1177,10 +1177,10 @@
     rollup-plugin-node-resolve "^5.2.0"
     rollup-plugin-terser "^7.0.2"
 
-"@uvalib/uvalib-collapse@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-collapse/-/uvalib-collapse-0.1.17.tgz#6c25dfe0cb9b061ace5194b79684605912c08fc8"
-  integrity sha512-5J/y88yJJkudxdUA9JE0rpttIpwdymhIrpsdpPPFj4oSqqz2or2mkeJeGVMN8Wlxmbhidci84pP2YAEJE3kUzQ==
+"@uvalib/uvalib-collapse@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-collapse/-/uvalib-collapse-0.1.19.tgz#cf5fae659b13cd47d8608d773983b6351f828810"
+  integrity sha512-cAyQYiPB3630O1YPm2SVB+CJPJMS9XXOLLeOPJpQEKDkVb1XcFkG9Bi9YxsuNORHE6uCmvd+27+hiJFyArwB3A==
 
 "@uvalib/uvalib-image@^0.1.23":
   version "0.1.23"
@@ -1190,10 +1190,10 @@
     "@uvalib/web-styles" "^0.1.10"
     bigpicture "^2.5.3"
 
-"@uvalib/uvalib-models@^0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.18.tgz#49280ae3736910f22598f584acd0269142a9c610"
-  integrity sha512-frdZPrxD+0A+3tFRyt5/TObQKCha4dIVjjgWuscOhWGvn4Oi+cWuRhAbsL8wnEELH6kzRB16JuXcjFPSEC3cMg==
+"@uvalib/uvalib-models@^0.3.21":
+  version "0.3.21"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.21.tgz#e056c5299e3e5ff2fb135e37766bb19911c99888"
+  integrity sha512-C4MV4karP+hQ3ReucHdmzZvAk9NPdHLvf00b8DAp9DbeQ2QXL1b+DqxWbdxQY0yHLtzTVPZM9BoekYaFDTia3A==
 
 "@uvalib/uvalib-theme@^0.1.17":
   version "0.1.17"
