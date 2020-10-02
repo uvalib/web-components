@@ -2,15 +2,33 @@ class UvalibCollapse extends HTMLElement {
   static get observedAttributes() {
     return ['opened'];
   }
+  get opened() {return !!(this._opened);}
+  set opened(newOpened) {
+    this._opened = !!(newOpened);
+    this._eval().then(function(){
+      this.dispatchEvent(new CustomEvent('transitioning-changed', {detail: {opened: this._opened}}));
+    }.bind(this));
+    this.dispatchEvent(new CustomEvent('opened-changed', {detail: {opened: this._opened}}));
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch(name){
+      case "opened":
+        if (oldValue != newValue) { this.opened = (newValue===null)? false:true; }
+        break;
+    }
+  }
+
   constructor() {
     // Always call super first in constructor
     super();
     this.opened = false;
-  }
-  connectedCallback() {
+
     this._eval(false);
     this._setupDom();
   }
+
+  connectedCallback() {}
+
   _setupDom(){
     // setup a shadowDOM
     this.shadow = this.attachShadow({mode: 'open'});
@@ -23,23 +41,12 @@ class UvalibCollapse extends HTMLElement {
       </style>
       <slot></slot>
     `;
-    this.shadow.querySelector('slot').addEventListener('slotchange', function(e) {
+    this.sl = this.shadow.querySelector('slot');
+    this.sl.addEventListener('slotchange', function(e) {
       this._eval(false);
     }.bind(this))
   }
-  attributeChangedCallback(name, oldValue, newValue) {
-    switch(name){
-      case "opened":
-        if (oldValue != newValue) {
-          this.opened = (newValue===null)? false:true;
-          this._eval().then(function(){
-            this.dispatchEvent(new CustomEvent('transitioning-changed', {detail: {opened: this.opened}}));
-          }.bind(this));
-          this.dispatchEvent(new CustomEvent('opened-changed', {detail: {opened: this.opened}}));
-        }
-        break;
-    }
-  }
+
   _eval(ani=true){
     var p = Promise.resolve();
     if(ani) {
@@ -61,8 +68,13 @@ class UvalibCollapse extends HTMLElement {
   }
   toggle(){
     this.opened = !this.opened;
-    if (this.opened) this.setAttribute('opened',"");
-    else this.removeAttribute('opened');
+    if (this.opened) {
+      this.sl.setAttribute('tabindex',"0");
+      this.setAttribute('opened',"");
+    } else { 
+      this.sl.setAttribute('tabindex',"-1");
+      this.removeAttribute('opened');
+    }
   }
 }
 
