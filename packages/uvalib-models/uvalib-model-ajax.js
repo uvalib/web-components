@@ -41,9 +41,9 @@ export default class UvalibModelAjax extends HTMLElement {
     }
   }
   _eval(){
-     if (this._auto && this._path) 
-       if (!this._poll) this.generateRequest();
-       else if (this._poll) {
+     if (this._auto && this._path)     
+       this.generateRequest();
+       if (this._poll) {
          console.log("setup interval")
          if (this._interval) clearInterval(this._interval);
          this._interval = setInterval(this.generateRequest.bind(this), this._poll);
