@@ -53,11 +53,11 @@
   outline: $color-accessibility-outline-dark-bg dotted 3px;
   padding: .15em;
 }
-.alert-item.alert3 uvalib-button {
+.alert-item.alert3 uvalib-button::part(button) {
   color: $uvalib-black;
   border-color: $uvalib-yellow-dark;
 }
-.alert-item.alert3 uvalib-button:hover {
+.alert-item.alert3 uvalib-button:hover::part(button) {
   background-color: $uvalib-yellow;
 }
 .alert-item.alert1 .alert-head:before, .alert-item.alert2 .alert-head:before {
