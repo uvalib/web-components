@@ -6,9 +6,9 @@ class UvalibCollapse extends HTMLElement {
   set opened(newOpened) {
     this._opened = !!(newOpened);
     this._eval().then(function(){
-      this.dispatchEvent(new CustomEvent('transitioning-changed', {detail: {opened: this._opened}}));
+      this.dispatchEvent(new CustomEvent('transitioning-changed', {bubbles: true, composed: true, detail: {opened: this._opened}}));
     }.bind(this));
-    this.dispatchEvent(new CustomEvent('opened-changed', {detail: {opened: this._opened}}));
+    this.dispatchEvent(new CustomEvent('opened-changed', {bubbles: true, composed: true, detail: {opened: this._opened}}));
   }
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
