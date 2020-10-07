@@ -111,8 +111,9 @@ class UvalibAlerts extends HTMLElement {
     node.querySelector(".lessButton").addEventListener('click',this._toggleIt.bind(this));
     node.querySelector('.dismissButton').addEventListener('click',this._dismissIt.bind(this));
     node.setAttribute('opened',(alert.seen)?null:"");
-    node.addEventListener('opened-changed',this._sizeChanged.bind(this));
+    //node.addEventListener('opened-changed',this._sizeChanged.bind(this));
     node.addEventListener('transitioning-changed',this._sizeChanged.bind(this));
+
     newContainer.appendChild(node);
     this.style.display = "block";
   }
@@ -141,6 +142,7 @@ class UvalibAlerts extends HTMLElement {
     this.shadow.appendChild(this._alertsContainer);
   }
   _sizeChanged(){
+    console.log("size changed!" + this.clientHeight);
     this.dispatchEvent(new CustomEvent('size-changed', {detail: {height: this.clientHeight}}));
   }
   _isHot(severity){

@@ -1158,6 +1158,19 @@
   dependencies:
     "@types/node" "*"
 
+"@uvalib/uvalib-alerts@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-alerts/-/uvalib-alerts-0.3.2.tgz#cf31bcfe1cdc54adfd209531a59f2b08870bb40d"
+  integrity sha512-iJn8uU0GPGJ6q6D3W+thGHdQvO7hXl2fOU6KoJQkgsZoX3BAOFLcfRz88uB7k7UBeTBaaOudUwAZx/TKOxg1fw==
+  dependencies:
+    "@uvalib/uvalib-button" "^0.0.7"
+    "@uvalib/uvalib-collapse" "^0.1.19"
+    "@uvalib/uvalib-models" "^0.3.21"
+    "@uvalib/uvalib-theme" "^0.1.17"
+    "@uvalib/web-styles" "^0.1.13"
+    construct-style-sheets-polyfill "^2.4.2"
+    lodash "^4.17.20"
+
 "@uvalib/uvalib-button@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-button/-/uvalib-button-0.0.7.tgz#5f57f51dc8a367a0817064c9bbfa638d766577fd"

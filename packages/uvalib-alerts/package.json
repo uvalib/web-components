@@ -3,6 +3,7 @@
   "main": "uvalib-alerts.js",
   "version": "0.3.2",
   "dependencies": {
+    "@uvalib/uvalib-alerts": "^0.3.2",
     "@uvalib/uvalib-button": "^0.0.7",
     "@uvalib/uvalib-collapse": "^0.1.19",
     "@uvalib/uvalib-models": "^0.3.21",
