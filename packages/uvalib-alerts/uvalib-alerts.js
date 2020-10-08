@@ -63,8 +63,8 @@ class UvalibAlerts extends HTMLElement {
           this._alertsSeen = this._alertsModel.seen;
           this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
+        this._alertsModel.setAttribute('auto',"");
       }.bind(this));
-      this._alertsModel.setAttribute('auto',"");
       this.shadow.appendChild(this._alertsModel);
     }.bind(this));
   }
