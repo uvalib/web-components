@@ -40,6 +40,7 @@ export default class UvalibModelAlerts extends UvalibModelLibrary {
     window.addEventListener('storage', function() {
       this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seen.length}}));
     }.bind(this));
+    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seenCount }}));
   }
   setSeen(uuid){
     var seen = new Set(this.seen);
