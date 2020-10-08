@@ -1195,6 +1195,11 @@
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-collapse/-/uvalib-collapse-0.1.19.tgz#cf5fae659b13cd47d8608d773983b6351f828810"
   integrity sha512-cAyQYiPB3630O1YPm2SVB+CJPJMS9XXOLLeOPJpQEKDkVb1XcFkG9Bi9YxsuNORHE6uCmvd+27+hiJFyArwB3A==
 
+"@uvalib/uvalib-collapse@^0.1.20":
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-collapse/-/uvalib-collapse-0.1.20.tgz#219768591c318402b8c7e390d0672487ec732f98"
+  integrity sha512-PuzETF4FD1L5xRmDI4XOvPvpbNBHMIT6zij/FAC1e2iX5Z8eZHUxho3YeEm7rdZvyAjT1gDDvNx98/fcko/iUA==
+
 "@uvalib/uvalib-image@^0.1.23":
   version "0.1.23"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-image/-/uvalib-image-0.1.23.tgz#359a65473ccf1c689ea2223c308346144f9ec9fe"
