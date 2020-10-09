@@ -49,9 +49,9 @@ class UvalibAlerts extends HTMLElement {
   }
 
   _setupAlertsModel(){
-    import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){
-      this._alertsModel = document.createElement('uvalib-model-alerts');
-      import ('lodash/debounce').then(function(debounce){
+    import ('lodash/debounce').then(function(debounce){    
+      import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){
+        this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){        
           const count = (e.detail && e.detail.seenCount)? parseInt(e.detail.seenCount):0;
           this.seenCount = count;
@@ -64,8 +64,8 @@ class UvalibAlerts extends HTMLElement {
           this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
         this._alertsModel.setAttribute('auto',"");
+        this.shadow.appendChild(this._alertsModel);
       }.bind(this));
-      this.shadow.appendChild(this._alertsModel);
     }.bind(this));
   }
 

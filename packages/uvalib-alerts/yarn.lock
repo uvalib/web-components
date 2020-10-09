@@ -1213,6 +1213,11 @@
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.21.tgz#e056c5299e3e5ff2fb135e37766bb19911c99888"
   integrity sha512-C4MV4karP+hQ3ReucHdmzZvAk9NPdHLvf00b8DAp9DbeQ2QXL1b+DqxWbdxQY0yHLtzTVPZM9BoekYaFDTia3A==
 
+"@uvalib/uvalib-models@^0.3.22":
+  version "0.3.22"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.22.tgz#2cf669fdd11a66a6715accd26e963499e1708076"
+  integrity sha512-qT61DguMiNUwPknGodM7lx2fD27JRDIXJYH94/b5nWkNtBYlT9D+mhhZMBT9+dQTSWjHXuCF0PrXdgAvfEig3Q==
+
 "@uvalib/uvalib-theme@^0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-theme/-/uvalib-theme-0.1.17.tgz#85e12339facf3664bd7ba56b1aaac9ccc8dc0210"
