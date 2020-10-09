@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-models demo</title>
+
+    <script type="module" src="./uvalib-model-realtime-database.js"></script>
+
+  </head>
+  <body>
+        <div class="vertical-section-container centered">
+          <h3>Basic uvalib-model-ajax demo</h3>
+          <uvalib-model-realtime-database id="ajax1" path="/locations-schemaorg/location/clemons"></uvalib-model-realtime-database>
+          <div id="items1"></div>
+          <script>
+            document.getElementById('ajax1').addEventListener('last-response-changed',function(e){
+              const items1 = document.getElementById('items1');
+              const data = e.target.lastResponse;
+              console.log(data);
+              items1.innerHTML += `<p>${data.name}</p>`;
+            });
+          </script>
+        </div>
+  </body>
+</html>
