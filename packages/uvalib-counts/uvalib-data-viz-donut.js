@@ -49,13 +49,12 @@ class UvalibDonut extends HTMLElement {
       :host {
         visibility: hidden;
       }
-      .open #closed, .closed #percent-occupied, .closed #occupancy { display:none }
-      .closed #open, .open #percent-occupied, .open #occupancy { display:block }
+      .open #closed, .closed #occupancy { display:none }
+      .closed #open, .open #occupancy { display:block }
   </style>
   <div>
       <div class="name"></div>
-      <div id="percent-occupied"></div>
-      <div id="occupancy">Occupancy: <span id="occupied"></span>/<span id="capacity"></span></div>
+      <div id="occupancy">Occupancy: <span id="percent-occupied"></span> (<span id="occupied"></span>/<span id="capacity"></span>)</div>
       <div id="closed">Library is currently closed</div>
     <figure style="display:none">
       <div class="figure-content">
