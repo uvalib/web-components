@@ -1,0 +1,6 @@
+@import "~@uvalib/web-styles/scss/_colors.scss";
+@import "~@uvalib/web-styles/scss/_fonts.scss";
+
+#percent-occupied {
+    @include h1;
+}

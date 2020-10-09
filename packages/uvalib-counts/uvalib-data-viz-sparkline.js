@@ -127,7 +127,9 @@ class UvalibSparkline extends HTMLElement {
     var tzOffset = d.getTimezoneOffset() * 60000;
     if (series) {
       for (const [key, value] of Object.entries(series)) {
-        sd[parseInt(key)-tzOffset]=parseInt(value.value);
+        if (value.value) {
+          sd[parseInt(key)-tzOffset]=parseInt(value.value);
+        }
       }
     }
     this.seriesData = sd;
