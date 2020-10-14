@@ -61,9 +61,9 @@ class UvalibDonut extends HTMLElement {
             <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut" aria-labelledby="occupancy-title occupancy-desc" role="img">
               <title id="occupancy-title">Capacity</title>
               <desc id="occupancy-desc">Donut chart showing percentage of capacity occupied in the Library currently</desc>
-              <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff" role="presentation"></circle>
-              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3" role="presentation"></circle>    
-              <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="0 100" stroke-dashoffset="25" aria-labelledby="donut-segment-1-title donut-segment-1-desc">
+              <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" role="presentation"></circle>
+              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" role="presentation"></circle>    
+              <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="0 100" stroke-dashoffset="25" aria-labelledby="donut-segment-1-title donut-segment-1-desc">
                 <title id="donut-segment-1-title">Current Occupancy</title>
                 <desc id="donut-segment-1-desc"></desc>
               </circle>

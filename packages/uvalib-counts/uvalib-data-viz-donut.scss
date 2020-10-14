@@ -3,9 +3,11 @@
 
 .name {
     @include h1;
+    font-size: xx-large;
 }
 
 .chart-text {
+    @include h1;
     fill: #000;
     transform: translateY(0.25em);
   }
@@ -31,6 +33,7 @@
   
   .figure-content,
   .figure-key {
+    @include h1;
     flex: 1;
     align-self: center;
   }
@@ -51,16 +54,16 @@
     border-radius: 50%;
   }
   
-  .shape-fuschia {
-    background-color: #ce4b99;
+  .donut-hole {
+    fill: $uvalib-grey-lightest;
   }
-  
-  .shape-lemon-lime {
-    background-color: #b1c94e;
+  .donut-ring {
+    stroke: $uvalib-grey;
+    stroke-width: 5px;
   }
-  
-  .shape-blue {
-    background-color: #377bbc;
+  .donut-segment {
+    stroke: $uvalib-green;
+    stroke-width: 5px;
   }
   
   .sr-only {
