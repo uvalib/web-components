@@ -53,44 +53,32 @@ class UvalibDonut extends HTMLElement {
       .closed #open, .open #occupancy { display:block }
   </style>
   <div>
-      <div class="name"></div>
-      <div id="occupancy">Occupancy: <span id="percent-occupied"></span> (<span id="occupied"></span>/<span id="capacity"></span>)</div>
-      <div id="closed">Library is currently closed</div>
-    <figure style="display:none">
-      <div class="figure-content">
-        <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut" aria-labelledby="occupancy-title occupancy-desc" role="img">
-          <title id="occupancy-title">Capacity</title>
-          <desc id="occupancy-desc">Donut chart showing percentage of capacity occupied in the Library currently</desc>
-          <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff" role="presentation"></circle>
-          <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3" role="presentation"></circle>    
-          <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="0 100" stroke-dashoffset="25" aria-labelledby="donut-segment-1-title donut-segment-1-desc">
-            <title id="donut-segment-1-title">Belgian Quadrupels</title>
-            <desc id="donut-segment-1-desc">Pink chart segment spanning 40% of the whole, which is 4 Belgian Quadrupels out of 10 total.</desc>
-          </circle>
-          <g class="chart-text">
-            <text id="percent-occupied" x="50%" y="50%" class="chart-number"></text>
-            <text x="50%" y="50%" class="chart-label">
-              Occupied
-            </text>
-          </g>
-        </svg>
+      <div id="occupancy" style="display:flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="name"></div>
+        <!--<span id="percent-occupied"></span>-->
+        <figure>
+          <div class="figure-content">
+            <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut" aria-labelledby="occupancy-title occupancy-desc" role="img">
+              <title id="occupancy-title">Capacity</title>
+              <desc id="occupancy-desc">Donut chart showing percentage of capacity occupied in the Library currently</desc>
+              <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff" role="presentation"></circle>
+              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3" role="presentation"></circle>    
+              <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="0 100" stroke-dashoffset="25" aria-labelledby="donut-segment-1-title donut-segment-1-desc">
+                <title id="donut-segment-1-title">Current Occupancy</title>
+                <desc id="donut-segment-1-desc"></desc>
+              </circle>
+              <g class="chart-text">
+                <text id="percent-occupied" x="50%" y="50%" class="chart-number"></text>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="figure-key">
+            <p class="sr-only">Donut chart showing library capacity.</p>
+            <div>Occupancy: <span id="occupied"></span>/<span id="capacity"></span></div>
+          </figcaption>
+        </figure> 
       </div>
-      <figcaption class="figure-key">
-        <p class="sr-only">Donut chart showing 10 total beers. Two beers are Imperial India Pale Ales, four beers are Belgian Quadrupels, and three are Russian Imperial Stouts. The last remaining beer is unlabeled.</p>
-    
-        <ul class="figure-key-list" aria-hidden="true" role="presentation">
-          <li>
-            <span class="shape-circle shape-fuschia"></span> Belgian Quadrupels (4)
-          </li>
-          <li>
-            <span class="shape-circle shape-lemon-lime"></span> Imperial India Pale Ales (2)
-          </li>
-          <li>
-            <span class="shape-circle shape-blue"></span> Russian Imperial Stouts (3)
-          </li>
-        </ul>
-      </figcaption>
-    </figure>
+      <div id="closed">Library is currently closed</div>
   </div>
       `;
       this.container = this.shadow.querySelector('div');
