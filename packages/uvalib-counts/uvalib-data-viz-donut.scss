@@ -58,6 +58,7 @@
     @include h1;
     flex: 1;
     align-self: center;
+    max-width: 200px;
   }
   
   .figure-content svg {
@@ -77,14 +78,14 @@
   }
   
   .donut-hole {
-    fill: $uvalib-grey-lightest;
+    fill: $uvalib-white;
   }
   .donut-ring {
-    stroke: $uvalib-grey;
+    stroke: $uvalib-grey-light;
     stroke-width: 5px;
   }
   .donut-segment {
-    stroke: $uvalib-green;
+    stroke: #648FFF;
     stroke-width: 5px;
   }
   
