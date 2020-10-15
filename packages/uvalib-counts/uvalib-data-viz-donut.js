@@ -30,7 +30,7 @@ class UvalibDonut extends HTMLElement {
         const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) )
         this.percent.innerHTML = `${percent}%`;
         this.shadowRoot.querySelector('.donut-segment').setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
-
+        this.shadowRoot.querySelector('.donut-segment').setAttribute('level', `${percent} ${100-percent}`);
         this.style.visibility = 'visible';
       }.bind(this));
     }
@@ -49,12 +49,10 @@ class UvalibDonut extends HTMLElement {
       :host {
         visibility: hidden;
       }
-      .open #closed, .closed #occupancy { display:none }
-      .closed #open, .open #occupancy { display:block }
   </style>
-  <div>
-      <div id="occupancy" style="display:flex; flex-direction: column; align-items: center; justify-content: center;">
-        <div class="name"></div>
+  <div id="container">
+      <div class="name"></div>
+      <div id="occupancy" class="open">
         <!--<span id="percent-occupied"></span>-->
         <figure>
           <div class="figure-content">
@@ -81,7 +79,7 @@ class UvalibDonut extends HTMLElement {
       <div id="closed">Library is currently closed</div>
   </div>
       `;
-      this.container = this.shadow.querySelector('div');
+      this.container = this.shadow.querySelector('#container');
       this.name = this.container.querySelectorAll('.name');
       this.percent = this.container.querySelector('#percent-occupied');
       this.occupied = this.container.querySelector('#occupied');

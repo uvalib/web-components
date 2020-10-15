@@ -1,6 +1,28 @@
 @import "~@uvalib/web-styles/scss/_colors.scss";
 @import "~@uvalib/web-styles/scss/_fonts.scss";
 
+#container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#occupancy {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.open #closed, .closed #occupancy { display:none }
+.closed #open, .open #occupancy { display:block }
+
+
+.closed {
+  @include h1;
+}
+
 .name {
     @include h1;
     font-size: xx-large;
