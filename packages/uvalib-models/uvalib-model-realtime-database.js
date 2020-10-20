@@ -22,7 +22,7 @@ export default class UvalibModelFBDB extends HTMLElement {
             countRef.on('value', function(snapshot){
               this._data = snapshot.val();
               this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
-              this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true} ));
+              this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true,detail:this.data} ));
             }.bind(this));
         }
     }
