@@ -384,7 +384,7 @@ if("object"==typeof self&&self.self===self&&void 0!==self.firebase){oe.warn("\n 
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-pe.registerVersion("firebase","7.21.1","app");pe.default.initializeApp({apiKey:"AIzaSyDsTrjUL9kRug7fw_sNU31cy7JYzJAUvmQ",databaseURL:"https://uvalib-api-occupancy.firebaseio.com",projectId:"uvalib-api",appId:"1:602799472461:web:d56a8ec950c9c85edc8104"});
+pe.registerVersion("firebase","7.24.0","app");pe.default.initializeApp({apiKey:"AIzaSyDsTrjUL9kRug7fw_sNU31cy7JYzJAUvmQ",databaseURL:"https://uvalib-api-occupancy.firebaseio.com",projectId:"uvalib-api",appId:"1:602799472461:web:d56a8ec950c9c85edc8104"});
 /**
  * @license
  * Copyright 2017 Google LLC
