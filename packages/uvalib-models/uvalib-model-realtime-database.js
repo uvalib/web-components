@@ -19,10 +19,10 @@ export default class UvalibModelFBDB extends HTMLElement {
             if (this._startKey) {
                 countRef = countRef.orderByKey().startAt(this._startKey);
             }
-            countRef.on('value', function(snapshot){
+            countRef.on('value', function(snapshot){  
               this._data = snapshot.val();
               this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
-              this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true,detail:this.data} ));
+              this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true, detail:this._data } ));
             }.bind(this));
         }
     }

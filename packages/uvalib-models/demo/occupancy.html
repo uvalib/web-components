@@ -15,11 +15,12 @@
           <uvalib-model-realtime-database id="ajax1" path="/locations-schemaorg/location/clemons"></uvalib-model-realtime-database>
           <div id="items1"></div>
           <script>
-            document.getElementById('ajax1').addEventListener('last-response-changed',function(e){
+            document.getElementById('ajax1').addEventListener('uvalib-model-data-value',function(e){
               const items1 = document.getElementById('items1');
               const data = e.target.lastResponse;
               console.log(data);
               items1.innerHTML += `<p>${data.name}</p>`;
+              console.log(e);
             });
           </script>
         </div>
