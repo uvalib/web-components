@@ -1,4 +1,6 @@
 // rollup.config.js
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { terser } from "rollup-plugin-terser";
@@ -12,6 +14,8 @@ export default {
     format: 'esm'
   },
   plugins: [
+    serve('build'),
+    livereload('dist'),
     multiInput(),
     postcss({
       extract: false,

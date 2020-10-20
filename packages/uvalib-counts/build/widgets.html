@@ -7,12 +7,43 @@
     <title>Library Staff Occupancy Dashboard</title>
 
     <script type="module" src="./uvalib-data-viz-donut.js"></script>
+    <script type="module" src="./uvalib-viz-donut.js"></script>
+    <script type="module">
+      import './uvalib-counts-demo.js';
+//      console.log(_.throttle);
+    </script>
 
   </head>
   <body>
-    <uvalib-data-viz-donut data-event="last-response-changed">
-      <uvalib-model-realtime-database path="/locations-schemaorg/location/clemons"></uvalib-model-realtime-database>
-    </uvalib-data-viz-donut>
+    <div>
+
+      <!--
+        set visibility to hidden to avoid the loading flash
+      -->
+      <uvalib-viz-donut title="Clemons Occupancy">
+        <span style="visibility: hidden;" slot="chartTitle">Clemons Occupancy</span>
+        <span style="visibility: hidden;" slot="chartDesc">Foo Foo Foo, Is this read aloud?</span>
+        <div style="visibility: hidden;" slot="caption">Clemons is currently <span id="percent"></span>% occupied.</div>
+      </uvalib-viz-donut>
+      <mwc-slider value="50" min="0" max="100"></mwc-slider>
+      <script>
+        var viz = document.querySelector('uvalib-viz-donut');
+        var percentLabel = viz.querySelector('#percent');
+        viz.setAttribute('percent',50);
+        percentLabel.innerHTML = `50`;
+        document.querySelector('mwc-slider').addEventListener('input', function(e){
+          const percent = e.detail.value;
+          viz.setAttribute('percent',percent);
+          viz.description = `Donut chart showing ${percent}% occupied of capacity in Clemons Library currently`;
+          percentLabel.innerHTML = `${viz.percent}`;
+        });
+      </script>
+
+    </div>
+    <br /><br />
+
+    <uvalib-data-viz-donut data-event="last-response-changed" library="clemons"></uvalib-data-viz-donut>
+
     <p>test content</p>
   </body>
 </html>

@@ -6,7 +6,7 @@
     "@polymer/polymer": "^3.0.0",
     "@uvalib/uvalib-accordion": "^0.1.17",
     "@uvalib/uvalib-account": "^0.1.18",
-    "@uvalib/uvalib-models": "^0.3.23",
+    "@uvalib/uvalib-models": "^0.3.25",
     "@uvalib/web-styles": "^0.1.15",
     "@vaadin/vaadin-button": "^2.4.0",
     "@vaadin/vaadin-tabs": "^3.2.0",
@@ -14,13 +14,17 @@
     "construct-style-sheets-polyfill": "^2.4.2",
     "firebase": "^7.21.1",
     "highcharts": "^8.2.0",
+    "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
+    "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-multi-input": "^1.1.1",
     "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-serve": "^1.0.4",
     "rollup-plugin-uglify-es": "^0.0.1"
   },
   "devDependencies": {
+    "@material/mwc-slider": "^0.19.1",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",
@@ -32,8 +36,9 @@
     "wct-mocha": "^1.0.1"
   },
   "scripts": {
-    "build": "npm run dedupe; rm -rf build/*.js; npx rollup -c rollup.config.js; rm -rf build.tar.gz; tar -cvzf build.tar.gz build",
+    "build": "npm run dedupe; rm -rf build/*.js; npx rollup -c; rm -rf build.tar.gz; tar -cvzf build.tar.gz build",
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
-    "demo": "npx serve demo"
+    "demo": "npx serve demo",
+    "dev": "npx rollup -cw"
   }
 }

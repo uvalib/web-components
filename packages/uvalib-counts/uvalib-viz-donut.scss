@@ -1,0 +1,94 @@
+@import "~@uvalib/web-styles/scss/_colors.scss";
+@import "~@uvalib/web-styles/scss/_fonts.scss";
+
+#container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#occupancy {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-text {
+    @include h1;
+    fill: #000;
+    transform: translateY(0.25em);
+  }
+  
+  .chart-number {
+    font-size: 0.6em;
+    line-height: 1;
+    text-anchor: middle;
+  }
+  
+  figure {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    figure {
+      flex-direction: column;
+    }
+  }
+  
+  .figure-content,
+  .figure-key {
+    @include h1;
+    flex: 1;
+    align-self: center;
+    max-width: 200px;
+  }
+  
+  .figure-content svg {
+    height: auto;
+  }
+  
+  .figure-key {
+    min-width: calc(8 / 12);
+  }
+  
+  .shape-circle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .donut-hole {
+    fill: $uvalib-white;
+  }
+  .donut-ring {
+    stroke: $uvalib-grey-light;
+    stroke-width: 5px;
+  }
+  .donut-segment {
+    stroke: $uvalib-status-blue;
+    stroke-width: 5px;
+  }
+  .donut-segment[med] {
+    stroke: $uvalib-status-ltorange;
+  }
+  .donut-segment[high] {
+    stroke: $uvalib-status-magenta;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
