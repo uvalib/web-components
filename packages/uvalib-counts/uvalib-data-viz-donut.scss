@@ -78,10 +78,10 @@
   }
   
   .donut-hole {
-    fill: $uvalib-white;
+    fill: var(--uvalib-viz-donut-hole-color, $uvalib-grey-lightest);
   }
   .donut-ring {
-    stroke: $uvalib-grey-light;
+    stroke: var(--uvalib-viz-donut-ring-color, #FFFFF);
     stroke-width: 5px;
   }
   .donut-segment {
