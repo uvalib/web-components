@@ -95,7 +95,7 @@ class UvalibCounts extends PolymerElement {
                     <div>Occupancy:
                       <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" action-id="[[_occupancy]]" value="0" min="0" has-controls></vaadin-number-field> ([[library.occupancy.value]])
                     </div>
-                    <div>Mask Violations:
+                    <div hidden$="[[noMaskTrack]]">Mask Violations:
                       <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" action-id="[[_noMaskCount]]" value="0" min="0" has-controls></vaadin-number-field> ([[library.noMaskCount.value]])
                     </div>
                     <vaadin-button hidden$="[[!editMode]]" theme="success primary" library-id="[[library.key]]" on-click="_updateMainCount">Submit</vaadin-button>
@@ -116,7 +116,7 @@ class UvalibCounts extends PolymerElement {
                                 <uvalib-model-realtime-database start-key="[[_todayStart()]]" path="/locationsLogs/[[library.key]]/[[place.key]]/occupancylogs"></uvalib-model-realtime-database>
                               </uvalib-data-viz-sparkline>
                             </div>
-                            <div>Mask Violations:
+                            <div hidden$="[[noMaskTrack]]">Mask Violations:
                               <vaadin-number-field hidden$="[[!editMode]]" library-id$="[[library.key]]" place-id$="[[place.key]]" action-id="[[_noMaskCount]]" value="0" min="0" has-controls></vaadin-number-field>
                               <span>([[place.noMaskCount.value]])</span>
                               <uvalib-data-viz-sparkline series-name="no masks" series-data-event="uvalib-model-data-value">
@@ -209,9 +209,10 @@ class UvalibCounts extends PolymerElement {
   }
   _filter(libraries,type) {
     if (type && Array.isArray(libraries)) {
-      return libraries.filter(lib=>{return lib['@type']===type});
-    } else 
-      return libraries;
+      return libraries.filter(lib=>{return lib.isActive===true && lib['@type']===type});
+    } else if (Array.isArray(libraries))
+      return libraries.filter(lib=>{return lib.isActive===true});
+    else return libraries;
   }
   _values(obj){
     if (obj) {  

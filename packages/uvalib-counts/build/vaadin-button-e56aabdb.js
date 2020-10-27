@@ -1,4 +1,4 @@
-import{i as t,f as e}from"./uvalib-counts-d5cc2695.js";import"./index.esm-e1330966.js";import"./_commonjsHelpers-c8d25406.js";import"./custom-style-e4c9e0f3.js";import{G as o,a as r}from"./gesture-event-listeners-89af3056.js";import{E as i,C as a,T as s}from"./vaadin-element-mixin-e8e8567e.js";const n=t`<dom-module id="lumo-button" theme-for="vaadin-button">
+var t,e;(t=window.document).getElementById("livereloadscript")||((e=t.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",t.getElementsByTagName("head")[0].appendChild(e));import"./tslib.es6-ba67d8ca.js";import"./_commonjsHelpers-1b3b9e2f.js";import{i as o,f as r}from"./uvalib-counts-f4cb5ffb.js";import"./index.esm-5dd05c49.js";import"./custom-style-78a41b06.js";import{G as i,a}from"./gesture-event-listeners-e4b47225.js";import{E as s,C as n,T as l}from"./vaadin-element-mixin-8b8d18e6.js";const c=o`<dom-module id="lumo-button" theme-for="vaadin-button">
   <template>
     <style>
       :host {
@@ -281,13 +281,13 @@ import{i as t,f as e}from"./uvalib-counts-d5cc2695.js";import"./index.esm-e13309
       }
     </style>
   </template>
-</dom-module>`;document.head.appendChild(n.content);
+</dom-module>`;document.head.appendChild(c.content);
 /**
 @license
 Copyright (c) 2017 Vaadin Ltd.
 This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
 */
-class l extends(i(a(s(o(e))))){static get template(){return t`
+class m extends(s(n(l(i(r))))){static get template(){return o`
     <style>
       :host {
         display: inline-block;
@@ -355,4 +355,4 @@ class l extends(i(a(s(o(e))))){static get template(){return t`
       </div>
     </div>
     <button id="button" type="button"></button>
-`}static get is(){return"vaadin-button"}static get version(){return"2.4.0"}ready(){super.ready(),this.setAttribute("role","button"),this.$.button.setAttribute("role","presentation"),this._addActiveListeners(),window.ShadyDOM&&window.ShadyDOM.flush()}disconnectedCallback(){super.disconnectedCallback(),this.hasAttribute("active")&&this.removeAttribute("active")}_addActiveListeners(){r(this,"down",()=>!this.disabled&&this.setAttribute("active","")),r(this,"up",()=>this.removeAttribute("active")),this.addEventListener("keydown",t=>!this.disabled&&[13,32].indexOf(t.keyCode)>=0&&this.setAttribute("active","")),this.addEventListener("keyup",()=>this.removeAttribute("active")),this.addEventListener("blur",()=>this.removeAttribute("active"))}get focusElement(){return this.$.button}}customElements.define(l.is,l);export{l as ButtonElement};
+`}static get is(){return"vaadin-button"}static get version(){return"2.4.0"}ready(){super.ready(),this.setAttribute("role","button"),this.$.button.setAttribute("role","presentation"),this._addActiveListeners(),window.ShadyDOM&&window.ShadyDOM.flush()}disconnectedCallback(){super.disconnectedCallback(),this.hasAttribute("active")&&this.removeAttribute("active")}_addActiveListeners(){a(this,"down",()=>!this.disabled&&this.setAttribute("active","")),a(this,"up",()=>this.removeAttribute("active")),this.addEventListener("keydown",t=>!this.disabled&&[13,32].indexOf(t.keyCode)>=0&&this.setAttribute("active","")),this.addEventListener("keyup",()=>this.removeAttribute("active")),this.addEventListener("blur",()=>this.removeAttribute("active"))}get focusElement(){return this.$.button}}customElements.define(m.is,m);export{m as ButtonElement};

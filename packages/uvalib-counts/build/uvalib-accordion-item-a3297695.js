@@ -1,4 +1,4 @@
-import{f as o,i as e}from"./uvalib-counts-d5cc2695.js";import"./index.esm-e1330966.js";import"./_commonjsHelpers-c8d25406.js";import"./custom-style-e4c9e0f3.js";import"./iron-collapse-5f82b0ec.js";import"./gesture-event-listeners-89af3056.js";window.customElements.define("uvalib-accordion-item",class extends o{static get template(){return e`
+var o,e;(o=window.document).getElementById("livereloadscript")||((e=o.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",o.getElementsByTagName("head")[0].appendChild(e));import"./tslib.es6-ba67d8ca.js";import"./_commonjsHelpers-1b3b9e2f.js";import{f as i,i as t}from"./uvalib-counts-f4cb5ffb.js";import"./index.esm-5dd05c49.js";import"./custom-style-78a41b06.js";import"./iron-collapse-f5af62a8.js";import"./gesture-event-listeners-e4b47225.js";window.customElements.define("uvalib-accordion-item",class extends i{static get template(){return t`
       <custom-style>
         <style>
           :host {

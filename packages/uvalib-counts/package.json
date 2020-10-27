@@ -36,7 +36,7 @@
     "wct-mocha": "^1.0.1"
   },
   "scripts": {
-    "build": "npm run dedupe; rm -rf build/*.js; npx rollup -c; rm -rf build.tar.gz; tar -cvzf build.tar.gz build",
+    "build": "npm run dedupe; rm -rf build/*.js; npx rollup -c;",
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "demo": "npx serve demo",
     "dev": "npx rollup -cw"
