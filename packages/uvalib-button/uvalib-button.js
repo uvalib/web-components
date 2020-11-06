@@ -12,6 +12,7 @@ class UvalibButton extends HTMLElement {
   static get observedAttributes() {
     return ['mode','href','icon'];
   }
+
   // set up property getters/setters to sync attributes with properties
   get mode() {return this._mode;}
   set mode(newMode) {
@@ -70,7 +71,7 @@ class UvalibButton extends HTMLElement {
   
   _updateButton(){
     if (this.mode === "icon" && this.icon && this.iconNode) {
-      this.iconNode.className = this.icon;
+      this.iconNode.className = "icon-"+this.icon;
       this.iconNode.removeAttribute('hidden');
     }
     if (this.href) {
