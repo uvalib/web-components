@@ -27,18 +27,6 @@
     @include h1;
     font-size: 1.5em;
 }
-
-.chart-text {
-    @include h1;
-    fill: #000;
-    transform: translateY(0.25em);
-  }
-  
-  .chart-number {
-    font-size: 0.6em;
-    line-height: 1;
-    text-anchor: middle;
-  }
   
   figure {
     margin: 0;

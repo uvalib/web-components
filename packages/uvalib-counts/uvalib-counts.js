@@ -6,6 +6,7 @@ import('@uvalib/uvalib-accordion/uvalib-accordion.js');
 import('@uvalib/uvalib-accordion/uvalib-accordion-item.js');
 import('@vaadin/vaadin-text-field/vaadin-number-field.js');
 import('@vaadin/vaadin-button/vaadin-button.js');
+import('@polymer/paper-toggle-button/paper-toggle-button.js');
 
 import '@uvalib/uvalib-account/uvalib-account-fb-init.js';
 import('@uvalib/uvalib-models/uvalib-model-realtime-database.js');
@@ -41,10 +42,15 @@ class UvalibCounts extends PolymerElement {
           display: inline-block;
           padding-left: 20px;
         }
+        .recount {
+          background-color: blue;
+        }
       </style>
-
+<div class$="[[_isRecount(recount)]]">
       <uvalib-account-auth id="auth" auto></uvalib-account-auth>
       
+      <paper-toggle-button checked="{{recount}}">Recount</paper-toggle-button>
+
       <uvalib-accordion multi>
         <template is="dom-repeat" items="[[_filter(libraries,type)]]" as="library">
           <template is="dom-if" if="[[library.occupancy]]">
@@ -135,6 +141,7 @@ class UvalibCounts extends PolymerElement {
           </template>
         </template>
       </uvalib-accordion>
+</div>
     `;
   }
   static get properties() {
@@ -166,6 +173,10 @@ class UvalibCounts extends PolymerElement {
         type: Boolean,
         value: false
       },
+      recount: {
+        type: Boolean,
+        value: false
+      },
       _data: {
         type: Object,
         value: function(){
@@ -186,6 +197,11 @@ class UvalibCounts extends PolymerElement {
       }.bind(this));
     }.bind(this));
 
+  }
+
+  _isRecount(recount) {
+    if (recount) return "recount";
+    else return "";
   }
 
   _todayStart() {

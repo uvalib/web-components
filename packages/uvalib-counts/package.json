@@ -3,6 +3,7 @@
   "name": "uvalib-counts",
   "main": "uvalib-counts.js",
   "dependencies": {
+    "@polymer/paper-toggle-button": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
     "@uvalib/uvalib-accordion": "^0.1.17",
     "@uvalib/uvalib-account": "^0.1.18",

@@ -72,14 +72,14 @@
     stroke-width: 5px;
   }
   .donut-segment {
-    stroke: $uvalib-status-blue;
+    stroke: var(--uvalib-viz-donut-segment-color, $uvalib-status-blue);
     stroke-width: 5px;
   }
   .donut-segment[med] {
-    stroke: $uvalib-status-ltorange;
+    stroke: var(--uvalib-viz-donut-segment-med-color, $uvalib-status-ltorange);
   }
   .donut-segment[high] {
-    stroke: $uvalib-status-magenta;
+    stroke: var(--uvalib-viz-donut-segment-high-color, $uvalib-status-magenta);
   }
   
   .sr-only {
