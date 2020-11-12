@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  --uvalib-blue-alt: #{$uvalib-blue-alt};
 }
 
 #occupancy {
@@ -28,62 +29,20 @@
     font-size: 1.5em;
 }
   
-  figure {
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-  }
-  
-  @media (min-width: 768px) {
-    figure {
-      flex-direction: column;
-    }
-  }
-  
-  .figure-content,
-  .figure-key {
-    @include h1;
-    flex: 1;
-    align-self: center;
-    max-width: 200px;
-  }
-  
-  .figure-content svg {
-    height: auto;
-  }
-  
-  .figure-key {
-    min-width: calc(8 / 12);
-  }
-  
-  .shape-circle {
-    display: inline-block;
-    vertical-align: middle;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-  }
-  
-  .donut-hole {
-    fill: var(--uvalib-viz-donut-hole-color, $uvalib-grey-lightest);
-  }
-  .donut-ring {
-    stroke: var(--uvalib-viz-donut-ring-color, #FFFFF);
-    stroke-width: 5px;
-  }
-  .donut-segment {
-    stroke: $uvalib-status-blue;
-    stroke-width: 5px;
-  }
-  
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-  }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+uvalib-viz-donut {
+  /* single solid color donut segment for this usecase */ 
+  --uvalib-viz-donut-segment-color: var(--uvalib-data-viz-donut-segment-color, var(--uvalib-blue-alt));
+  --uvalib-viz-donut-segment-med-color: var(--uvalib-data-viz-donut-segment-color, var(--uvalib-blue-alt));
+  --uvalib-viz-donut-segment-high-color: var(--uvalib-data-viz-donut-segment-color, var(--uvalib-blue-alt));
+}

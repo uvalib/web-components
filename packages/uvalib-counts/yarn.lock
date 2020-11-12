@@ -1600,10 +1600,23 @@
     "@uvalib/uvalib-image" "^0.1.23"
     purecss "^2.0.3"
 
-"@uvalib/web-styles@^0.1.13", "@uvalib/web-styles@^0.1.15":
+"@uvalib/web-styles@^0.1.13":
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.15.tgz#0b3af1bdddade291f68e6c98e32ebde3281f6e19"
   integrity sha512-zxXlAKuitKS5ZV4rN7NxPJ9TEwsiXIurTxcxTXKWXKZmIiLok9lHe7zmBrQROKEfLQSPnqiQ+a0GpyzlEcQdjg==
+  dependencies:
+    "@fortawesome/fontawesome-free" "^5.14.0"
+    "@uvalib/uvalib-accordion" "^0.1.17"
+    "@uvalib/uvalib-alerts" "^0.3.4"
+    "@uvalib/uvalib-button" "^0.0.7"
+    "@uvalib/uvalib-collapse" "^0.1.20"
+    "@uvalib/uvalib-image" "^0.1.27"
+    purecss "^2.0.3"
+
+"@uvalib/web-styles@^0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.16.tgz#5e9c53347a28cb18acd324a49674e9088634edb9"
+  integrity sha512-a28D/njWAImQE8gF91zV9TJ8HxuQ5QVJ9PFmfSMFu66MNlyN52GQ/MgGz9YY8vZSIDmaRG3U4XtN19Xe/oPIng==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     "@uvalib/uvalib-accordion" "^0.1.17"
