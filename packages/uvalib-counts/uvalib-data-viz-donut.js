@@ -30,26 +30,35 @@ class UvalibDataVizDonut extends HTMLElement {
       this._setupDom();
       
       this.addEventListener(this.dataEvent, function(e){
-        const data = e;
-console.log(data)
-/*       
+        const data = e.detail;
         this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
+console.log(data.shortName)        
         this._setValues(this.name, data.shortName);
         this.capacity.innerHTML = data.maximumAttendeeCapacity;
         this.occupied.innerHTML = data.occupancy.value;
         const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
-        this._setValues(this.percent, `${percent}%`);
-        this.shadowRoot.querySelector('.donut-segment').setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
-        this.shadowRoot.querySelector('.donut-segment').setAttribute('level', `${percent} ${100-percent}`);
-*/
+        this.viz.setAttribute('percent',percent);
+//        this._setValues(this.percent, `${percent}%`);
+//        this.shadowRoot.querySelector('.donut-segment').setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
+//        this.shadowRoot.querySelector('.donut-segment').setAttribute('level', `${percent} ${100-percent}`);
+
         this.style.visibility = 'visible';        
       }.bind(this));
     }
-/*
-    _setValues(iterable,value){
-      iterable.forEach(i=>i.innerHTML=value);
+
+    _isIterable(obj) {
+      // checks for null and undefined
+      if (obj == null) {
+        return false;
+      }
+      return typeof obj[Symbol.iterator] === 'function';
     }
-*/
+
+    _setValues(iterable,value){
+      if ( this._isIterable(iterable) )
+        iterable.forEach(i=>i.innerHTML=value);
+    }
+
     _setupDom(){
       // setup a shadowDOM
       this.shadow = this.attachShadow({mode: 'open'});
@@ -66,32 +75,12 @@ console.log(data)
   <div id="container">
       <div id="libraryName"><span class="sr-only">Current occupancy and capacity at </span><span class="name"></span></div>
       <div aria-labled-by="libraryName" id="occupancy" class="open">
-        
-        <uvalib-viz-donut title="Capacity">
-          <div>Occupancy: <span id="occupied"></span><span class="sr-only"> seats occupied of</span>/<span id="capacity"></span></div>
+     
+        <uvalib-viz-donut title="Clemons Occupancy">
+          <span style="visibility: hidden;" slot="chartTitle"><span class="name"></span></span>
+          <div style="visibility: hidden;" slot="caption">Occupancy: <span id="occupied"></span><span class="sr-only"> seats occupied of</span>/<span id="capacity"></span></div>
         </uvalib-viz-donut>
-<!--      
-        <figure>
-          <div class="figure-content">
-            <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut" aria-labelledby="occupancy-title occupancy-desc" role="img">
-              <title id="occupancy-title">Capacity</title>
-              <desc id="occupancy-desc">Donut chart showing <span class="percent-occupied"></span> occupied of capacity in <span class="name"></span> Library currently</desc>
-              <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" role="presentation"></circle>
-              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" role="presentation"></circle>    
-              <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="0 100" stroke-dashoffset="25" aria-labelledby="donut-segment-1-title donut-segment-1-desc">
-                <title id="donut-segment-1-title">Current Occupancy</title>
-                <desc id="donut-segment-1-desc"></desc>
-              </circle>
-              <g class="chart-text">
-                <text id="percent-occupied" class="percent-occupied chart-number" x="50%" y="50%"></text>
-              </g>
-            </svg>
-          </div>
-          <figcaption class="figure-key">
-            <div>Occupancy: <span id="occupied"></span><span class="sr-only"> seats occupied of</span>/<span id="capacity"></span></div>
-          </figcaption>
-        </figure> 
--->        
+
       </div>
       <div id="closed">Library is currently closed</div>
   </div>
@@ -101,7 +90,7 @@ console.log(data)
 //      this.percent = this.container.querySelectorAll('.percent-occupied');
       this.occupied = this.container.querySelector('#occupied');
       this.capacity = this.container.querySelector('#capacity');
-      this.viz = this.container.querySelectorAll('uvalib-viz-donut');
+      this.viz = this.container.querySelector('uvalib-viz-donut');
     }
     attributeChangedCallback(name, oldValue, newValue) {
       switch(name){

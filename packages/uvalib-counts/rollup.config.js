@@ -15,7 +15,7 @@ export default {
   },
   plugins: [
     serve('build'),
-    livereload('dist'),
+    livereload('build'),
     multiInput(),
     postcss({
       extract: false,
