@@ -97,6 +97,9 @@ console.log(data.shortName)
         case "data-event":
           this.dataEvent = newValue;
           break;
+        case "library":
+          this.library = newValue;
+          break;
       }
     }
   }
