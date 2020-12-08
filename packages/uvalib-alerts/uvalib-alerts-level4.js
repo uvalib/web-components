@@ -1,18 +1,18 @@
 import 'construct-style-sheets-polyfill';
 import('@uvalib/web-styles/src/fonts.js');
 import('@uvalib/web-styles/src/icons.js');
-import style from './uvalib-alerts.scss';
+import style from './uvalib-alerts-level4.scss';
 
 // setup constructed style sheet
 const uvalibAlertsStyles = new CSSStyleSheet();
 uvalibAlertsStyles.replaceSync(style);
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, uvalibAlertsStyles];
 
-class UvalibAlerts extends HTMLElement {
+class UvalibAlertsLevel4 extends HTMLElement {
 
   // listen to these attributes for override info
   static get observedAttributes() {
-    return ['override','alerts'];
+    return [];
   }
 
   // getters/setters properties for override info
@@ -50,18 +50,14 @@ class UvalibAlerts extends HTMLElement {
 
   _setupAlertsModel(){
     import ('lodash/debounce').then(function(debounce){    
-      import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){
+      import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){       
         this._alertsModel = document.createElement('uvalib-model-alerts');
-        this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){        
-          const count = (e.detail && e.detail.seenCount)? parseInt(e.detail.seenCount):0;
-          this.seenCount = count;
-          this.setAttribute('seen-count', count);
-          this._alertsSeen = this._alertsModel.seen;
-          this._updateAlerts(this._alertsModel.alerts);
-        }.bind(this),300).bind(this));
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
-          this._alertsSeen = this._alertsModel.seen;
-          this._updateAlerts(this._alertsModel.alerts);
+          if (Array.isArray(this._alertsModel.data)) {
+
+            this.alert = this._alertsModel.data.filter(alert => alert.severity==="alert4");
+            if (this.alert) this._updateAlerts(this.alert);
+          }
         }.bind(this),300).bind(this));
         this._alertsModel.setAttribute('auto',"");
         this.shadow.appendChild(this._alertsModel);
@@ -73,16 +69,7 @@ class UvalibAlerts extends HTMLElement {
     if (Array.isArray(alerts) && alerts.length>0) {
       this._setupStyle();
       var newContainer = document.createElement('div');          
-      const atemp = alerts.filter(function(alert){ return (this._alertsSeen)? !this._alertsSeen.includes(alert.uuid):true; }.bind(this))
-            .sort((a,b)=>(a.severity > b.severity)? 1:-1);
-      if (atemp.length > 0) {  
-        var importPromises = [];
-        importPromises.push(import ('@uvalib/uvalib-button'));
-        importPromises.push(import('@uvalib/uvalib-collapse'));
-        Promise.all(importPromises).then(function(imports) {       
-            atemp.forEach(function(alert){ this._addAlert(newContainer, alert) }.bind(this));
-        }.bind(this))
-      }
+      this._addAlert(newContainer, alerts[0]);
       this.shadow.replaceChild(newContainer, this._alertsContainer);
       this._alertsContainer = newContainer;
     } else {
@@ -93,27 +80,12 @@ class UvalibAlerts extends HTMLElement {
   _addAlert(newContainer, alert){
     var node = document.createElement('uvalib-collapse');
     node.innerHTML = `
-      <div class="alert-item ${alert.severity}" uuid="${alert.uuid}">
-        <div data-title="${alert.title}">
-          <div class="alert-head">
-            <div class="alert-title" >${alert.title}</div>
-            <uvalib-button mode="tertiary" class="moreButton toggle" ${this._isHot(alert.severity)? "hidden ":""}>More</uvalib-button>
-            <uvalib-button mode="tertiary" class="lessButton toggle" hidden>Less</uvalib-button>
-            <uvalib-button mode="tertiary" class="dismissButton" ${this._isHot(alert.severity)? "hidden ":""}>Dismiss</uvalib-button>
-          </div>
-          <uvalib-collapse class="bodyCollapse" ${this._isHot(alert.severity)?"opened":""} ${(this._isHot(alert.severity))?"opened":""}>
-            <div class="alert-body">${alert.body}</div>
-          </uvalib-collapse>
+      <div class="alertbox alertbox-primary" uuid="${alert.uuid}">
+        <div title="${alert.title}">
+          <div>${alert.body}</div>
         </div>
       </div>
     `;
-    node.querySelector(".moreButton").addEventListener('click',this._toggleIt.bind(this));
-    node.querySelector(".lessButton").addEventListener('click',this._toggleIt.bind(this));
-    node.querySelector('.dismissButton').addEventListener('click',this._dismissIt.bind(this));
-    node.setAttribute('opened',(alert.seen)?null:"");
-    //node.addEventListener('opened-changed',this._sizeChanged.bind(this));
-    node.addEventListener('transitioning-changed',this._sizeChanged.bind(this));
-
     newContainer.appendChild(node);
     this.style.display = "block";
   }
@@ -176,4 +148,4 @@ class UvalibAlerts extends HTMLElement {
   }
 }
 
-window.customElements.define('uvalib-alerts', UvalibAlerts);
+window.customElements.define('uvalib-alerts-level4', UvalibAlertsLevel4);

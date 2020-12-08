@@ -1,0 +1,41 @@
+@import "~@uvalib/web-styles/scss/_colors.scss";
+@import "~@uvalib/web-styles/scss/_fonts.scss";
+@import "~@uvalib/web-styles/scss/_icons.scss";
+@import "~@uvalib/web-styles/scss/_variables.scss";
+
+:host {
+  display: none; /*block;*/
+  text-align: left;
+  visibility: visible;
+  @include font-body1
+}
+[hidden] {
+  display: none;
+}
+
+/* Custom Backgrounds */
+.alertbox {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+.alertbox h2:first-of-type {
+  margin-top: .5rem;
+}
+.alertbox-primary {
+  background-color: var(--uvalib-teal-lightest);
+  border-color: var(--uvalib-teal-light);
+  color: var(--uvalib-text-dark);
+}
+.alertbox-secondary {
+  background-color: var(--uvalib-yellow);
+  border-color: var(--uvalib-yellow-dark);
+  color: #000;
+}
+.alertbox-emergency {
+  background-color: var(--uvalib-red-lightest);
+  border-color: var(--uvalib-red);
+  color: var(--uvalib-text-dark);
+}
