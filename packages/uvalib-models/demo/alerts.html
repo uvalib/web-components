@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uvalib-models-alerts demo</title>
+
+    <script type="module" src="./uvalib-model-realtime-database.js"></script>
+    <script type="module" src="./uvalib-model-alerts.js"></script>
+
+  </head>
+  <body>
+
+        <div class="vertical-section-container centered">
+          <h3>Basic uvalib-model-alerts demo</h3>
+          <uvalib-model-alerts path="library-alerts" database="https://uvalib-api.firebaseio.com/"></uvalib-model-alerts>
+<!--          
+          <button onclick="unseeAlerts()">unsee alerts</button>
+          <uvalib-model-alerts auto id="alerts"></uvalib-model-alerts>
+          <h3>Alerts not seen yet: <span id="count"></span></h3>
+          <ul id="alertItems">
+          </ul>
+-->
+        </div>
+<!--
+        <script>
+          document.getElementById('alerts').addEventListener('seen-count-changed',function(){
+            console.log("seen count changed!");
+          });
+          document.getElementById('alerts').addEventListener('alerts-changed',function(e){
+            const alerts = document.getElementById('alertItems');
+            e.target.alerts.forEach((item)=>{
+              alerts.innerHTML = `<li>${item.title}</li>`;
+            });
+          });
+        </script>
+      -->
+  </body>
+</html>

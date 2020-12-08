@@ -1,13 +1,13 @@
-import UvalibModelLibrary from "./uvalib-model-library.js";
+//import UvalibModelLibrary from "./uvalib-model-library.js";
+import UvalibModelFBDB from "./uvalib-model-realtime-database.js";
 
 /**
  * `uvalib-model-library`
  */
-export default class UvalibModelAlerts extends UvalibModelLibrary {
+export default class UvalibModelAlerts extends UvalibModelFBDB {
   static get observedAttributes() {
     return super.observedAttributes.concat([]);
   }
-  get alerts(){}
   get seen(){ 
     const seen = JSON.parse(localStorage.getItem('uvalib-alerts-seen'));
     return (Array.isArray(seen))? seen:[]; 
@@ -30,11 +30,12 @@ export default class UvalibModelAlerts extends UvalibModelLibrary {
   }
   constructor() {
     super();
-    this.path = "library/alerts";
-    this.poll = 300000; // poll every 5 minutes
+    this.path = "library-alerts";
   }
   connectedCallback() {
-    this.addEventListener('last-response-changed',function(e){
+    super.connectedCallback();
+    this.database = "https://uvalib-api.firebaseio.com/";
+    this.addEventListener('uvalib-model-data-value',function(e){           //'last-response-changed',function(e){
       this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
     }.bind(this));
     window.addEventListener('storage', function() {

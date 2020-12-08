@@ -1,4 +1,4 @@
-import '@uvalib/uvalib-account/uvalib-account-fb-init.js';
+import {apiapp, occupancyapp} from '@uvalib/uvalib-account/uvalib-account-fb-init.js';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -7,14 +7,31 @@ import 'firebase/database';
  */
 export default class UvalibModelFBDB extends HTMLElement {
     static get observedAttributes() {
-      return ['path','start-key'];
+      return ['path','database','start-key'];
     }
+
+    get path() {return this._path}
+    set path(newPath) {this._path = newPath;}
+    get database() {return this._database;}
+    set database(newDb) {this._database = newDb;}
+    get startKey() {return this._startKey;}
+    set startKey(newStartKey) {this._startKey=newStartKey;} 
+
     constructor() {
       super();
     }
     connectedCallback() {
+console.log('hello');
+console.log(this._database);
+        if ( this._database.indexOf('uvalib-api')>-1 ) {
+console.log("TEST");
+          this.database = firebase.database(apiapp);
+        } else {
+          this.database = firebase.database(occupancyapp);
+        }
+        //if () {}
         if (this.path) {
-            this.database = firebase.default.database();
+            
             var countRef = this.database.ref(this.path);
             if (this._startKey) {
                 countRef = countRef.orderByKey().startAt(this._startKey);
@@ -44,6 +61,8 @@ export default class UvalibModelFBDB extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
       switch(name){
         case "path": this.path = newValue; break;
+        case "database": this.database = newValue; break;
+        case "start-key": this.startKey = newValue; break;
       }
     }
 

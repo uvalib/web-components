@@ -3,7 +3,8 @@
   "main": "uvalib-models.js",
   "version": "0.3.26",
   "dependencies": {
-    "@uvalib/uvalib-account": "^0.1.18"
+    "@uvalib/uvalib-account": "^0.1.18",
+    "supports-color": "^8.0.0"
   },
   "devDependencies": {
     "rollup-plugin-commonjs": "^10.1.0",

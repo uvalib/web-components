@@ -45,7 +45,7 @@
         
         <div class="vertical-section-container centered">
           <h3>Basic uvalib-model-alerts demo</h3>
-          <button onclick="unseeAlerts()"></button>
+          <button onclick="unseeAlerts()">unsee alerts</button>
           <uvalib-model-alerts auto id="alerts"></uvalib-model-alerts>
           <h3>Alerts not seen yet: <span id="count"></span></h3>
           <ul id="alertItems">
@@ -58,7 +58,7 @@
           document.getElementById('alerts').addEventListener('alerts-changed',function(e){
             const alerts = document.getElementById('alertItems');
             e.target.alerts.forEach((item)=>{
-              alerts.innerHTML += `<li>${item.title}</li>`;
+              alerts.innerHTML = `<li>${item.title}</li>`;
             });
           });
         </script>
