@@ -31,10 +31,10 @@ export default class UvalibModelAlerts extends UvalibModelFBDB {
   constructor() {
     super();
     this.path = "library-alerts";
+    this.database = "https://uvalib-api.firebaseio.com/";
   }
   connectedCallback() {
     super.connectedCallback();
-    this.database = "https://uvalib-api.firebaseio.com/";
     this.addEventListener('uvalib-model-data-value',function(e){           //'last-response-changed',function(e){
       this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
     }.bind(this));
