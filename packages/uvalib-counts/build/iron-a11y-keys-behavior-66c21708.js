@@ -1,4 +1,4 @@
-var e,t;(e=window.document).getElementById("livereloadscript")||((t=e.createElement("script")).async=1,t.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",t.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(t));import"./polymer-legacy-80a947ec.js";
+var e,t;(e=window.document).getElementById("livereloadscript")||((t=e.createElement("script")).async=1,t.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",t.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(t));import"./polymer-legacy-b3656a0c.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.

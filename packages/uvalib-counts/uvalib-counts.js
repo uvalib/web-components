@@ -42,11 +42,14 @@ class UvalibCounts extends PolymerElement {
           display: inline-block;
           padding-left: 20px;
         }
+        #container {
+          padding: 15px;
+        }
         .recount {
-          background-color: blue;
+          background-color: #FEF6C8;
         }
       </style>
-<div class$="[[_isRecount(recount)]]">
+<div id="container" class$="[[_isRecount(recount)]]">
       <uvalib-account-auth id="auth" auto></uvalib-account-auth>
       
       <paper-toggle-button checked="{{recount}}">Recount</paper-toggle-button>

@@ -72,14 +72,14 @@
     stroke-width: 5px;
   }
   .donut-segment {
-    stroke: var(--uvalib-viz-donut-segment-color, $uvalib-status-blue);
+    stroke: var(--uvalib-viz-donut-segment-color, $color-medium-blue);
     stroke-width: 5px;
   }
   .donut-segment[med] {
-    stroke: var(--uvalib-viz-donut-segment-med-color, $uvalib-status-ltorange);
+    stroke: var(--uvalib-viz-donut-segment-med-color, $color-light-orange);
   }
   .donut-segment[high] {
-    stroke: var(--uvalib-viz-donut-segment-high-color, $uvalib-status-magenta);
+    stroke: var(--uvalib-viz-donut-segment-high-color, $uvalib-secondary-magenta);
   }
   
   .sr-only {

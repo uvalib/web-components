@@ -1376,7 +1376,7 @@
     "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.3.1":
+"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.3.1", "@polymer/polymer@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.4.1.tgz#333bef25711f8411bb5624fb3eba8212ef8bee96"
   integrity sha512-KPWnhDZibtqKrUz7enIPOiO4ZQoJNOuLwqrhV2MXzIt3VVnUVJVG5ORz4Z2sgO+UZ+/UZnPD0jqY+jmw/+a9mQ==
@@ -1510,6 +1510,13 @@
   dependencies:
     firebase "^7.21.1"
 
+"@uvalib/uvalib-account@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-account/-/uvalib-account-0.1.19.tgz#7ab960bf0d7bc18c6895069477ee564adf2ab962"
+  integrity sha512-dAj2gX7ODOuCRJd+2ucvVQZV/3uMMaS3X1J+OZgL7OzHTQ0CbEPsce6y6cF782WoUDhdLYIHTj0Fw+yo+fjajw==
+  dependencies:
+    firebase "^7.21.1"
+
 "@uvalib/uvalib-alerts@^0.3.2", "@uvalib/uvalib-alerts@^0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-alerts/-/uvalib-alerts-0.3.4.tgz#51bb4b705049c95e515866ec14a79194e8ccac52"
@@ -1563,12 +1570,13 @@
   dependencies:
     "@uvalib/uvalib-account" "^0.1.18"
 
-"@uvalib/uvalib-models@^0.3.25":
-  version "0.3.25"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.25.tgz#c1d2438dc05ece23125c0c5043e00c46fe340a9b"
-  integrity sha512-NH2NI8WrGi9sM4cyvph/Jaejsvx5osjb48wprn3to+EWGhe6QnNUxaLKrbDBnE8H3RzQHUafvx2Q6ZqK+q7nog==
+"@uvalib/uvalib-models@^0.3.30":
+  version "0.3.30"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.30.tgz#ad1fe3065fe7b2f9954eef304f50448713b595a0"
+  integrity sha512-RWwFF0Lnv4MprYa0zP8AoqxDKXJ+siFStJjNu7SNTzcX/YKFZOxjMnrOotfveXeUCWGpHLKIWGdTfXjoojQMfA==
   dependencies:
-    "@uvalib/uvalib-account" "^0.1.18"
+    "@uvalib/uvalib-account" "^0.1.19"
+    supports-color "^8.0.0"
 
 "@uvalib/uvalib-theme@^0.1.17":
   version "0.1.17"
@@ -1613,10 +1621,10 @@
     "@uvalib/uvalib-image" "^0.1.27"
     purecss "^2.0.3"
 
-"@uvalib/web-styles@^0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.1.16.tgz#5e9c53347a28cb18acd324a49674e9088634edb9"
-  integrity sha512-a28D/njWAImQE8gF91zV9TJ8HxuQ5QVJ9PFmfSMFu66MNlyN52GQ/MgGz9YY8vZSIDmaRG3U4XtN19Xe/oPIng==
+"@uvalib/web-styles@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.2.1.tgz#c13e6bda897133476b33fb8252ce322c65f543fb"
+  integrity sha512-F74ZN1T3+iq/WLrIfC8yHPE2eLbW84AmAqtOSidxoh8SzNmLDntfyIcC5NngQSsWSBz18h5WqPvNQSfC4zrN/Q==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     "@uvalib/uvalib-accordion" "^0.1.17"
@@ -5222,6 +5230,13 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+  dependencies:
+    has-flag "^4.0.0"
+
+supports-color@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.0.0.tgz#51fc88b5f0b8c47a64fcc54941f41a0ff9e695e3"
+  integrity sha512-of+3NN2wzrj+nTYWrTf4Oc13Lo5gDLVBzKREX8DW1e3IWw8znzOc03NaQwnma27qO3nKPDA8C0HN50SS0Pki7g==
   dependencies:
     has-flag "^4.0.0"
 
