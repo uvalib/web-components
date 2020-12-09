@@ -1,14 +1,14 @@
 {
   "name": "@uvalib/uvalib-alerts",
   "main": "uvalib-alerts.js",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "dependencies": {
     "@uvalib/uvalib-alerts": "^0.3.2",
     "@uvalib/uvalib-button": "^0.0.7",
     "@uvalib/uvalib-collapse": "^0.1.20",
     "@uvalib/uvalib-models": "^0.3.28",
     "@uvalib/uvalib-theme": "^0.1.17",
-    "@uvalib/web-styles": "^0.1.13",
+    "@uvalib/web-styles": "^0.2.1",
     "construct-style-sheets-polyfill": "^2.4.2",
     "lodash": "^4.17.20",
     "rollup-plugin-multi-input": "^1.1.1"

@@ -80,9 +80,10 @@ class UvalibAlertsLevel4 extends HTMLElement {
   _addAlert(newContainer, alert){
     var node = document.createElement('uvalib-collapse');
     node.innerHTML = `
-      <div class="alertbox alertbox-primary" uuid="${alert.uuid}">
-        <div title="${alert.title}">
-          <div>${alert.body}</div>
+      <div class="uva-alert uva-alert--a4" uuid="${alert.uuid}">
+        <div class=""uva-alert__body">
+          <h3 class="uva-alert__heading">${alert.title}</h3>
+          <p class="uva-alert__text">${alert.body}</p>
         </div>
       </div>
     `;

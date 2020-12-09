@@ -3,6 +3,33 @@
 @import "~@uvalib/web-styles/scss/_icons.scss";
 @import "~@uvalib/web-styles/scss/_variables.scss";
 
+$uvalib-alert-a1-bg: $uvalib-red-lightest;
+$uvalib-alert-a1-border: $uvalib-red-dark;
+$uvalib-alert-a2-bg: $uvalib-yellow-lightest;
+$uvalib-alert-a2-border: $uvalib-yellow;
+$uvalib-alert-a3-bg: $uvalib-blue-alt-lightest;
+$uvalib-alert-a3-border: $uvalib-blue-alt;
+$uvalib-alert-a4-bg: $uvalib-teal;
+$uvalib-alert-r1-bg: $uvalib-yellow-lightest;
+$uvalib-alert-r1-border: $uvalib-yellow;
+$uvalib-alert-r2-bg: $uvalib-teal-lightest;
+$uvalib-alert-r2-border: $uvalib-teal;
+
+$uvalib-alert-error-inline: $uvalib-red-darker;
+$uvalib-alert-confirmation-inline: $uvalib-green-dark;
+
+$uvalib-alert-info-bg: $uvalib-blue-alt-lightest;
+$uvalib-alert-info-border: $uvalib-blue-alt;
+$uvalib-alert-confirmation-bg: $uvalib-green-lightest;
+$uvalib-alert-confirmation-border: $uvalib-green-dark;
+
+$uvalib-status-available: $uvalib-blue-alt;
+$uvalib-status-modified: $uvalib-yellow;
+$uvalib-status-notavailable: $uvalib-red-darker;
+
+$accessibility-outline-color--bgislight: $uvalib-blue-alt-dark;
+$accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
+
 :host {
   display: none; /*block;*/
   text-align: left;
@@ -109,3 +136,102 @@ uvalib-button::part(button) {
   background-color: $uvalib-yellow-dark;
   color: $uvalib-black;
 }
+
+
+
+
+/*********************************************/
+/*      CURRENT ALERT STYLING 11/2020        */
+/*********************************************/
+
+.uva-alert {
+  font-size: 1.06rem;
+  line-height: 1.5;
+  padding: 1.25rem 1.25rem 1rem 1.75rem;
+  position: relative;
+  color: var(--uvalib-text-dark);
+  margin-bottom: 1em;
+}
+.uva-alert--a1 {
+  background-color: var(--uvalib-alert-a1-bg);
+  border-left: 8px solid var(--uvalib-alert-a1-border);
+}
+.uva-alert--a1::before {
+  content: "\f06a";
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-size: 1.5em;
+  display: table-cell;
+}
+.uva-alert--a2 {
+  background-color: var(--uvalib-alert-a2-bg);
+  border-left: 8px solid var(--uvalib-alert-a2-border);
+}
+.uva-alert--a2::before {
+  content: "\f071";
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-size: 1.5em;
+  display: table-cell;
+}
+.uva-alert--a3 {
+  background-color: var(--uvalib-alert-a3-bg);
+  border-left: 8px solid var(--uvalib-alert-a3-border);
+}
+.uva-alert--a3::before {
+  content: "\f05a";
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-size: 1.5em;
+  display: table-cell;
+}
+
+.uva-alert--dismissable a.uva-alert--close {
+  font-size: 1.5em;
+  display: table-cell;
+  position: absolute;
+  top: .25em;
+  right: .45em;
+  text-decoration: none;
+  color: var(--uvalib-text-dark);
+}
+
+.uva-alert--r1, .uva-alert--r2 {
+  border: 0.2em solid var(--alert-border-color, #fff);
+  border-radius: 0.5em;
+}
+.uva-alert--r1 {
+  background-color: var(--uvalib-alert-r1-bg);
+  --alert-border-color: var(--uvalib-alert-r1-border);
+}
+.uva-alert--r2 {
+  background-color: var(--uvalib-alert-r2-bg);
+  --alert-border-color: var(--uvalib-alert-r2-border);
+}
+.uva-alert--error, .uva-alert--confirmation {
+  margin: 0;
+  padding: 0;
+}
+.uva-alert--error {
+  color: var(--uvalib-alert-error-inline);
+}
+.uva-alert--confirmation {
+  color: var(--uvalib-alert-confirmation-inline);
+}
+.uva-alert__heading {
+  font-size: 1.33rem;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+.uva-alert__body {
+  padding-left: 1.25rem;
+  display: table-cell;
+  vertical-align: top;
+}
+.uva-alert__text {
+  margin-bottom: 0;
+  margin-top: 0;
+}  
+
+/* ALERT STYLING END */
