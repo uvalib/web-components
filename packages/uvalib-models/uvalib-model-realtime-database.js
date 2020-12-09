@@ -21,18 +21,15 @@ export default class UvalibModelFBDB extends HTMLElement {
       super();
     }
     connectedCallback() {
-console.log('hello');
-console.log(this._database);
-        if ( this._database.indexOf('uvalib-api')>-1 ) {
-console.log("TEST");
-          this.database = firebase.database(apiapp);
+        if ( this._database &&  this._database.indexOf('uvalib-api')>-1 ) {
+          this.fbdatabase = firebase.database(apiapp);
         } else {
-          this.database = firebase.database(occupancyapp);
+          this.fbdatabase = firebase.database(occupancyapp);
         }
         //if () {}
         if (this.path) {
             
-            var countRef = this.database.ref(this.path);
+            var countRef = this.fbdatabase.ref(this.path);
             if (this._startKey) {
                 countRef = countRef.orderByKey().startAt(this._startKey);
             }
