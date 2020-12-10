@@ -12,9 +12,11 @@ export default class UvalibModelAlerts extends UvalibModelFBDB {
     const seen = JSON.parse(localStorage.getItem('uvalib-alerts-seen'));
     return (Array.isArray(seen))? seen:[]; 
   }
-  set seen(seenItems){ 
+  set seen(seenItems){
+    var seenCount = seenItems.length;
     localStorage.setItem('uvalib-alerts-seen',JSON.stringify(seenItems));
-    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: seenItems.length}}));
+    if (this.seen.length != seenCount)
+      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: seenItems.length}}));
   }
   get seenCount(){ return this.seen.length }
   get alerts(){
@@ -38,9 +40,9 @@ export default class UvalibModelAlerts extends UvalibModelFBDB {
     this.addEventListener('uvalib-model-data-value',function(e){           //'last-response-changed',function(e){
       this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
     }.bind(this));
-    window.addEventListener('storage', function() {
-      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seen.length}}));
-    }.bind(this));
+//    window.addEventListener('storage', function() {
+//      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seen.length}}));
+//    }.bind(this));
     this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seenCount }}));
   }
   setSeen(uuid){
