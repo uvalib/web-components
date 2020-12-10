@@ -378,10 +378,10 @@
   dependencies:
     "@types/node" "*"
 
-"@uvalib/uvalib-account@^0.1.18":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-account/-/uvalib-account-0.1.18.tgz#dbe54c0c3c9081f6f179a7a8868d700d63c75c4e"
-  integrity sha512-derM7XPz7inx02cHZBMcx/snd5YGeGEcnuFM9diM9bZGechHIySae+arEByGk23alG+iZV0oX1uKZO+uiaxUeQ==
+"@uvalib/uvalib-account@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-account/-/uvalib-account-0.1.19.tgz#7ab960bf0d7bc18c6895069477ee564adf2ab962"
+  integrity sha512-dAj2gX7ODOuCRJd+2ucvVQZV/3uMMaS3X1J+OZgL7OzHTQ0CbEPsce6y6cF782WoUDhdLYIHTj0Fw+yo+fjajw==
   dependencies:
     firebase "^7.21.1"
 
@@ -1445,9 +1445,9 @@ indexes-of@^1.0.1:
   integrity sha1-8w9xbI4r00bHtn0985FVZqfAVgc=
 
 ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 is-absolute-url@^2.0.0:
   version "2.1.0"
@@ -2708,6 +2708,13 @@ supports-color@^7.1.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+  dependencies:
+    has-flag "^4.0.0"
+
+supports-color@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.0.0.tgz#51fc88b5f0b8c47a64fcc54941f41a0ff9e695e3"
+  integrity sha512-of+3NN2wzrj+nTYWrTf4Oc13Lo5gDLVBzKREX8DW1e3IWw8znzOc03NaQwnma27qO3nKPDA8C0HN50SS0Pki7g==
   dependencies:
     has-flag "^4.0.0"
 
