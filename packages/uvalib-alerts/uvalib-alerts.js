@@ -8,7 +8,7 @@ const uvalibAlertsStyles = new CSSStyleSheet();
 uvalibAlertsStyles.replaceSync(style);
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, uvalibAlertsStyles];
 
-class UvalibAlerts extends HTMLElement {
+export class UvalibAlerts extends HTMLElement {
 
   // listen to these attributes for override info
   static get observedAttributes() {
@@ -52,7 +52,8 @@ class UvalibAlerts extends HTMLElement {
     import ('lodash/debounce').then(function(debounce){    
       import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
-        this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){        
+        this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
+console.log("seen count changed");                  
           const count = (e.detail && e.detail.seenCount)? parseInt(e.detail.seenCount):0;
           this.seenCount = count;
           this.setAttribute('seen-count', count);
@@ -60,16 +61,20 @@ class UvalibAlerts extends HTMLElement {
           this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
+console.log("alerts changed");          
           this._alertsSeen = this._alertsModel.seen;
           this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
         this._alertsModel.setAttribute('auto',"");
         this.shadow.appendChild(this._alertsModel);
       }.bind(this));
-    }.bind(this));
+    }.bind(this));    
   }
 
   _updateAlerts(alerts){
+    if (Array.isArray(alerts) && alerts.length>0) {
+      alerts = alerts.filter(alert=>{return this._getLevelCode(alert.severity)!==""}); // filter out any alerts that are not a1,a2,a3  
+    }
     if (Array.isArray(alerts) && alerts.length>0) {
       this._setupStyle();
       var newContainer = document.createElement('div');          
@@ -78,7 +83,6 @@ class UvalibAlerts extends HTMLElement {
       if (atemp.length > 0) {  
         var importPromises = [];
         importPromises.push(import ('@uvalib/uvalib-button'));
-        importPromises.push(import('@uvalib/uvalib-collapse'));
         Promise.all(importPromises).then(function(imports) {       
             atemp.forEach(function(alert){ this._addAlert(newContainer, alert) }.bind(this));
         }.bind(this))
@@ -90,29 +94,25 @@ class UvalibAlerts extends HTMLElement {
     }
   }
 
+  _getLevelCode(severity){
+    return (severity === "alert1")? "a1":
+           (severity === "alert2")? "a2":
+           (severity === "alert3")? "a3":
+           "";
+  }
+
   _addAlert(newContainer, alert){
-    var node = document.createElement('uvalib-collapse');
+    var node = document.createElement('div');
     node.innerHTML = `
-      <div class="alert-item ${alert.severity}" uuid="${alert.uuid}">
-        <div data-title="${alert.title}">
-          <div class="alert-head">
-            <div class="alert-title" >${alert.title}</div>
-            <uvalib-button mode="tertiary" class="moreButton toggle" ${this._isHot(alert.severity)? "hidden ":""}>More</uvalib-button>
-            <uvalib-button mode="tertiary" class="lessButton toggle" hidden>Less</uvalib-button>
-            <uvalib-button mode="tertiary" class="dismissButton" ${this._isHot(alert.severity)? "hidden ":""}>Dismiss</uvalib-button>
-          </div>
-          <uvalib-collapse class="bodyCollapse" ${this._isHot(alert.severity)?"opened":""} ${(this._isHot(alert.severity))?"opened":""}>
-            <div class="alert-body">${alert.body}</div>
-          </uvalib-collapse>
-        </div>
+    <div class="uva-alert uva-alert--${this._getLevelCode(alert.severity)} ${this._isHot(alert.severity)? "":"uva-alert--dismissable"}" uuid="${alert.uuid}">
+      <div class="uva-alert__body">
+        <h3 class="uva-alert__heading">${alert.title}</h3>
+        <p class="uva-alert__text">${alert.body}</p>
+        <a href="#" class="dismissButton uva-alert--close"><i class="far fa-window-close"></i></a>
       </div>
+    </div>      
     `;
-    node.querySelector(".moreButton").addEventListener('click',this._toggleIt.bind(this));
-    node.querySelector(".lessButton").addEventListener('click',this._toggleIt.bind(this));
     node.querySelector('.dismissButton').addEventListener('click',this._dismissIt.bind(this));
-    node.setAttribute('opened',(alert.seen)?null:"");
-    //node.addEventListener('opened-changed',this._sizeChanged.bind(this));
-    node.addEventListener('transitioning-changed',this._sizeChanged.bind(this));
 
     newContainer.appendChild(node);
     this.style.display = "block";
@@ -142,27 +142,13 @@ class UvalibAlerts extends HTMLElement {
     this.shadow.appendChild(this._alertsContainer);
   }
   _sizeChanged(){
-    console.log("size changed!" + this.clientHeight);
     this.dispatchEvent(new CustomEvent('size-changed', {detail: {height: this.clientHeight}}));
   }
   _isHot(severity){
     return (severity==="alert1");
   }
-  _toggleIt(e){
-    // alert analytics that we have a request to toggle the alert   
-    const alertElement = e.currentTarget.parentElement.parentElement;
-    this.dispatchEvent(new CustomEvent('uvalib-analytics-event', {bubbles: true, composed: true, detail: {track:['alert',alertElement.dataset.title]}}));
-    alertElement.parentElement.querySelector('.bodyCollapse').toggle();
-    e.currentTarget.parentElement.querySelectorAll('.toggle').forEach(function(el) {
-      if (el.getAttribute('hidden')!=="") {
-        el.setAttribute('hidden','');
-      } else {
-        el.removeAttribute('hidden');       
-        el.focus();
-      }
-    });
-  }
   _dismissIt(e){
+    e.preventDefault();
     var uuid = e.currentTarget.parentElement.parentElement.parentElement.getAttribute('uuid');
     // alert analytics that we have a view dismissed alerts event
     this.dispatchEvent(new CustomEvent('uvalib-analytics-event', {bubbles: true, composed: true, detail: {track:['alert','dismissed',e.currentTarget.parentElement.parentElement.dataset.title]}}));
