@@ -1570,10 +1570,10 @@
   dependencies:
     "@uvalib/uvalib-account" "^0.1.18"
 
-"@uvalib/uvalib-models@^0.3.30":
-  version "0.3.30"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.30.tgz#ad1fe3065fe7b2f9954eef304f50448713b595a0"
-  integrity sha512-RWwFF0Lnv4MprYa0zP8AoqxDKXJ+siFStJjNu7SNTzcX/YKFZOxjMnrOotfveXeUCWGpHLKIWGdTfXjoojQMfA==
+"@uvalib/uvalib-models@^0.3.32":
+  version "0.3.32"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.32.tgz#2f9b28561d83d22b78216f3aa657f5d51c8e0360"
+  integrity sha512-6mL+7osV+nl8Hi4K/7OKs6QZ7wcxcwQRFuMiFkUgfbFmZggHpSMFwz+ZkzFwKNWrjl4CYTi10rHQa8qc8V23/w==
   dependencies:
     "@uvalib/uvalib-account" "^0.1.19"
     supports-color "^8.0.0"
@@ -1621,10 +1621,10 @@
     "@uvalib/uvalib-image" "^0.1.27"
     purecss "^2.0.3"
 
-"@uvalib/web-styles@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.2.1.tgz#c13e6bda897133476b33fb8252ce322c65f543fb"
-  integrity sha512-F74ZN1T3+iq/WLrIfC8yHPE2eLbW84AmAqtOSidxoh8SzNmLDntfyIcC5NngQSsWSBz18h5WqPvNQSfC4zrN/Q==
+"@uvalib/web-styles@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-0.2.4.tgz#4fc8443b49443bb0ab3662f8a2712f2c1be7d3f3"
+  integrity sha512-vKCXylGiLfMc4seXMlrJsDM9TnuDVPiPwtdW04BDOj2NqqWd+la+mrBJdCzlUgXxqFRIIsB7YZR9cUBbnNl/7g==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.14.0"
     "@uvalib/uvalib-accordion" "^0.1.17"
