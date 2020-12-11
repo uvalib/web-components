@@ -104,11 +104,11 @@ console.log("alerts changed");
   _addAlert(newContainer, alert){
     var node = document.createElement('div');
     node.innerHTML = `
-    <div class="uva-alert uva-alert--${this._getLevelCode(alert.severity)} ${this._isHot(alert.severity)? "":"uva-alert--dismissable"}" uuid="${alert.uuid}">
+    <div class="uva-alert uva-alert--${this._getLevelCode(alert.severity)} ${this._isHot(alert.severity)? "":"uva-alert--dismissable"}" uuid="${alert.uuid}" data-title="${alert.title}">
       <div class="uva-alert__body">
         <h3 class="uva-alert__heading">${alert.title}</h3>
         <p class="uva-alert__text">${alert.body}</p>
-        <a href="#" class="dismissButton uva-alert--close"><i class="far fa-window-close"></i></a>
+        <a href="#" class="dismissButton uva-alert--close" ${this._isHot(alert.severity)? "hidden":""}><i class="icon-window-close-regular"></i></a>
       </div>
     </div>      
     `;
@@ -148,8 +148,8 @@ console.log("alerts changed");
     return (severity==="alert1");
   }
   _dismissIt(e){
-    e.preventDefault();
-    var uuid = e.currentTarget.parentElement.parentElement.parentElement.getAttribute('uuid');
+    e.preventDefault();    
+    var uuid = e.currentTarget.parentElement.parentElement.getAttribute('uuid');
     // alert analytics that we have a view dismissed alerts event
     this.dispatchEvent(new CustomEvent('uvalib-analytics-event', {bubbles: true, composed: true, detail: {track:['alert','dismissed',e.currentTarget.parentElement.parentElement.dataset.title]}}));
     this._alertsModel.setSeen(uuid);

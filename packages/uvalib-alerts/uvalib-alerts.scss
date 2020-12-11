@@ -149,12 +149,12 @@ uvalib-button::part(button) {
   line-height: 1.5;
   padding: 1.25rem 1.25rem 1rem 1.75rem;
   position: relative;
-  color: var(--uvalib-text-dark);
-  margin-bottom: 1em;
+  color: $uvalib-text-dark;
+  /* margin-bottom: 1em; */
 }
 .uva-alert--a1 {
-  background-color: var(--uvalib-alert-a1-bg);
-  border-left: 8px solid var(--uvalib-alert-a1-border);
+  background-color: $uvalib-alert-a1-bg;
+  border-left: 8px solid $uvalib-alert-a1-border;
 }
 .uva-alert--a1::before {
   content: "\f06a";
@@ -164,8 +164,8 @@ uvalib-button::part(button) {
   display: table-cell;
 }
 .uva-alert--a2 {
-  background-color: var(--uvalib-alert-a2-bg);
-  border-left: 8px solid var(--uvalib-alert-a2-border);
+  background-color: $uvalib-alert-a2-bg;
+  border-left: 8px solid $uvalib-alert-a2-border;
 }
 .uva-alert--a2::before {
   content: "\f071";
@@ -175,8 +175,8 @@ uvalib-button::part(button) {
   display: table-cell;
 }
 .uva-alert--a3 {
-  background-color: var(--uvalib-alert-a3-bg);
-  border-left: 8px solid var(--uvalib-alert-a3-border);
+  background-color: $uvalib-alert-a3-bg;
+  border-left: 8px solid $uvalib-alert-a3-border;
 }
 .uva-alert--a3::before {
   content: "\f05a";
@@ -193,30 +193,30 @@ uvalib-button::part(button) {
   top: .25em;
   right: .45em;
   text-decoration: none;
-  color: var(--uvalib-text-dark);
+  color: $uvalib-text-dark;
 }
 
 .uva-alert--r1, .uva-alert--r2 {
-  border: 0.2em solid var(--alert-border-color, #fff);
+  border: 0.2em solid var(--alert-border-color);
   border-radius: 0.5em;
 }
 .uva-alert--r1 {
-  background-color: var(--uvalib-alert-r1-bg);
-  --alert-border-color: var(--uvalib-alert-r1-border);
+  background-color: $uvalib-alert-r1-bg;
+  --alert-border-color: $uvalib-alert-r1-border;
 }
 .uva-alert--r2 {
-  background-color: var(--uvalib-alert-r2-bg);
-  --alert-border-color: var(--uvalib-alert-r2-border);
+  background-color: $uvalib-alert-r2-bg;
+  --alert-border-color: $uvalib-alert-r2-border;
 }
 .uva-alert--error, .uva-alert--confirmation {
   margin: 0;
   padding: 0;
 }
 .uva-alert--error {
-  color: var(--uvalib-alert-error-inline);
+  color: $uvalib-alert-error-inline;
 }
 .uva-alert--confirmation {
-  color: var(--uvalib-alert-confirmation-inline);
+  color: $uvalib-alert-confirmation-inline;
 }
 .uva-alert__heading {
   font-size: 1.33rem;
