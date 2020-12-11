@@ -58,7 +58,7 @@ console.log("seen count changed");
           this.seenCount = count;
           this.setAttribute('seen-count', count);
           this._alertsSeen = this._alertsModel.seen;
-          this._updateAlerts(this._alertsModel.alerts);
+//          this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
 console.log("alerts changed");          
