@@ -37,7 +37,7 @@ export class UvalibAlertsLevel4 extends UvalibAlerts {
       <div class="uva-alert uva-alert--a4" uuid="${alert.uuid}">
         <div class=""uva-alert__body">
           <h3 class="uva-alert__heading">${alert.title}</h3>
-          <p class="uva-alert__text">${alert.body}</p>
+          <div class="uva-alert__text">${alert.body}</div>
         </div>
       </div>
     `;
