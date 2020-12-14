@@ -66,17 +66,17 @@ $accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
   background-color: $uvalib-yellow-lightest;
   color: $uvalib-black;
 }
-.alert-item.alert1 p a {
+.alert-item.alert1 .uva-alert__text a {
   text-decoration: underline;
   color: $color-white;
 }
-.alert-item.alert3 p a {
+.alert-item.alert3 .uva-alert__text a {
   text-decoration: underline;
 }
-.alert-item.alert1 p a:hover, .alert-item.alert2 p a:hover, .alert-item.alert3 p a:hover {
+.alert-item.alert1 .uva-alert__text a:hover, .alert-item.alert2 .uva-alert__text a:hover, .alert-item.alert3 .uva-alert__text a:hover {
   font-style: italic;
 }
-.alert-item.alert1 p a:focus, .alert-item.alert2 p a:focus, .alert-item.alert3 p a:focus {
+.alert-item.alert1 .uva-alert__text a:focus, .alert-item.alert2 .uva-alert__text a:focus, .alert-item.alert3 .uva-alert__text a:focus {
   outline: $color-accessibility-outline-dark-bg dotted 3px;
   padding: .15em;
 }
@@ -112,7 +112,7 @@ $accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
   flex: 1;
   flex-basis: 0.000000001px;
 }
-[slot="markdown-html"] p {
+[slot="markdown-html"] .uva-alert__text {
   margin:0;
   padding:0;
 }

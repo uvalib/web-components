@@ -81,11 +81,11 @@ console.log("alerts changed");
       const atemp = alerts.filter(function(alert){ return (this._alertsSeen)? !this._alertsSeen.includes(alert.uuid):true; }.bind(this))
             .sort((a,b)=>(a.severity > b.severity)? 1:-1);
       if (atemp.length > 0) {  
-        var importPromises = [];
-        importPromises.push(import ('@uvalib/uvalib-button'));
-        Promise.all(importPromises).then(function(imports) {       
+//        var importPromises = [];
+//        importPromises.push(import ('@uvalib/uvalib-button'));
+//        Promise.all(importPromises).then(function(imports) {       
             atemp.forEach(function(alert){ this._addAlert(newContainer, alert) }.bind(this));
-        }.bind(this))
+//        }.bind(this))
       }
       this.shadow.replaceChild(newContainer, this._alertsContainer);
       this._alertsContainer = newContainer;
@@ -107,7 +107,7 @@ console.log("alerts changed");
     <div class="uva-alert uva-alert--${this._getLevelCode(alert.severity)} ${this._isHot(alert.severity)? "":"uva-alert--dismissable"}" uuid="${alert.uuid}" data-title="${alert.title}">
       <div class="uva-alert__body">
         <h3 class="uva-alert__heading">${alert.title}</h3>
-        <p class="uva-alert__text">${alert.body}</p>
+        <div class="uva-alert__text">${alert.body}</div>
         <a href="#" class="dismissButton uva-alert--close" ${this._isHot(alert.severity)? "hidden":""}><i class="icon-window-close-regular"></i></a>
       </div>
     </div>      
