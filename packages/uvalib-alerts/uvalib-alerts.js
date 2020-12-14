@@ -1,6 +1,6 @@
 import 'construct-style-sheets-polyfill';
-import('@uvalib/web-styles/src/fonts.js');
-import('@uvalib/web-styles/src/icons.js');
+import'@uvalib/web-styles/src/fonts.js';
+import'@uvalib/web-styles/src/icons.js';
 import style from './uvalib-alerts.scss';
 
 // setup constructed style sheet
@@ -92,6 +92,7 @@ console.log("alerts changed");
     } else {
       this._alertsContainer.innerHTML = "";
     }
+    this._sizeChanged();
   }
 
   _getLevelCode(severity){
@@ -143,6 +144,7 @@ console.log("alerts changed");
   }
   _sizeChanged(){
     this.dispatchEvent(new CustomEvent('size-changed', {detail: {height: this.clientHeight}}));
+console.log("alerts size changed");
   }
   _isHot(severity){
     return (severity==="alert1");
