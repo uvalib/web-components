@@ -1,7 +1,7 @@
 {
   "name": "@uvalib/uvalib-alerts",
   "main": "uvalib-alerts.js",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "dependencies": {
     "@uvalib/uvalib-models": "^0.3.33",
     "@uvalib/web-styles": "^0.2.4",
