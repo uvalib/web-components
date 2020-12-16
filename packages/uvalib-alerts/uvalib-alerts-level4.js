@@ -35,9 +35,11 @@ export class UvalibAlertsLevel4 extends UvalibAlerts {
     var node = document.createElement('div');
     node.innerHTML = `
       <div class="uva-alert uva-alert--a4" uuid="${alert.uuid}">
-        <div class=""uva-alert__body">
-          <h3 class="uva-alert__heading">${alert.title}</h3>
-          <div class="uva-alert__text">${alert.body}</div>
+        <div class="uva-alert__body">
+          <div>
+            <span class="uva-alert__heading">${alert.title}&colon;&nbsp;</span>
+            <span class="uva-alert__text">${alert.body}</span>
+          </div>
         </div>
       </div>
     `;
