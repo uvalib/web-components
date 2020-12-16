@@ -1550,7 +1550,7 @@
     construct-style-sheets-polyfill "^2.4.2"
     lodash "^4.17.20"
 
-"@uvalib/uvalib-alerts@^0.3.4", "@uvalib/uvalib-alerts@^0.3.7":
+"@uvalib/uvalib-alerts@^0.3.4":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@uvalib/uvalib-alerts/-/uvalib-alerts-0.3.7.tgz#3f0e345a483c3afef8821c08f2f529be690fd2bd"
   integrity sha512-x3rX0fW2OoI3mySFttYBuj7q+LY074Ptx1IWDTLrOr92zQ/rYrz4baC+VyAWpXhdPG+sXSMdlYD0Y/tK5yHGpw==
@@ -1623,10 +1623,10 @@
     "@uvalib/uvalib-account" "^0.1.19"
     supports-color "^8.0.0"
 
-"@uvalib/uvalib-models@^0.3.32":
-  version "0.3.32"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.32.tgz#2f9b28561d83d22b78216f3aa657f5d51c8e0360"
-  integrity sha512-6mL+7osV+nl8Hi4K/7OKs6QZ7wcxcwQRFuMiFkUgfbFmZggHpSMFwz+ZkzFwKNWrjl4CYTi10rHQa8qc8V23/w==
+"@uvalib/uvalib-models@^0.3.33":
+  version "0.3.33"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.33.tgz#d9779c4c391e47a866e289d1ed64ddc28cac84d8"
+  integrity sha512-VxKEbie9/A/TmnsLUvgkBBI+HH7/cR740qHCAqrOPcZIcuXPdOoFt78Ol7ywRVJIg87UdwIWJzDJekClSsYf5Q==
   dependencies:
     "@uvalib/uvalib-account" "^0.1.19"
     supports-color "^8.0.0"
