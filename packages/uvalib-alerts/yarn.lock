@@ -1623,10 +1623,10 @@
     "@uvalib/uvalib-account" "^0.1.19"
     supports-color "^8.0.0"
 
-"@uvalib/uvalib-models@^0.3.33":
-  version "0.3.33"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.33.tgz#d9779c4c391e47a866e289d1ed64ddc28cac84d8"
-  integrity sha512-VxKEbie9/A/TmnsLUvgkBBI+HH7/cR740qHCAqrOPcZIcuXPdOoFt78Ol7ywRVJIg87UdwIWJzDJekClSsYf5Q==
+"@uvalib/uvalib-models@^0.3.34":
+  version "0.3.34"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.34.tgz#c8eb95ad544bb69999698de95b677852e30132c6"
+  integrity sha512-lYJgVTSh3h8u9NH+Mkdbt0JBjkU/bFBKOg04TmpTmY0bWDcKB7syYyKbXpKTancD5Uiy2VYDcwPb8r3pDfKtZw==
   dependencies:
     "@uvalib/uvalib-account" "^0.1.19"
     supports-color "^8.0.0"
