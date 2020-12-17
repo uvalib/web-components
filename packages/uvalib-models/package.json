@@ -1,7 +1,7 @@
 {
   "name": "@uvalib/uvalib-models",
   "main": "uvalib-models.js",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "dependencies": {
     "@uvalib/uvalib-account": "^0.1.19",
     "supports-color": "^8.0.0"
