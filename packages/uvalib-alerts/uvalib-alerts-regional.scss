@@ -31,8 +31,8 @@ $accessibility-outline-color--bgislight: $uvalib-blue-alt-dark;
 $accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
 
 :host {
-  display: block;
-  @include font-body1
+  display: none;
+  @include font-body1;
 }
 [hidden] {
   display: none;

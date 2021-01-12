@@ -53,6 +53,9 @@ export class UvalibAlertsRegional extends HTMLElement {
   connectedCallback() {
     if (!this.override) 
       this._setupAlertsModel();
+    window.addEventListener('popstate', function (event) {
+        this._updateAlerts(this.alerts);
+    }.bind(this) );
   }
 
   _setupAlertsModel(){
@@ -84,8 +87,10 @@ export class UvalibAlertsRegional extends HTMLElement {
         });
         this._setupStyle();
         this._alertsContainer.removeAttribute("hidden");
+        this.style.display = "block";
       } else {
         this._alertsContainer.setAttribute("hidden","");
+        this.style.display = "none";
       }
     }
   }
