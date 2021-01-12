@@ -21,7 +21,7 @@ export class UvalibAlertsRegional extends HTMLElement {
   get alerts() {return this._alerts;}
   set alerts(newAlerts) {
     this._alerts = (Array.isArray(newAlerts))? newAlerts:[];
-    this._updateAlerts(this._alerts);
+    this._updateAlerts();
   }
   get url() {return this._url;}
   set url(newURL) {
@@ -54,7 +54,7 @@ export class UvalibAlertsRegional extends HTMLElement {
     if (!this.override) 
       this._setupAlertsModel();
     window.addEventListener('popstate', function (event) {
-        this._updateAlerts(this.alerts);
+        this._updateAlerts();
     }.bind(this) );
   }
 
@@ -73,7 +73,8 @@ export class UvalibAlertsRegional extends HTMLElement {
     }.bind(this));    
   }
 
-  _updateAlerts(alerts){
+  _updateAlerts(){
+    var alerts = this.alerts;
     if (Array.isArray(alerts) && alerts.length > 0) {
       console.log(alerts)
       alerts = alerts.filter(a=>{return this._matchesURL(a.url);});
