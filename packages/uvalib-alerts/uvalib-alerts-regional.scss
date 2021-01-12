@@ -1,0 +1,56 @@
+@import "~@uvalib/web-styles/scss/_colors.scss";
+@import "~@uvalib/web-styles/scss/_fonts.scss";
+@import "~@uvalib/web-styles/scss/_icons.scss";
+@import "~@uvalib/web-styles/scss/_variables.scss";
+
+$uvalib-alert-a1-bg: $uvalib-red-lightest;
+$uvalib-alert-a1-border: $uvalib-red-dark;
+$uvalib-alert-a2-bg: $uvalib-yellow-lightest;
+$uvalib-alert-a2-border: $uvalib-yellow;
+$uvalib-alert-a3-bg: $uvalib-blue-alt-lightest;
+$uvalib-alert-a3-border: $uvalib-blue-alt;
+$uvalib-alert-a4-bg: $uvalib-teal;
+$uvalib-alert-r1-bg: $uvalib-yellow-lightest;
+$uvalib-alert-r1-border: $uvalib-yellow;
+$uvalib-alert-r2-bg: $uvalib-teal-lightest;
+$uvalib-alert-r2-border: $uvalib-teal;
+
+$uvalib-alert-error-inline: $uvalib-red-darker;
+$uvalib-alert-confirmation-inline: $uvalib-green-dark;
+
+$uvalib-alert-info-bg: $uvalib-blue-alt-lightest;
+$uvalib-alert-info-border: $uvalib-blue-alt;
+$uvalib-alert-confirmation-bg: $uvalib-green-lightest;
+$uvalib-alert-confirmation-border: $uvalib-green-dark;
+
+$uvalib-status-available: $uvalib-blue-alt;
+$uvalib-status-modified: $uvalib-yellow;
+$uvalib-status-notavailable: $uvalib-red-darker;
+
+$accessibility-outline-color--bgislight: $uvalib-blue-alt-dark;
+$accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
+
+:host {
+  display: block;
+  @include font-body1
+}
+[hidden] {
+  display: none;
+}
+/*END*/
+/* Custom Backgrounds */
+.alertbox {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+.alertbox h2:first-of-type {
+  margin-top: .5rem;
+}
+.alertbox-primary {
+  background-color: $uvalib-teal-lightest;
+  border-color: $uvalib-teal-light;
+  color: $uvalib-text-dark;
+}
