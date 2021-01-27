@@ -1,1 +1,65 @@
-import"./index.esm-b47b8ef1.js";import UvalibModelFBDB from"./uvalib-model-realtime-database.js";class UvalibModelAlerts extends UvalibModelFBDB{static get observedAttributes(){return super.observedAttributes.concat([])}get seen(){const e=JSON.parse(localStorage.getItem("uvalib-alerts-seen"));return Array.isArray(e)?e:[]}set seen(e){localStorage.setItem("uvalib-alerts-seen",JSON.stringify(e)),this.dispatchEvent(new CustomEvent("seen-count-changed",{bubbles:!0,composed:!0,detail:{seenCount:e.length}}))}get seenCount(){return this.seen.length}get alerts(){return Array.isArray(this.lastResponse)&&this.lastResponse.length>0?this.lastResponse.map(function(e){return"alert3"===e.severity&&this.setSeen(e.uuid),this.seen&&this.seen.indexOf(e.uuid)>-1?e.seen=!0:e.seen=!1,e}.bind(this)).sort(function(e,t){return e.severity>t.severity}):[]}constructor(){super(),this.path="library-alerts",this.database="https://uvalib-api.firebaseio.com/"}connectedCallback(){super.connectedCallback(),this.addEventListener("uvalib-model-data-value",function(e){this.dispatchEvent(new CustomEvent("alerts-changed",{bubbles:!0,composed:!0}))}.bind(this)),window.addEventListener("storage",function(){this.dispatchEvent(new CustomEvent("seen-count-changed",{bubbles:!0,composed:!0,detail:{seenCount:this.seen.length}}))}.bind(this)),this.dispatchEvent(new CustomEvent("seen-count-changed",{bubbles:!0,composed:!0,detail:{seenCount:this.seenCount}}))}setSeen(e){var t=new Set(this.seen);t.add(e),this.seen=[...t]}setAllUnSeen(){this.seen=[]}setAllSeen(){this.seen=this.alerts.map(e=>e.uuid)}}window.customElements.define("uvalib-model-alerts",UvalibModelAlerts);export default UvalibModelAlerts;
+import './index.esm-9209572c.js';
+import UvalibModelFBDB from './uvalib-model-realtime-database.js';
+
+/**
+ * `uvalib-model-alerts`
+ */
+class UvalibModelAlerts extends UvalibModelFBDB {
+  static get observedAttributes() {
+    return super.observedAttributes.concat([]);
+  }
+  get seen(){ 
+    const seen = JSON.parse(localStorage.getItem('uvalib-alerts-seen'));
+    return (Array.isArray(seen))? seen:[]; 
+  }
+  set seen(array2){
+    var array1 = this.seen;    
+    if (!(array1.length === array2.length && array1.every((value, index) => value === array2[index]))) {
+      var seenCount = array2.length;
+      localStorage.setItem('uvalib-alerts-seen',JSON.stringify(array2));       
+      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
+      this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
+    }
+  }
+  get seenCount(){ return this.seen.length }
+  get alerts(){
+    if (Array.isArray(this.lastResponse) && this.lastResponse.length>0) {
+      return this.lastResponse.map(function(alert) {
+        if (this.seen && this.seen.indexOf(alert.uuid)>-1) {alert.seen = true;}
+        else {alert.seen = false;}
+        return alert;
+      }.bind(this)).sort(function(x,y){return x.severity>y.severity});
+    } else 
+      return [];
+  }
+  constructor() {
+    super();
+    this.path = "library-alerts";
+    this.database = "https://uvalib-api.firebaseio.com/";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('uvalib-model-data-value',function(e){           //'last-response-changed',function(e){
+      this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true}));
+    }.bind(this));
+    window.addEventListener('storage', function() {
+      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seen.length}}));
+    }.bind(this));
+    this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: this.seenCount }}));
+  }
+  setSeen(uuid){
+    var seen = new Set(this.seen);
+    seen.add(uuid);
+    this.seen = [... seen];
+  }
+  setAllUnSeen(){
+    this.seen = [];
+  }
+  setAllSeen(){
+    this.seen = this.alerts.map(a=>a.uuid);
+  }
+}
+
+window.customElements.define('uvalib-model-alerts', UvalibModelAlerts);
+
+export default UvalibModelAlerts;
