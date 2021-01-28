@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "@uvalib/uvalib-counts",
   "main": "uvalib-counts.js",
   "dependencies": {

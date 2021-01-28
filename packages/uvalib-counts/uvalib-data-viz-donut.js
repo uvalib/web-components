@@ -31,8 +31,8 @@ class UvalibDataVizDonut extends HTMLElement {
       
       this.addEventListener(this.dataEvent, function(e){
         const data = e.detail;
+        if (!data.isOpenNow) data.occupancy.value = 0;
         this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
-console.log(data.shortName)        
         this._setValues(this.name, data.shortName);
         this.capacity.innerHTML = data.maximumAttendeeCapacity;
         this.occupied.innerHTML = data.occupancy.value;
