@@ -1,9 +1,10 @@
 {
   "name": "@uvalib/uvalib-models",
   "main": "uvalib-models.js",
-  "version": "0.3.36",
+  "version": "0.3.37",
   "dependencies": {
     "@uvalib/uvalib-account": "^0.1.19",
+    "luxon": "^1.25.0",
     "supports-color": "^8.0.0"
   },
   "devDependencies": {
