@@ -31,24 +31,23 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     connectedCallback() {
       super.connectedCallback();
       this._setupDom();
-      this.addEventListener('uvalib-model-data-value',function(e){
-        if (this._timeout) {
-          window.clearTimeout(this._timeout);
-        }
-        var value = e.detail;
+    }
 
-        if (value && this.timestamp && this.defaultValue) {
-          this._checkTime(value);   
-        } else {
-          this._adjustDom(value);
-        }
-      }.bind(this));
+    _dataChanged(value) {
+      if (this._timeout) {
+        window.clearTimeout(this._timeout);
+      }
+
+      if (value && this.timestamp && this.defaultValue) {
+        this._checkTime(value);   
+      } else {
+        this._adjustDom(value);
+      }
     }
 
     _checkTime(value) {
       // see if we can parse the db value as a datetime
-//      var d = DateTime.fromISO(value);
-console.log(value);      
+//      var d = DateTime.fromISO(value);      
       var d = DateTime.fromSeconds(value);      
 
       if (DateTime.local() < d) {       

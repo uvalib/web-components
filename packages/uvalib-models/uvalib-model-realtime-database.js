@@ -29,23 +29,14 @@ export default class UvalibModelFBDB extends HTMLElement {
         }
         if (this.path) {
           this._bindTo(this.path, this._startKey, this._data);
-/*
-            var countRef = this.fbdatabase.ref(this.path);
-            if (this._startKey) {
-                countRef = countRef.orderByKey().startAt(this._startKey);
-            }
-            countRef.on('value', function(snapshot){  
-              this._data = snapshot.val();
-              this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
-              this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true, detail:this._data } ));
-            }.bind(this));
-*/
         } else if (this.paths) {
           if (this.paths && Array.isArray(this.paths)) {
 
           }
         }
     }
+
+    _dataChanged(data){}
 
     _bindTo(path,startKey,data) {
       var dbRef = this.fbdatabase.ref(path);
@@ -56,6 +47,7 @@ export default class UvalibModelFBDB extends HTMLElement {
         this._data = snapshot.val();
         this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
         this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true, detail:this._data } ));
+        this._dataChanged(this._data);
       }.bind(this));
     }
 
