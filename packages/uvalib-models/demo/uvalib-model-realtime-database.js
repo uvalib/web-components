@@ -15366,28 +15366,29 @@ registerDatabase(firebase$1);
  */
 class UvalibModelFBDB extends HTMLElement {
     static get observedAttributes() {
-      return ['path','database','start-key'];
+      return ['path','database','start-key','paths'];
     }
 
     get path() {return this._path}
     set path(newPath) {this._path = newPath;}
+    get paths() {return this._paths}
+    set paths(newPaths) {this._paths=newPaths;}
     get database() {return this._database;}
-    set database(newDb) {this._database = newDb;}
-    get startKey() {return this._startKey;}
-    set startKey(newStartKey) {this._startKey=newStartKey;} 
+    set database(newDb) {this._database = newDb;} 
 
     constructor() {
       super();
     }
+
     connectedCallback() {
         if ( this._database &&  this._database.indexOf('uvalib-api')>-1 ) {
           this.fbdatabase = firebase$1.database(apiapp);
         } else {
           this.fbdatabase = firebase$1.database(occupancyapp);
         }
-        //if () {}
         if (this.path) {
-            
+          this._bindTo(this.path, this._startKey, this._data);
+/*
             var countRef = this.fbdatabase.ref(this.path);
             if (this._startKey) {
                 countRef = countRef.orderByKey().startAt(this._startKey);
@@ -15397,7 +15398,22 @@ class UvalibModelFBDB extends HTMLElement {
               this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
               this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true, detail:this._data } ));
             }.bind(this));
+*/
+        } else if (this.paths) {
+          if (this.paths && Array.isArray(this.paths)) ;
         }
+    }
+
+    _bindTo(path,startKey,data) {
+      var dbRef = this.fbdatabase.ref(path);
+      if (startKey) {
+          dbRef = dbRef.orderByKey().startAt(startKey);
+      }
+      dbRef.on('value', function(snapshot){  
+        this._data = snapshot.val();
+        this.dispatchEvent(new CustomEvent('last-response-changed', {bubbles:true,composed:true} ));
+        this.dispatchEvent(new CustomEvent('uvalib-model-data-value', {bubbles:true,composed:true, detail:this._data } ));
+      }.bind(this));
     }
 
     get series() {
@@ -15409,8 +15425,6 @@ class UvalibModelFBDB extends HTMLElement {
     }
     get lastResponse() {return this._data;}
     get data() {return this._data;}
-    get path() {return this._path;}
-    set path(newPath) {this._path = newPath;} 
     get startKey() {return this._startKey;}
     set startKey(newStartKey) {this._startKey = newStartKey.toString();}
  
