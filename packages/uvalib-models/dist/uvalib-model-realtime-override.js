@@ -6975,7 +6975,9 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
 
     _checkTime(value) {
       // see if we can parse the db value as a datetime
-      var d = DateTime.fromISO(value);      
+//      var d = DateTime.fromISO(value);
+console.log(value);      
+      var d = DateTime.fromSeconds(value);      
 
       if (DateTime.local() < d) {       
         // poll every few minutes to see if need to continue showing the override
