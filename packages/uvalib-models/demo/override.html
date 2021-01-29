@@ -7,7 +7,17 @@
     <title>uvalib-models demo</title>
 
     <script type="module" src="./uvalib-model-realtime-override.js"></script>
-    <style>[hidden] {display:none};</style>
+    <style>
+    [hidden] {display:none}
+    uvalib-model-realtime-override::part(override) {
+      color: blue;
+      background-color: orange;
+    }
+    uvalib-model-realtime-override::part(default) {
+      color: black;
+      background-color: pink;
+    }
+    </style>
   </head>
   <body>
         <div class="vertical-section-container centered">
@@ -17,7 +27,7 @@
           <uvalib-model-realtime-override hidden path="v1/foobarz" default-value="<h2>Make me famous</h2>"><h1>Foobar</h1></uvalib-model-realtime-override>
           <uvalib-model-realtime-override hidden path="v1/foobartime" timestamp default-value="<h3>about that time</h3>"><h1>Foobar</h1></uvalib-model-realtime-override>
 -->
-<uvalib-model-realtime-override hidden database="uvalib-occupancy" path="locations-schemaorg/location/clemons/tempClosed" timestamp default-value="<h3>about that time</h3>">Something here</uvalib-model-realtime-override>
+<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/tempClosed" timestamp default-value="<h3>about that time</h3>">Something here</uvalib-model-realtime-override>
         </div>
   </body>
 </html>

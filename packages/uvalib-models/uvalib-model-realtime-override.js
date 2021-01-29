@@ -82,11 +82,13 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
       this._overrideContainer = document.createElement('div');
       this._overrideContainer.id = "override";
       this._overrideContainer.style.display="none";
+      this._overrideContainer.setAttribute('part','override');
       this._container.appendChild(this._overrideContainer);
       this._defaultContainer = document.createElement('div');
       this._defaultContainer.id = "default";
       this._defaultContainer.style.display="none";
       this._defaultContainer.appendChild( document.createElement('slot') );
+      this._defaultContainer.setAttribute('part','default');
       this._container.appendChild(this._defaultContainer);
       this.shadow.appendChild(this._container);
     }
