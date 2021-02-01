@@ -24,15 +24,15 @@ class UvalibDataVizDonut extends HTMLElement {
       super();
       this.dataEvent = "uvalib-model-data-value";
       this.library = "clemons";
-    }
-  
-    connectedCallback() {
-      this._setupDom();
-      
+
       this.addEventListener(this.dataEvent, function(e){
         this._data = e.detail;
         this._setData()
       }.bind(this));
+    }
+  
+    connectedCallback() {
+      this._setupDom();
     }
 
     _setData(){
