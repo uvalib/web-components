@@ -30,20 +30,21 @@ class UvalibDataVizDonut extends HTMLElement {
       this._setupDom();
       
       this.addEventListener(this.dataEvent, function(e){
-        const data = e.detail;
-        if (!data.isOpenNow) data.occupancy.value = 0;
-        this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
-        this._setValues(this.name, data.shortName);
-        this.capacity.innerHTML = data.maximumAttendeeCapacity;
-        this.occupied.innerHTML = data.occupancy.value;
-        const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
-        this.viz.setAttribute('percent',percent);
-//        this._setValues(this.percent, `${percent}%`);
-//        this.shadowRoot.querySelector('.donut-segment').setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
-//        this.shadowRoot.querySelector('.donut-segment').setAttribute('level', `${percent} ${100-percent}`);
-
-        this.style.visibility = 'visible';        
+        this._data = e.detail;
+        this._setData()
       }.bind(this));
+    }
+
+    _setData(){
+      const data = this._data;
+      if (!data.isOpenNow) data.occupancy.value = 0;
+      this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
+      this._setValues(this.name, data.shortName);
+      this.capacity.innerHTML = data.maximumAttendeeCapacity;
+      this.occupied.innerHTML = data.occupancy.value;
+      const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
+      this.viz.setAttribute('percent',percent);
+      this.style.visibility = 'visible';
     }
 
     _isIterable(obj) {
@@ -91,7 +92,9 @@ class UvalibDataVizDonut extends HTMLElement {
       this.occupied = this.container.querySelector('#occupied');
       this.capacity = this.container.querySelector('#capacity');
       this.viz = this.container.querySelector('uvalib-viz-donut');
+      if (this._data) this._setData(); 
     }
+
     attributeChangedCallback(name, oldValue, newValue) {
       switch(name){
         case "data-event":

@@ -1570,12 +1570,13 @@
   dependencies:
     "@uvalib/uvalib-account" "^0.1.18"
 
-"@uvalib/uvalib-models@^0.3.32":
-  version "0.3.32"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.32.tgz#2f9b28561d83d22b78216f3aa657f5d51c8e0360"
-  integrity sha512-6mL+7osV+nl8Hi4K/7OKs6QZ7wcxcwQRFuMiFkUgfbFmZggHpSMFwz+ZkzFwKNWrjl4CYTi10rHQa8qc8V23/w==
+"@uvalib/uvalib-models@^0.3.44":
+  version "0.3.44"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-models/-/uvalib-models-0.3.44.tgz#ed4c6db96920987bb6e9272ad485c5b4a79a63c3"
+  integrity sha512-4CcCr2sRYtfMLwUU8Mexsz3yn2ozDKQvwUeQAYFn5rROFEbg8IIJXZK8+fQx6yZSFtfb2axi6dt5Fd5wmD/aeQ==
   dependencies:
     "@uvalib/uvalib-account" "^0.1.19"
+    luxon "^1.25.0"
     supports-color "^8.0.0"
 
 "@uvalib/uvalib-theme@^0.1.17":
@@ -3646,6 +3647,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+luxon@^1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.25.0.tgz#d86219e90bc0102c0eb299d65b2f5e95efe1fe72"
+  integrity sha512-hEgLurSH8kQRjY6i4YLey+mcKVAWXbDNlZRmM6AgWDJ1cY3atl8Ztf5wEY7VBReFbmGnwQPz7KYJblL8B2k0jQ==
 
 magic-string@^0.25.2:
   version "0.25.7"
