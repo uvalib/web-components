@@ -38,13 +38,15 @@ class UvalibDataVizDonut extends HTMLElement {
     _setData(){
       const data = this._data;
       if (!data.isOpenNow) data.occupancy.value = 0;
-      this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
-      this._setValues(this.name, data.shortName);
-      this.capacity.innerHTML = data.maximumAttendeeCapacity;
-      this.occupied.innerHTML = data.occupancy.value;
-      const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
-      this.viz.setAttribute('percent',percent);
-      this.style.visibility = 'visible';
+      if (this.container) {
+        this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
+        this._setValues(this.name, data.shortName);
+        this.capacity.innerHTML = data.maximumAttendeeCapacity;
+        this.occupied.innerHTML = data.occupancy.value;
+        const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
+        this.viz.setAttribute('percent',percent);
+        this.style.visibility = 'visible';
+      }
     }
 
     _isIterable(obj) {
