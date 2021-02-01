@@ -46,15 +46,14 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _checkTime(value) {
-      // see if we can parse the db value as a datetime
-//      var d = DateTime.fromISO(value);      
-      var d = DateTime.fromSeconds(value);      
+      // see if we can parse the db value as a datetime     
+      var d = DateTime.fromMillis(value);      
 
-      if (DateTime.local() < d) {       
+      if (DateTime.local().toMillis() < d.toMillis()) {              
         // poll every few minutes to see if need to continue showing the override
         this._adjustDom(this.defaultValue);
-        this._timeout = window.setTimeout(function(){this._checkTime(value)}.bind(this), 6000);
-      } else {
+        this._timeout = window.setTimeout(function(){this._checkTime(value)}.bind(this), 60000);
+      } else {       
         this._adjustDom();  // show the default
       }
     }
