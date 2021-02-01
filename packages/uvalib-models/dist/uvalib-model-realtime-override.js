@@ -6987,13 +6987,13 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _adjustDom(value){
-      if (value) {
+      if (value && this._overrideContainer && this._defaultContainer) {
         // we have data to override with
         this._overrideContainer.innerHTML = value;
         this._defaultContainer.style.display = "none";
         this._overrideContainer.style.display = "block";
         this.style.display = "block";
-      } else {
+      } else if (this._overrideContainer && this._defaultContainer) {
         // just show the default content
         this._overrideContainer.style.display = "none";
         this._defaultContainer.style.display = "block";
