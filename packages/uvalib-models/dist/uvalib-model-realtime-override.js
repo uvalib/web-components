@@ -7018,6 +7018,7 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
       this._defaultContainer.setAttribute('part','default');
       this._container.appendChild(this._defaultContainer);
       this.shadow.appendChild(this._container);
+      this._adjustDom();
     }
 
 }
