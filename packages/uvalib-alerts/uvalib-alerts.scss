@@ -251,7 +251,7 @@ uvalib-button::part(button) {
     }
     .uva-alert__text {
       display: inline-block;
-      color: $uvalib-text-dark;
+      color: #000;
       font-size: 1em;
       a {
         color: $uvalib-blue-alt-darkest;

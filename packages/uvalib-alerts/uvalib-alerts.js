@@ -52,16 +52,13 @@ export class UvalibAlerts extends HTMLElement {
     import ('lodash/debounce').then(function(debounce){    
       import('@uvalib/uvalib-models/uvalib-model-alerts.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
-        this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
-console.log("seen count changed");                  
+        this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){               
           const count = (e.detail && e.detail.seenCount)? parseInt(e.detail.seenCount):0;
           this.seenCount = count;
           this.setAttribute('seen-count', count);
           this._alertsSeen = this._alertsModel.seen;
-//          this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
-        this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
-console.log("alerts changed");          
+        this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){    
           this._alertsSeen = this._alertsModel.seen;
           this._updateAlerts(this._alertsModel.alerts);
         }.bind(this),300).bind(this));
@@ -73,19 +70,15 @@ console.log("alerts changed");
 
   _updateAlerts(alerts){
     if (Array.isArray(alerts) && alerts.length>0) {
+      if (!window.uvalibdebug)
+      alerts = alerts.filter(alert=>{return !!alert.debug}); // filter out any alerts that are not a1,a2,a3  
       alerts = alerts.filter(alert=>{return this._getLevelCode(alert.severity)!==""}); // filter out any alerts that are not a1,a2,a3  
-    }
-    if (Array.isArray(alerts) && alerts.length>0) {
       this._setupStyle();
       var newContainer = document.createElement('div');          
       const atemp = alerts.filter(function(alert){ return (this._alertsSeen)? !this._alertsSeen.includes(alert.uuid):true; }.bind(this))
             .sort((a,b)=>(a.severity > b.severity)? 1:-1);
-      if (atemp.length > 0) {  
-//        var importPromises = [];
-//        importPromises.push(import ('@uvalib/uvalib-button'));
-//        Promise.all(importPromises).then(function(imports) {       
+      if (atemp.length > 0) {        
             atemp.forEach(function(alert){ this._addAlert(newContainer, alert) }.bind(this));
-//        }.bind(this))
       }
       this.shadow.replaceChild(newContainer, this._alertsContainer);
       this._alertsContainer = newContainer;
