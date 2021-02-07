@@ -69,9 +69,7 @@ export class UvalibAlerts extends HTMLElement {
   }
 
   _updateAlerts(alerts){
-    if (Array.isArray(alerts) && alerts.length>0) {
-      if (!window.uvalibdebug)
-      alerts = alerts.filter(alert=>{return !!alert.debug}); // filter out any alerts that are not a1,a2,a3  
+    if (Array.isArray(alerts) && alerts.length>0) { 
       alerts = alerts.filter(alert=>{return this._getLevelCode(alert.severity)!==""}); // filter out any alerts that are not a1,a2,a3  
       this._setupStyle();
       var newContainer = document.createElement('div');          
