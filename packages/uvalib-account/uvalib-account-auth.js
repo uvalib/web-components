@@ -35,9 +35,12 @@ export default class UvalibAccountAuth extends HTMLElement {
                     this.dispatchEvent(new CustomEvent('uvalib-model-authenticated', {bubbles:true,composed:true} ));
                 }.bind(this))
                 .catch(function(error){
-                console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
-//                  window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
-                })
+                  console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
+                  if (this.userkey)
+                    window.location.href = 'http://api.library.virginia.edu/fireauthkeyed/helloOccupancy.js?dest='+window.location.href.replace(/\?.*/,'')+'&userkey='+this.userkey;
+                  else
+                    window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
+                }.bind(this))
         }
             
     }    
