@@ -7,7 +7,7 @@ import './uvalib-account-fb-init.js';
  */
 export default class UvalibAccountAuth extends HTMLElement {
     static get observedAttributes() {
-      return ['auto']; //,'sort-by','sort-order','filter','timeout','poll'];
+      return ['auto','userkey'];
     }
     constructor() {
       super();
@@ -22,8 +22,12 @@ export default class UvalibAccountAuth extends HTMLElement {
         url.searchParams.delete("token"); 
         window.history.replaceState({}, document.title, url.pathname+url.search);
             
-        if (!this._fbtoken) {
-            window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
+        console.log("we have a key");
+        console.log(this.userkey);
+        if (!this._fbtoken && this.userkey) {
+          window.location.href = 'http://api.library.virginia.edu/fireauthkeyed/helloOccupancy.js?userkey='+this.userkey+'&dest='+window.location.href.replace(/\?.*/,'');
+        } else if (!this._fbtoken) {
+          window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
         } else {
             firebase.auth().signInWithCustomToken(this._fbtoken)
                 .then(function(){
@@ -32,7 +36,7 @@ export default class UvalibAccountAuth extends HTMLElement {
                 }.bind(this))
                 .catch(function(error){
                 console.error(`Got an error code of ${error.code} trying to login to Firebase. Reason: ${error.message}`);
-                window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
+//                  window.location.href = 'http://api.library.virginia.edu/fireauth/helloOccupancy.js?dest='+window.location.href;
                 })
         }
             
@@ -43,6 +47,7 @@ export default class UvalibAccountAuth extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
       switch(name){
         case "auto": this.auto = newValue===""? true:false; break;
+        case "userkey": this.userkey = newValue;
       }
     }
    }
