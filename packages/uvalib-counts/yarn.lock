@@ -1278,7 +1278,7 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-icon@^3.0.0", "@polymer/iron-icon@^3.0.1":
+"@polymer/iron-icon@^3.0.0", "@polymer/iron-icon@^3.0.0-pre.26", "@polymer/iron-icon@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-icon/-/iron-icon-3.0.1.tgz#93211c39d8825fe4965a68419566036c1df291eb"
   integrity sha512-QLPwirk+UPZNaLnMew9VludXA4CWUCenRewgEcGYwdzVgDPCDbXxy6vRJjmweZobMQv/oVLppT2JZtJFnPxX6g==
@@ -1287,7 +1287,16 @@
     "@polymer/iron-meta" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-iconset-svg@^3.0.0", "@polymer/iron-iconset-svg@^3.0.1":
+"@polymer/iron-icons@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-icons/-/iron-icons-3.0.1.tgz#c1bd31d8483afbdb5422cdc384081e19c9267cfe"
+  integrity sha512-xtEI8erH2GIBiF3QxEMyW81XuVjguu6Le5WjEEpX67qd9z7jjmc4T/ke3zRUlnDydex9p8ytcwVpMIKcyvjYAQ==
+  dependencies:
+    "@polymer/iron-icon" "^3.0.0-pre.26"
+    "@polymer/iron-iconset-svg" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-iconset-svg@^3.0.0", "@polymer/iron-iconset-svg@^3.0.0-pre.26", "@polymer/iron-iconset-svg@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-iconset-svg/-/iron-iconset-svg-3.0.1.tgz#568d6e7dbc120299dae63be3600aeba0d30ddbea"
   integrity sha512-XNwURbNHRw6u2fJe05O5fMYye6GSgDlDqCO+q6K1zAnKIrpgZwf2vTkBd5uCcZwsN0FyCB3mvNZx4jkh85dRDw==
@@ -1303,6 +1312,13 @@
     "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
     "@polymer/iron-resizable-behavior" "^3.0.0-pre.26"
     "@polymer/iron-scroll-target-behavior" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-localstorage@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-localstorage/-/iron-localstorage-3.0.1.tgz#2f3fdc2ce25656af75142736bc047f06699d8aed"
+  integrity sha512-Aep+1SYQSHtDu9flQA/m6kfX+2LOjegohB89cp0/oAFYw6XvxO1IcZrTsEGQuYl/9xrrk1vbjsbZR9zSVe4IIg==
+  dependencies:
     "@polymer/polymer" "^3.0.0"
 
 "@polymer/iron-location@^3.0.0-pre.25", "@polymer/iron-location@^3.0.0-pre.26":
@@ -1379,6 +1395,14 @@
   integrity sha512-DnLNvYIMsiayeICroYxx6Q6Hg1cUU8HN2sbutXazlemAlGqdq80qz3TIaVdbpbt/pvjcFGX2HtntMlPstCge8Q==
   dependencies:
     "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/paper-spinner@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-spinner/-/paper-spinner-3.0.2.tgz#c857c79f0494bc74e9ae293839d00f37fcf29f78"
+  integrity sha512-XUzu8/4NH+pnNZUTI2MxtOKFAr0EOsW7eGhTg3VBhTh7DDW/q3ewzwYRWnqNJokX9BEnxKMiXXaIeTEBq4k2dw==
+  dependencies:
+    "@polymer/paper-styles" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
 "@polymer/paper-styles@^3.0.0-pre.26":
@@ -1878,6 +1902,15 @@
     "@polymer/polymer" "^3.0.0"
     "@vaadin/vaadin-development-mode-detector" "^2.0.0"
     "@vaadin/vaadin-usage-statistics" "^2.1.0"
+
+"@vaadin/vaadin-icons@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@vaadin/vaadin-icons/-/vaadin-icons-4.3.2.tgz#e9544c65c1ff8f2c8fe050358646047ac827bfe4"
+  integrity sha512-95iC63TocE1dAV09PkQCDy3uEAEhR/a4r5jOsDHqJZHdhZVl0SKc5G9H9PDzMK7MKqiGcwZpKOfz5fG0sx0P7w==
+  dependencies:
+    "@polymer/iron-icon" "^3.0.0"
+    "@polymer/iron-iconset-svg" "^3.0.0"
+    "@polymer/polymer" "^3.0.0"
 
 "@vaadin/vaadin-item@^2.3.0":
   version "2.3.0"
