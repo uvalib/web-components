@@ -27,8 +27,24 @@
           <uvalib-model-realtime-override hidden path="v1/foobarz" default-value="<h2>Make me famous</h2>"><h1>Foobar</h1></uvalib-model-realtime-override>
           <uvalib-model-realtime-override hidden path="v1/foobartime" timestamp default-value="<h3>about that time</h3>"><h1>Foobar</h1></uvalib-model-realtime-override>
 -->
-<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/foo" timestamp default-value="<h3>about that time</h3>">
+
+<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/foo" default-value="<h3>Overridden!</h3>">
   Something here
+</uvalib-model-realtime-override>
+
+<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/foo">
+  <div>Something here</div>
+  <div slot="override">This is the override message</div>
+</uvalib-model-realtime-override>
+
+
+<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/foo" timestamp default-value="<h3>Overridden!</h3>">
+  Something here
+</uvalib-model-realtime-override>
+
+<uvalib-model-realtime-override database="uvalib-occupancy" path="locations-schemaorg/location/clemons/foo" timestamp>
+  <div>Something here</div>
+  <div slot="override">This is the override message</div>
 </uvalib-model-realtime-override>
 
         </div>

@@ -26,6 +26,7 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     constructor() {
       super();
       this.database = 'uvalib-api';
+      this._gotdata = false;
     }
 
     connectedCallback() {
@@ -34,11 +35,12 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _dataChanged(value) {
+      this._gotdata = true;
       if (this._timeout) {
         window.clearTimeout(this._timeout);
       }
 
-      if (value && this.timestamp && this.defaultValue) {
+      if (this.timestamp) {
         this._checkTime(value);   
       } else {
         this._adjustDom(value);
@@ -46,29 +48,34 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _checkTime(value) {
-      // see if we can parse the db value as a datetime     
-      var d = DateTime.fromMillis( parseInt(value) );      
-
-      if (DateTime.local().toMillis() < d.toMillis()) {              
-        // poll every few minutes to see if need to continue showing the override
-        this._adjustDom(this.defaultValue);
-        this._timeout = window.setTimeout(function(){this._checkTime(value)}.bind(this), 60000);
+      // see if we can parse the db value as a datetime           
+      if (value && parseInt(value)>0) {
+        var d = DateTime.fromMillis( parseInt(value) );
+        if (d && DateTime.local().toMillis() < d.toMillis()) {                       
+          // poll every few minutes to see if need to continue showing the override
+          this._adjustDom(true,this.defaultValue);
+          this._timeout = window.setTimeout(function(){this._checkTime(value)}.bind(this), 60000);
+        } else {
+          this._adjustDom(false);
+        }
       } else {       
-        this._adjustDom();  // show the default
+        this._adjustDom(false);  // show the default
       }
     }
 
-    _adjustDom(value){
-      if (value && this._overrideContainer && this._defaultContainer) {
+    _adjustDom(isoverride, value){     
+      if (isoverride && this._overrideContainer && this._defaultContainer) {
         // we have data to override with
-        this._overrideContainer.innerHTML = value;
-        this._defaultContainer.style.display = "none";
-        this._overrideContainer.style.display = "block";
-        this.style.display = "block";
+        if (this.defaultValue) {
+          this._overrideContent.innerHTML = this.defaultValue;
+        }
+        this._defaultContainer.setAttribute('hidden','');
+        this._overrideContainer.removeAttribute('hidden');
+        this.style.display = "block";       
       } else if (this._overrideContainer && this._defaultContainer) {
         // just show the default content
-        this._overrideContainer.style.display = "none";
-        this._defaultContainer.style.display = "block";
+        this._overrideContainer.setAttribute('hidden','');
+        this._defaultContainer.removeAttribute('hidden');
         this.style.display = "block";
       }
     }
@@ -76,21 +83,23 @@ export default class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     _setupDom(){
       // setup a shadowDOM
       this.shadow = this.attachShadow({mode: 'open'});
-      // and a place to stash the alerts
-      this._container = document.createElement('div');
-      this._overrideContainer = document.createElement('div');
-      this._overrideContainer.id = "override";
-      this._overrideContainer.style.display="none";
-      this._overrideContainer.setAttribute('part','override');
-      this._container.appendChild(this._overrideContainer);
-      this._defaultContainer = document.createElement('div');
-      this._defaultContainer.id = "default";
-      this._defaultContainer.style.display="none";
-      this._defaultContainer.appendChild( document.createElement('slot') );
-      this._defaultContainer.setAttribute('part','default');
-      this._container.appendChild(this._defaultContainer);
-      this.shadow.appendChild(this._container);
-      this._adjustDom();
+
+      this.shadow.innerHTML = `
+      <style>
+       [hidden] {
+         display: none;
+       }
+      </style>
+      <div id="container">
+        <div id="override" hidden part="override"><slot name="override"><div id="overrideContent"></div></slot></div>
+        <div id="default" hidden part="default"><slot></slot></div>
+      </div>
+      `;
+      this._container = this.shadow.querySelector('#container');
+      this._overrideContainer = this.shadow.querySelector('#override');
+      this._overrideContent = this.shadow.querySelector('#overrideContent');
+      this._defaultContainer = this.shadow.querySelector('#default');
+      this._adjustDom(false);
     }
 
 }
