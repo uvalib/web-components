@@ -6963,6 +6963,8 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _dataChanged(value) {
+
+
       this._gotdata = true;
       if (this._timeout) {
         window.clearTimeout(this._timeout);
@@ -7027,7 +7029,9 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
       this._overrideContainer = this.shadow.querySelector('#override');
       this._overrideContent = this.shadow.querySelector('#overrideContent');
       this._defaultContainer = this.shadow.querySelector('#default');
-      this._adjustDom(false);
+      if (this._data) {
+        this._dataChanged(this._data);
+      }
     }
 
 }
