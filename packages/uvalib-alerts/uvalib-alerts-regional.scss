@@ -3,32 +3,10 @@
 @import "~@uvalib/web-styles/scss/_icons.scss";
 @import "~@uvalib/web-styles/scss/_variables.scss";
 
-$uvalib-alert-a1-bg: $uvalib-red-lightest;
-$uvalib-alert-a1-border: $uvalib-red-dark;
-$uvalib-alert-a2-bg: $uvalib-yellow-lightest;
-$uvalib-alert-a2-border: $uvalib-yellow;
-$uvalib-alert-a3-bg: $uvalib-blue-alt-lightest;
-$uvalib-alert-a3-border: $uvalib-blue-alt;
-$uvalib-alert-a4-bg: $uvalib-teal;
 $uvalib-alert-r1-bg: $uvalib-yellow-lightest;
 $uvalib-alert-r1-border: $uvalib-yellow;
 $uvalib-alert-r2-bg: $uvalib-teal-lightest;
 $uvalib-alert-r2-border: $uvalib-teal;
-
-$uvalib-alert-error-inline: $uvalib-red-darker;
-$uvalib-alert-confirmation-inline: $uvalib-green-dark;
-
-$uvalib-alert-info-bg: $uvalib-blue-alt-lightest;
-$uvalib-alert-info-border: $uvalib-blue-alt;
-$uvalib-alert-confirmation-bg: $uvalib-green-lightest;
-$uvalib-alert-confirmation-border: $uvalib-green-dark;
-
-$uvalib-status-available: $uvalib-blue-alt;
-$uvalib-status-modified: $uvalib-yellow;
-$uvalib-status-notavailable: $uvalib-red-darker;
-
-$accessibility-outline-color--bgislight: $uvalib-blue-alt-dark;
-$accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
 
 :host {
   display: none;
@@ -37,20 +15,34 @@ $accessibility-outline-color--bgisdark: $uvalib-blue-alt-lightest;
 [hidden] {
   display: none;
 }
-/*END*/
-/* Custom Backgrounds */
-.alertbox {
+
+.uva-alert {
+  font-size: 1.06rem;
+  line-height: 1.5;
   position: relative;
-  padding: .75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-}
-.alertbox h2:first-of-type {
-  margin-top: .5rem;
-}
-.alertbox-primary {
-  background-color: $uvalib-teal-lightest;
-  border-color: $uvalib-teal-light;
   color: $uvalib-text-dark;
 }
+
+.uva-alert--r1, .uva-alert--r2 {
+  border: 0.2em solid var(--alert-border-color);
+  border-radius: 0.5em;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+.uva-alert--r1 {
+  background-color: $uvalib-alert-r1-bg;
+  --alert-border-color: $uvalib-alert-r1-border;
+}
+.uva-alert--r2 {
+  background-color: $uvalib-alert-r2-bg;
+  --alert-border-color: $uvalib-alert-r2-border;
+}
+.uva-alert__body {
+  padding-left: 1.25rem;
+  display: table-cell;
+  vertical-align: top;
+}
+.uva-alert__text, .uva-alert__text p {
+  margin-bottom: 0;
+  margin-top: 0;
+}  

@@ -12,7 +12,7 @@ export default {
     format: 'esm'
   },
   plugins: [
-    multiInput(),
+    multiInput({relative:"./"}),
     postcss({
       extract: false,
       inject: false,

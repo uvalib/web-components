@@ -83,7 +83,11 @@ export class UvalibAlertsRegional extends HTMLElement {
         this._alertsContainer.innerHTML = "";
         alerts.forEach(a=>{
           this._alertsContainer.innerHTML += `
-            <div class="alertbox alertbox-primary">${a.body}</div>
+            <div class="uva-alert uva-alert--${(a.severity=="regional1")?"r1":"r2"}">
+              <div class="uva-alert__body">
+                <div class="uva-alert__text">${a.body}</div> 
+              </div>
+            </div>
           `;
         });
         this._setupStyle();
