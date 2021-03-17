@@ -31,11 +31,11 @@ $uvalib-alert-r2-border: $uvalib-teal;
 }
 .uva-alert--r1 {
   background-color: $uvalib-alert-r1-bg;
-  --alert-border-color: $uvalib-alert-r1-border;
+  border-color: var(--alert-border-color, $uvalib-alert-r1-border);
 }
 .uva-alert--r2 {
   background-color: $uvalib-alert-r2-bg;
-  --alert-border-color: $uvalib-alert-r2-border;
+  border-color: var(--alert-border-color, $uvalib-alert-r2-border);
 }
 .uva-alert__body {
   padding-left: 1.25rem;
