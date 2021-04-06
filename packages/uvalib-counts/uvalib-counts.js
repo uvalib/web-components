@@ -50,7 +50,7 @@ class UvalibCounts extends PolymerElement {
         }
       </style>
 <div id="container" class$="[[_isRecount(recount)]]">
-      <uvalib-account-auth id="auth" auto></uvalib-account-auth>
+      <uvalib-account-auth id="auth" auto userkey="[[_getUserKey()]]"></uvalib-account-auth>
       
       <paper-toggle-button checked="{{recount}}">Recount</paper-toggle-button>
 
@@ -190,7 +190,8 @@ class UvalibCounts extends PolymerElement {
   }
   ready() {
     super.ready();
-       
+
+
     this.shadowRoot.getElementById('auth').addEventListener('uvalib-model-authenticated',function(){
       this.database = firebase.default.database();
       var countRef = this.database.ref('locations-schemaorg/location');
@@ -200,6 +201,22 @@ class UvalibCounts extends PolymerElement {
       }.bind(this));
     }.bind(this));
 
+  }
+
+  _getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+  }
+
+  _getUserKey() {
+    return this._getQueryVariable('userkey');
   }
 
   _isRecount(recount) {

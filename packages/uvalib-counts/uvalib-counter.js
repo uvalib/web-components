@@ -3,6 +3,7 @@ import {} from '@polymer/polymer/lib/elements/dom-repeat.js';
 import {} from '@polymer/polymer/lib/elements/dom-if.js';
 
 import '@uvalib/uvalib-account/uvalib-account-auth.js';
+import {v4} from 'uuid';
 
 import('@vaadin/vaadin-text-field/vaadin-number-field.js');
 import'@vaadin/vaadin-select/vaadin-select.js';
@@ -145,7 +146,8 @@ on-iron-localstorage-load-empty="_initSelectedLocation"></iron-localstorage>
 //        observer: "_setMode"
       },
       selectedLocation: {
-        type: String
+        type: String,
+        observer: "_locationChanged"
       },
       type: {
         type: String,
@@ -223,8 +225,25 @@ on-iron-localstorage-load-empty="_initSelectedLocation"></iron-localstorage>
         this._libraries = snapshot.val();
         this.libraries = this._values(this._libraries);
       }.bind(this));
+
+// Track presence
+this.uuid = v4();
+var amOnline = this.database.ref('.info/connected');
+this.userRef = this.database.ref(`presence/${this.uuid}/online`);
+amOnline.on('value', function(snapshot) {
+  if (snapshot.val()) {
+    this.userRef.onDisconnect().remove();
+    this.userRef.set(this.selectedLocation? this.selectedLocation:true);
+  }
+}.bind(this));
+
     }.bind(this));
 
+  }
+
+  _locationChanged(){
+    if (this.userRef)
+    this.userRef.set(this.selectedLocation? this.selectedLocation:true);
   }
 
   _isSelected(a,b){

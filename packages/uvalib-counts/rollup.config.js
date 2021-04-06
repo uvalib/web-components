@@ -23,6 +23,7 @@ export default {
       use: ['sass']
     }),
     resolve({
+      browser: true,
       mainFields: ['module'],
       customResolveOptions: {
         moduleDirectory: 'node_modules'

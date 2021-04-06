@@ -1,4 +1,4 @@
-var n,e;(n=window.document).getElementById("livereloadscript")||((e=n.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",n.getElementsByTagName("head")[0].appendChild(e));import{h as t}from"./moment-1766bd71.js";import"./tslib.es6-f3787ca5.js";import"./index.esm-99e5cbb9.js";import"./custom-style-9c9b575c.js";import{P as i}from"./polymer-legacy-11cedaad.js";import"./gesture-event-listeners-027a7567.js";import"./_commonjsHelpers-1b3b9e2f.js";import"./color-4245b73f.js";
+var n,e;(n=window.document).getElementById("livereloadscript")||((e=n.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",n.getElementsByTagName("head")[0].appendChild(e));import{P as t}from"./polymer-legacy-c4b81d58.js";import"./color-a2c27ea4.js";import{h as i}from"./moment-daae90fe.js";import"./custom-style-42df5f73.js";import"./gesture-event-listeners-8f2bf53e.js";import"./index.cjs-c89d085c.js";import"./_commonjsHelpers-dcf40758.js";import"./tslib.es6-9cf035bd.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -19,7 +19,7 @@ found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
 part of the polymer project is also subject to an additional IP rights grant
 found at http://polymer.github.io/PATENTS.txt
 */
-const r={properties:{active:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"__activeChanged"},alt:{type:String,value:"loading",observer:"__altChanged"},__coolingDown:{type:Boolean,value:!1}},__computeContainerClasses:function(n,e){return[n||e?"active":"",e?"cooldown":""].join(" ")},__activeChanged:function(n,e){this.__setAriaHidden(!n),this.__coolingDown=!n&&e},__altChanged:function(n){"loading"===n?this.alt=this.getAttribute("aria-label")||n:(this.__setAriaHidden(""===n),this.setAttribute("aria-label",n))},__setAriaHidden:function(n){n?this.setAttribute("aria-hidden","true"):this.removeAttribute("aria-hidden")},__reset:function(){this.active=!1,this.__coolingDown=!1}},o=t`
+const r={properties:{active:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"__activeChanged"},alt:{type:String,value:"loading",observer:"__altChanged"},__coolingDown:{type:Boolean,value:!1}},__computeContainerClasses:function(n,e){return[n||e?"active":"",e?"cooldown":""].join(" ")},__activeChanged:function(n,e){this.__setAriaHidden(!n),this.__coolingDown=!n&&e},__altChanged:function(n){"loading"===n?this.alt=this.getAttribute("aria-label")||n:(this.__setAriaHidden(""===n),this.setAttribute("aria-label",n))},__setAriaHidden:function(n){n?this.setAttribute("aria-hidden","true"):this.removeAttribute("aria-hidden")},__reset:function(){this.active=!1,this.__coolingDown=!1}},o=i`
   <style include="paper-spinner-styles"></style>
 
   <div id="spinnerContainer" class-name="[[__computeContainerClasses(active, __coolingDown)]]" on-animationend="__reset" on-webkit-animation-end="__reset">
@@ -42,4 +42,4 @@ http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
 found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
 part of the polymer project is also subject to an additional IP rights grant
 found at http://polymer.github.io/PATENTS.txt
-*/o.setAttribute("strip-whitespace",""),i({_template:o,is:"paper-spinner-lite",behaviors:[r]});
+*/o.setAttribute("strip-whitespace",""),t({_template:o,is:"paper-spinner-lite",behaviors:[r]});

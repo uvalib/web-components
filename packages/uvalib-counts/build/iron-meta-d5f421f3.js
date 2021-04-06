@@ -1,4 +1,4 @@
-var e,t;(e=window.document).getElementById("livereloadscript")||((t=e.createElement("script")).async=1,t.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",t.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(t));import{h as l}from"./moment-1766bd71.js";import{P as i}from"./polymer-legacy-11cedaad.js";
+var e,t;(e=window.document).getElementById("livereloadscript")||((t=e.createElement("script")).async=1,t.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",t.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(t));import{P as l}from"./polymer-legacy-c4b81d58.js";import{h as i}from"./moment-daae90fe.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -8,7 +8,7 @@ http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
 found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
 part of the polymer project is also subject to an additional IP rights grant
 found at http://polymer.github.io/PATENTS.txt
-*/const n=l`
+*/const n=i`
 <custom-style>
   <style is="custom-style">
     [hidden] {
@@ -371,4 +371,4 @@ found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
 part of the polymer project is also subject to an additional IP rights grant
 found at http://polymer.github.io/PATENTS.txt
 */
-class s{constructor(e){s[" "](e),this.type=e&&e.type||"default",this.key=e&&e.key,e&&"value"in e&&(this.value=e.value)}get value(){var e=this.type,t=this.key;if(e&&t)return s.types[e]&&s.types[e][t]}set value(e){var t=this.type,l=this.key;t&&l&&(t=s.types[t]=s.types[t]||{},null==e?delete t[l]:t[l]=e)}get list(){if(this.type){var e=s.types[this.type];return e?Object.keys(e).map((function(e){return o[this.type][e]}),this):[]}}byKey(e){return this.key=e,this.value}}s[" "]=function(){},s.types={};var o=s.types;i({is:"iron-meta",properties:{type:{type:String,value:"default"},key:{type:String},value:{type:String,notify:!0},self:{type:Boolean,observer:"_selfChanged"},__meta:{type:Boolean,computed:"__computeMeta(type, key, value)"}},hostAttributes:{hidden:!0},__computeMeta:function(e,t,l){var i=new s({type:e,key:t});return void 0!==l&&l!==i.value?i.value=l:this.value!==i.value&&(this.value=i.value),i},get list(){return this.__meta&&this.__meta.list},_selfChanged:function(e){e&&(this.value=this)},byKey:function(e){return new s({type:this.type,key:e}).value}});export{s as I};
+class s{constructor(e){s[" "](e),this.type=e&&e.type||"default",this.key=e&&e.key,e&&"value"in e&&(this.value=e.value)}get value(){var e=this.type,t=this.key;if(e&&t)return s.types[e]&&s.types[e][t]}set value(e){var t=this.type,l=this.key;t&&l&&(t=s.types[t]=s.types[t]||{},null==e?delete t[l]:t[l]=e)}get list(){if(this.type){var e=s.types[this.type];return e?Object.keys(e).map((function(e){return o[this.type][e]}),this):[]}}byKey(e){return this.key=e,this.value}}s[" "]=function(){},s.types={};var o=s.types;l({is:"iron-meta",properties:{type:{type:String,value:"default"},key:{type:String},value:{type:String,notify:!0},self:{type:Boolean,observer:"_selfChanged"},__meta:{type:Boolean,computed:"__computeMeta(type, key, value)"}},hostAttributes:{hidden:!0},__computeMeta:function(e,t,l){var i=new s({type:e,key:t});return void 0!==l&&l!==i.value?i.value=l:this.value!==i.value&&(this.value=i.value),i},get list(){return this.__meta&&this.__meta.list},_selfChanged:function(e){e&&(this.value=this)},byKey:function(e){return new s({type:this.type,key:e}).value}});export{s as I};

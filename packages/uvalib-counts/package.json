@@ -1,5 +1,5 @@
 {
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "@uvalib/uvalib-counts",
   "main": "uvalib-counts.js",
   "dependencies": {
@@ -21,7 +21,9 @@
     "@vaadin/vaadin-text-field": "^2.7.0",
     "@vaadin/vaadin-time-picker": "^3.0.0",
     "construct-style-sheets-polyfill": "^2.4.2",
+    "crypto": "^1.0.1",
     "firebase": "^7.21.1",
+    "firebase-cli": "^1.2.0",
     "highcharts": "^8.2.0",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
@@ -31,7 +33,9 @@
     "rollup-plugin-multi-input": "^1.1.1",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-serve": "^1.0.4",
-    "rollup-plugin-uglify-es": "^0.0.1"
+    "rollup-plugin-uglify-es": "^0.0.1",
+    "sass": "^1.32.8",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@material/mwc-slider": "^0.19.1",

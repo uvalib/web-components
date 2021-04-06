@@ -1,4 +1,4 @@
-var t,e;(t=window.document).getElementById("livereloadscript")||((e=t.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",t.getElementsByTagName("head")[0].appendChild(e));import{h as o,P as r}from"./moment-1766bd71.js";import"./tslib.es6-f3787ca5.js";import"./index.esm-99e5cbb9.js";import{E as i,C as a,T as s}from"./vaadin-element-mixin-8eb748fe.js";import"./custom-style-9c9b575c.js";import{G as n,a as l}from"./gesture-event-listeners-027a7567.js";import"./_commonjsHelpers-1b3b9e2f.js";const c=o`<dom-module id="lumo-button" theme-for="vaadin-button">
+var t,e;(t=window.document).getElementById("livereloadscript")||((e=t.createElement("script")).async=1,e.src="//"+(window.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",e.id="livereloadscript",t.getElementsByTagName("head")[0].appendChild(e));import{E as o,C as r,T as i}from"./vaadin-element-mixin-b99d7ad4.js";import{h as a,P as s}from"./moment-daae90fe.js";import{G as n,a as l}from"./gesture-event-listeners-8f2bf53e.js";import"./custom-style-42df5f73.js";import"./index.cjs-c89d085c.js";import"./_commonjsHelpers-dcf40758.js";import"./tslib.es6-9cf035bd.js";const c=a`<dom-module id="lumo-button" theme-for="vaadin-button">
   <template>
     <style>
       :host {
@@ -287,7 +287,7 @@ var t,e;(t=window.document).getElementById("livereloadscript")||((e=t.createElem
 Copyright (c) 2017 Vaadin Ltd.
 This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
 */
-class m extends(i(a(s(n(r))))){static get template(){return o`
+class m extends(o(r(i(n(s))))){static get template(){return a`
     <style>
       :host {
         display: inline-block;
