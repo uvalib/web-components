@@ -18,7 +18,7 @@
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "add": "^2.0.6",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "node-sass": "^4.14.1",
     "rollup": "^1.31.1",
     "rollup-plugin-commonjs": "^10.1.0",
